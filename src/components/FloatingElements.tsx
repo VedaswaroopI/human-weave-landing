@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 interface FloatingElement {
   id: number;
-  type: "dot" | "document" | "circle" | "chart" | "bracket" | "checkmark" | "node";
+  type: "dot" | "document" | "circle" | "chart" | "bracket" | "checkmark" | "node" | "line" | "plus" | "cross" | "triangle";
   x: number;
   y: number;
   size: number;
@@ -17,8 +17,8 @@ export const FloatingElements = () => {
   const [elements] = useState<FloatingElement[]>(() => {
     const items: FloatingElement[] = [];
     const colors = ["hsl(4 100% 75%)", "hsl(237 51% 35%)", "hsl(162 100% 43%)"];
-    const types: Array<"dot" | "document" | "circle" | "chart" | "bracket" | "checkmark" | "node"> = 
-      ["dot", "document", "circle", "chart", "bracket", "checkmark", "node"];
+    const types: Array<"dot" | "document" | "circle" | "chart" | "bracket" | "checkmark" | "node" | "line" | "plus" | "cross" | "triangle"> = 
+      ["dot", "document", "circle", "chart", "bracket", "checkmark", "node", "line", "plus", "cross", "triangle"];
     
     // Generate 50 floating elements with 3 speed layers
     for (let i = 0; i < 50; i++) {
@@ -57,7 +57,7 @@ export const FloatingElements = () => {
   }, []);
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-15 dark:opacity-30">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.15] dark:opacity-[0.30]">
       <svg className="w-full h-full">
         <defs>
           <filter id="glow">
@@ -185,6 +185,68 @@ export const FloatingElements = () => {
                 <circle cx={`${element.x}%`} cy={`${element.y}%`} r="4" fill={element.color} opacity="0.4" />
                 <circle cx={`${element.x}%`} cy={`${element.y}%`} r="8" fill="none" stroke={element.color} strokeWidth="1" opacity="0.2" />
               </g>
+            );
+          }
+
+          if (element.type === "line") {
+            return (
+              <line
+                key={element.id}
+                x1={`${element.x}%`}
+                y1={`${element.y}%`}
+                x2={`${element.x + 2}%`}
+                y2={`${element.y}%`}
+                stroke={element.color}
+                strokeWidth="2"
+                opacity="0.25"
+                className="animate-float"
+                style={{
+                  animationDelay: `${element.delay}s`,
+                  animationDuration: `${element.duration}s`,
+                }}
+              />
+            );
+          }
+
+          if (element.type === "plus") {
+            return (
+              <g key={element.id} className="animate-float" style={{
+                animationDelay: `${element.delay}s`,
+                animationDuration: `${element.duration}s`,
+              }}>
+                <line x1={`${element.x}%`} y1={`${element.y - 0.5}%`} x2={`${element.x}%`} y2={`${element.y + 0.5}%`} stroke={element.color} strokeWidth="2" opacity="0.3" />
+                <line x1={`${element.x - 0.5}%`} y1={`${element.y}%`} x2={`${element.x + 0.5}%`} y2={`${element.y}%`} stroke={element.color} strokeWidth="2" opacity="0.3" />
+              </g>
+            );
+          }
+
+          if (element.type === "cross") {
+            return (
+              <g key={element.id} className="animate-float" style={{
+                animationDelay: `${element.delay}s`,
+                animationDuration: `${element.duration}s`,
+              }}>
+                <line x1={`${element.x - 0.5}%`} y1={`${element.y - 0.5}%`} x2={`${element.x + 0.5}%`} y2={`${element.y + 0.5}%`} stroke={element.color} strokeWidth="2" opacity="0.3" />
+                <line x1={`${element.x + 0.5}%`} y1={`${element.y - 0.5}%`} x2={`${element.x - 0.5}%`} y2={`${element.y + 0.5}%`} stroke={element.color} strokeWidth="2" opacity="0.3" />
+              </g>
+            );
+          }
+
+          if (element.type === "triangle") {
+            return (
+              <path
+                key={element.id}
+                d={`M ${element.x}% ${element.y - 0.5}% L ${element.x + 0.5}% ${element.y + 0.5}% L ${element.x - 0.5}% ${element.y + 0.5}% Z`}
+                fill="none"
+                stroke={element.color}
+                strokeWidth="1.5"
+                opacity="0.25"
+                className="animate-float"
+                style={{
+                  animationDelay: `${element.delay}s`,
+                  animationDuration: `${element.duration}s`,
+                }}
+              />
             );
           }
           
