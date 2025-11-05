@@ -107,16 +107,20 @@ export const FloatingElements = () => {
   };
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.22] dark:opacity-[0.30]">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.35] dark:opacity-[0.32]">
       <svg ref={svgRef} className="w-full h-full">
         <defs>
           <filter id="glow">
-            <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+            <feGaussianBlur stdDeviation="3" result="coloredBlur" />
             <feMerge>
               <feMergeNode in="coloredBlur" />
               <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
+          <linearGradient id="docGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="currentColor" stopOpacity="0.8" />
+            <stop offset="100%" stopColor="currentColor" stopOpacity="0.4" />
+          </linearGradient>
         </defs>
         
         {elements.map((element) => {
@@ -127,7 +131,7 @@ export const FloatingElements = () => {
             transform,
           };
           
-          // Document icon
+          // Document icon - clean, professional document with folded corner
           if (element.type === "document") {
             return (
               <g 
@@ -135,23 +139,29 @@ export const FloatingElements = () => {
                 className="animate-float transition-transform duration-300 ease-out" 
                 style={baseStyle}
               >
-                <rect
-                  x={`${element.x}%`}
-                  y={`${element.y}%`}
-                  width={element.size}
-                  height={element.size * 1.3}
-                  rx="3"
+                <path
+                  d={`M ${element.x}% ${element.y}% 
+                      h ${element.size * 0.8} 
+                      v ${element.size * 1.2} 
+                      h -${element.size * 0.8} 
+                      z 
+                      M ${element.x + 0.6}% ${element.y}% 
+                      l ${element.size * 0.2} ${element.size * 0.2} 
+                      h -${element.size * 0.2} 
+                      z`}
                   fill={element.color}
-                  opacity="0.3"
+                  stroke="white"
+                  strokeWidth="1"
+                  opacity="0.6"
                 />
-                <line x1={`${element.x + 0.2}%`} y1={`${element.y + 0.3}%`} x2={`${element.x + 0.8}%`} y2={`${element.y + 0.3}%`} stroke="white" strokeWidth="1.5" opacity="0.6" />
-                <line x1={`${element.x + 0.2}%`} y1={`${element.y + 0.5}%`} x2={`${element.x + 0.8}%`} y2={`${element.y + 0.5}%`} stroke="white" strokeWidth="1.5" opacity="0.6" />
-                <line x1={`${element.x + 0.2}%`} y1={`${element.y + 0.7}%`} x2={`${element.x + 0.6}%`} y2={`${element.y + 0.7}%`} stroke="white" strokeWidth="1.5" opacity="0.6" />
+                <line x1={`${element.x + 0.15}%`} y1={`${element.y + 0.3}%`} x2={`${element.x + 0.65}%`} y2={`${element.y + 0.3}%`} stroke="white" strokeWidth="1" opacity="0.5" />
+                <line x1={`${element.x + 0.15}%`} y1={`${element.y + 0.5}%`} x2={`${element.x + 0.65}%`} y2={`${element.y + 0.5}%`} stroke="white" strokeWidth="1" opacity="0.5" />
+                <line x1={`${element.x + 0.15}%`} y1={`${element.y + 0.7}%`} x2={`${element.x + 0.5}%`} y2={`${element.y + 0.7}%`} stroke="white" strokeWidth="1" opacity="0.5" />
               </g>
             );
           }
           
-          // Speech bubble
+          // Speech bubble - modern, rounded design
           if (element.type === "speechBubble") {
             return (
               <g 
@@ -162,25 +172,29 @@ export const FloatingElements = () => {
                 <rect
                   x={`${element.x}%`}
                   y={`${element.y}%`}
-                  width={element.size * 1.2}
-                  height={element.size * 0.8}
-                  rx="6"
+                  width={element.size * 1.3}
+                  height={element.size * 0.9}
+                  rx="8"
                   fill={element.color}
-                  opacity="0.3"
+                  stroke="white"
+                  strokeWidth="1"
+                  opacity="0.6"
                 />
                 <path
-                  d={`M ${element.x + 0.3}% ${element.y + 0.8}% L ${element.x + 0.2}% ${element.y + 1}% L ${element.x + 0.4}% ${element.y + 0.8}% Z`}
+                  d={`M ${element.x + 0.25}% ${element.y + 0.9}% 
+                      L ${element.x + 0.15}% ${element.y + 1.15}% 
+                      L ${element.x + 0.4}% ${element.y + 0.9}% Z`}
                   fill={element.color}
-                  opacity="0.3"
+                  opacity="0.6"
                 />
-                <circle cx={`${element.x + 0.25}%`} cy={`${element.y + 0.35}%`} r="1.5" fill="white" opacity="0.5" />
-                <circle cx={`${element.x + 0.5}%`} cy={`${element.y + 0.35}%`} r="1.5" fill="white" opacity="0.5" />
-                <circle cx={`${element.x + 0.75}%`} cy={`${element.y + 0.35}%`} r="1.5" fill="white" opacity="0.5" />
+                <circle cx={`${element.x + 0.25}%`} cy={`${element.y + 0.4}%`} r="2" fill="white" opacity="0.7" />
+                <circle cx={`${element.x + 0.5}%`} cy={`${element.y + 0.4}%`} r="2" fill="white" opacity="0.7" />
+                <circle cx={`${element.x + 0.75}%`} cy={`${element.y + 0.4}%`} r="2" fill="white" opacity="0.7" />
               </g>
             );
           }
           
-          // Code snippet
+          // Code snippet - clean brackets and slash design
           if (element.type === "codeSnippet") {
             return (
               <g 
@@ -191,20 +205,49 @@ export const FloatingElements = () => {
                 <rect
                   x={`${element.x}%`}
                   y={`${element.y}%`}
-                  width={element.size * 1.4}
-                  height={element.size}
-                  rx="4"
+                  width={element.size * 1.5}
+                  height={element.size * 1.1}
+                  rx="6"
                   fill={element.color}
-                  opacity="0.25"
+                  stroke="white"
+                  strokeWidth="1"
+                  opacity="0.5"
                 />
-                <path d={`M ${element.x + 0.2}% ${element.y + 0.3}% L ${element.x + 0.1}% ${element.y + 0.5}% L ${element.x + 0.2}% ${element.y + 0.7}%`} stroke="white" strokeWidth="2" fill="none" opacity="0.6" />
-                <path d={`M ${element.x + 0.7}% ${element.y + 0.3}% L ${element.x + 0.8}% ${element.y + 0.5}% L ${element.x + 0.7}% ${element.y + 0.7}%`} stroke="white" strokeWidth="2" fill="none" opacity="0.6" />
-                <line x1={`${element.x + 0.4}%`} y1={`${element.y + 0.25}%`} x2={`${element.x + 0.5}%`} y2={`${element.y + 0.75}%`} stroke="white" strokeWidth="1.5" opacity="0.6" />
+                <path 
+                  d={`M ${element.x + 0.25}% ${element.y + 0.25}% 
+                      L ${element.x + 0.15}% ${element.y + 0.5}% 
+                      L ${element.x + 0.25}% ${element.y + 0.75}%`} 
+                  stroke="white" 
+                  strokeWidth="2.5" 
+                  fill="none" 
+                  strokeLinecap="round"
+                  opacity="0.8" 
+                />
+                <path 
+                  d={`M ${element.x + 0.75}% ${element.y + 0.25}% 
+                      L ${element.x + 0.85}% ${element.y + 0.5}% 
+                      L ${element.x + 0.75}% ${element.y + 0.75}%`} 
+                  stroke="white" 
+                  strokeWidth="2.5" 
+                  fill="none" 
+                  strokeLinecap="round"
+                  opacity="0.8" 
+                />
+                <line 
+                  x1={`${element.x + 0.55}%`} 
+                  y1={`${element.y + 0.2}%`} 
+                  x2={`${element.x + 0.45}%`} 
+                  y2={`${element.y + 0.8}%`} 
+                  stroke="white" 
+                  strokeWidth="2" 
+                  strokeLinecap="round"
+                  opacity="0.8" 
+                />
               </g>
             );
           }
           
-          // Globe/translation icon
+          // Globe/translation icon - detailed world design
           if (element.type === "globe") {
             return (
               <g 
@@ -218,17 +261,43 @@ export const FloatingElements = () => {
                   r={element.size / 2}
                   fill="none"
                   stroke={element.color}
-                  strokeWidth="2"
-                  opacity="0.35"
+                  strokeWidth="2.5"
+                  opacity="0.7"
                 />
-                <ellipse cx={`${element.x}%`} cy={`${element.y}%`} rx={element.size / 4} ry={element.size / 2} fill="none" stroke={element.color} strokeWidth="1.5" opacity="0.35" />
-                <line x1={`${element.x - 0.4}%`} y1={`${element.y}%`} x2={`${element.x + 0.4}%`} y2={`${element.y}%`} stroke={element.color} strokeWidth="1.5" opacity="0.35" />
-                <line x1={`${element.x}%`} y1={`${element.y - 0.4}%`} x2={`${element.x}%`} y2={`${element.y + 0.4}%`} stroke={element.color} strokeWidth="1.5" opacity="0.35" />
+                <ellipse 
+                  cx={`${element.x}%`} 
+                  cy={`${element.y}%`} 
+                  rx={element.size / 4} 
+                  ry={element.size / 2} 
+                  fill="none" 
+                  stroke={element.color} 
+                  strokeWidth="2" 
+                  opacity="0.6" 
+                />
+                <ellipse 
+                  cx={`${element.x}%`} 
+                  cy={`${element.y}%`} 
+                  rx={element.size / 2} 
+                  ry={element.size / 4} 
+                  fill="none" 
+                  stroke={element.color} 
+                  strokeWidth="2" 
+                  opacity="0.6" 
+                />
+                <line 
+                  x1={`${element.x}%`} 
+                  y1={`${element.y - element.size / 2}%`} 
+                  x2={`${element.x}%`} 
+                  y2={`${element.y + element.size / 2}%`} 
+                  stroke={element.color} 
+                  strokeWidth="2" 
+                  opacity="0.6" 
+                />
               </g>
             );
           }
           
-          // Mobile device
+          // Mobile device - sleek smartphone design
           if (element.type === "mobileDevice") {
             return (
               <g 
@@ -239,19 +308,45 @@ export const FloatingElements = () => {
                 <rect
                   x={`${element.x}%`}
                   y={`${element.y}%`}
-                  width={element.size * 0.6}
-                  height={element.size}
-                  rx="3"
+                  width={element.size * 0.65}
+                  height={element.size * 1.2}
+                  rx="4"
                   fill={element.color}
-                  opacity="0.3"
+                  stroke="white"
+                  strokeWidth="1.5"
+                  opacity="0.6"
                 />
-                <rect x={`${element.x + 0.05}%`} y={`${element.y + 0.1}%`} width={element.size * 0.5} height={element.size * 0.6} rx="1" fill="white" opacity="0.4" />
-                <circle cx={`${element.x + 0.3}%`} cy={`${element.y + 0.85}%`} r="2" fill="white" opacity="0.4" />
+                <rect 
+                  x={`${element.x + 0.05}%`} 
+                  y={`${element.y + 0.12}%`} 
+                  width={element.size * 0.55} 
+                  height={element.size * 0.8} 
+                  rx="2" 
+                  fill="white" 
+                  opacity="0.5" 
+                />
+                <line 
+                  x1={`${element.x + 0.25}%`} 
+                  y1={`${element.y + 0.05}%`} 
+                  x2={`${element.x + 0.4}%`} 
+                  y2={`${element.y + 0.05}%`} 
+                  stroke="white" 
+                  strokeWidth="2" 
+                  strokeLinecap="round"
+                  opacity="0.4" 
+                />
+                <circle 
+                  cx={`${element.x + 0.325}%`} 
+                  cy={`${element.y + 1.05}%`} 
+                  r="2.5" 
+                  fill="white" 
+                  opacity="0.5" 
+                />
               </g>
             );
           }
           
-          // Checkmark
+          // Checkmark - bold, clear quality badge
           if (element.type === "checkmark") {
             return (
               <g 
@@ -259,21 +354,31 @@ export const FloatingElements = () => {
                 className="animate-float transition-transform duration-300 ease-out" 
                 style={baseStyle}
               >
-                <circle cx={`${element.x}%`} cy={`${element.y}%`} r={element.size / 2} fill={element.color} opacity="0.25" />
-                <path
-                  d={`M ${element.x - 0.2}% ${element.y}% L ${element.x - 0.05}% ${element.y + 0.2}% L ${element.x + 0.25}% ${element.y - 0.2}%`}
+                <circle 
+                  cx={`${element.x}%`} 
+                  cy={`${element.y}%`} 
+                  r={element.size / 2} 
+                  fill={element.color} 
                   stroke="white"
-                  strokeWidth="2.5"
+                  strokeWidth="1.5"
+                  opacity="0.6" 
+                />
+                <path
+                  d={`M ${element.x - 0.25}% ${element.y}% 
+                      L ${element.x - 0.05}% ${element.y + 0.25}% 
+                      L ${element.x + 0.3}% ${element.y - 0.25}%`}
+                  stroke="white"
+                  strokeWidth="3"
                   fill="none"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  opacity="0.7"
+                  opacity="0.9"
                 />
               </g>
             );
           }
           
-          // User avatar
+          // User avatar - professional profile icon
           if (element.type === "userAvatar") {
             return (
               <g 
@@ -281,14 +386,34 @@ export const FloatingElements = () => {
                 className="animate-float transition-transform duration-300 ease-out" 
                 style={baseStyle}
               >
-                <circle cx={`${element.x}%`} cy={`${element.y}%`} r={element.size / 2} fill={element.color} opacity="0.3" />
-                <circle cx={`${element.x}%`} cy={`${element.y - 0.1}%`} r={element.size / 6} fill="white" opacity="0.6" />
-                <path d={`M ${element.x - 0.25}% ${element.y + 0.3}% Q ${element.x}% ${element.y + 0.15}% ${element.x + 0.25}% ${element.y + 0.3}%`} fill="white" opacity="0.6" />
+                <circle 
+                  cx={`${element.x}%`} 
+                  cy={`${element.y}%`} 
+                  r={element.size / 2} 
+                  fill={element.color} 
+                  stroke="white"
+                  strokeWidth="1.5"
+                  opacity="0.6" 
+                />
+                <circle 
+                  cx={`${element.x}%`} 
+                  cy={`${element.y - 0.1}%`} 
+                  r={element.size / 5} 
+                  fill="white" 
+                  opacity="0.8" 
+                />
+                <path 
+                  d={`M ${element.x - 0.3}% ${element.y + 0.35}% 
+                      Q ${element.x}% ${element.y + 0.15}% 
+                      ${element.x + 0.3}% ${element.y + 0.35}%`} 
+                  fill="white" 
+                  opacity="0.8" 
+                />
               </g>
             );
           }
           
-          // Chart bar
+          // Chart bar - analytics visualization
           if (element.type === "chartBar") {
             return (
               <g 
@@ -296,14 +421,38 @@ export const FloatingElements = () => {
                 className="animate-float transition-transform duration-300 ease-out" 
                 style={baseStyle}
               >
-                <rect x={`${element.x}%`} y={`${element.y + 0.5}%`} width="4" height="12" rx="2" fill={element.color} opacity="0.3" />
-                <rect x={`${element.x + 0.25}%`} y={`${element.y + 0.3}%`} width="4" height="17" rx="2" fill={element.color} opacity="0.35" />
-                <rect x={`${element.x + 0.5}%`} y={`${element.y + 0.15}%`} width="4" height="22" rx="2" fill={element.color} opacity="0.4" />
+                <rect 
+                  x={`${element.x - 0.1}%`} 
+                  y={`${element.y + 0.55}%`} 
+                  width="5" 
+                  height="13" 
+                  rx="2.5" 
+                  fill={element.color} 
+                  opacity="0.5" 
+                />
+                <rect 
+                  x={`${element.x + 0.25}%`} 
+                  y={`${element.y + 0.35}%`} 
+                  width="5" 
+                  height="18" 
+                  rx="2.5" 
+                  fill={element.color} 
+                  opacity="0.65" 
+                />
+                <rect 
+                  x={`${element.x + 0.6}%`} 
+                  y={`${element.y + 0.15}%`} 
+                  width="5" 
+                  height="24" 
+                  rx="2.5" 
+                  fill={element.color} 
+                  opacity="0.8" 
+                />
               </g>
             );
           }
           
-          // Translation icon (A→语)
+          // Translation icon - elegant language conversion
           if (element.type === "translation") {
             return (
               <g 
@@ -311,15 +460,55 @@ export const FloatingElements = () => {
                 className="animate-float transition-transform duration-300 ease-out" 
                 style={baseStyle}
               >
-                <rect x={`${element.x}%`} y={`${element.y}%`} width={element.size * 1.2} height={element.size * 0.8} rx="4" fill={element.color} opacity="0.25" />
-                <text x={`${element.x + 0.15}%`} y={`${element.y + 0.5}%`} fontSize="10" fill="white" opacity="0.7" fontWeight="bold">A</text>
-                <path d={`M ${element.x + 0.5}% ${element.y + 0.3}% L ${element.x + 0.7}% ${element.y + 0.4}%`} stroke="white" strokeWidth="1.5" opacity="0.5" />
-                <text x={`${element.x + 0.75}%`} y={`${element.y + 0.5}%`} fontSize="9" fill="white" opacity="0.7" fontWeight="bold">語</text>
+                <rect 
+                  x={`${element.x}%`} 
+                  y={`${element.y}%`} 
+                  width={element.size * 1.4} 
+                  height={element.size * 0.9} 
+                  rx="6" 
+                  fill={element.color} 
+                  stroke="white"
+                  strokeWidth="1"
+                  opacity="0.6" 
+                />
+                <text 
+                  x={`${element.x + 0.2}%`} 
+                  y={`${element.y + 0.55}%`} 
+                  fontSize="12" 
+                  fill="white" 
+                  opacity="0.9" 
+                  fontWeight="700"
+                  fontFamily="Arial, sans-serif"
+                >
+                  A
+                </text>
+                <path 
+                  d={`M ${element.x + 0.55}% ${element.y + 0.3}% 
+                      L ${element.x + 0.75}% ${element.y + 0.45}% 
+                      L ${element.x + 0.55}% ${element.y + 0.6}%`} 
+                  stroke="white" 
+                  strokeWidth="2" 
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  opacity="0.7" 
+                />
+                <text 
+                  x={`${element.x + 0.9}%`} 
+                  y={`${element.y + 0.55}%`} 
+                  fontSize="11" 
+                  fill="white" 
+                  opacity="0.9" 
+                  fontWeight="700"
+                  fontFamily="Arial, sans-serif"
+                >
+                  語
+                </text>
               </g>
             );
           }
           
-          // Annotation tool
+          // Annotation tool - comment/feedback marker
           if (element.type === "annotation") {
             return (
               <g 
@@ -327,14 +516,42 @@ export const FloatingElements = () => {
                 className="animate-float transition-transform duration-300 ease-out" 
                 style={baseStyle}
               >
-                <rect x={`${element.x}%`} y={`${element.y}%`} width={element.size} height={element.size * 0.7} rx="2" fill="none" stroke={element.color} strokeWidth="2" strokeDasharray="3,2" opacity="0.35" />
-                <circle cx={`${element.x + 0.8}%`} cy={`${element.y - 0.1}%`} r="3" fill={element.color} opacity="0.4" />
-                <path d={`M ${element.x + 0.8}% ${element.y - 0.1}% L ${element.x + 0.9}% ${element.y - 0.3}%`} stroke={element.color} strokeWidth="1.5" opacity="0.4" />
+                <rect 
+                  x={`${element.x}%`} 
+                  y={`${element.y}%`} 
+                  width={element.size * 1.1} 
+                  height={element.size * 0.8} 
+                  rx="3" 
+                  fill="none" 
+                  stroke={element.color} 
+                  strokeWidth="2" 
+                  strokeDasharray="4,3" 
+                  opacity="0.6" 
+                />
+                <circle 
+                  cx={`${element.x + 0.9}%`} 
+                  cy={`${element.y - 0.15}%`} 
+                  r="4" 
+                  fill={element.color} 
+                  stroke="white"
+                  strokeWidth="1.5"
+                  opacity="0.7" 
+                />
+                <line 
+                  x1={`${element.x + 0.9}%`} 
+                  y1={`${element.y - 0.15}%`} 
+                  x2={`${element.x + 1.05}%`} 
+                  y2={`${element.y - 0.4}%`} 
+                  stroke={element.color} 
+                  strokeWidth="2" 
+                  strokeLinecap="round"
+                  opacity="0.7" 
+                />
               </g>
             );
           }
           
-          // Test device
+          // Test device - desktop/laptop monitor
           if (element.type === "testDevice") {
             return (
               <g 
@@ -342,15 +559,47 @@ export const FloatingElements = () => {
                 className="animate-float transition-transform duration-300 ease-out" 
                 style={baseStyle}
               >
-                <rect x={`${element.x}%`} y={`${element.y}%`} width={element.size * 1.2} height={element.size * 0.8} rx="3" fill={element.color} opacity="0.3" />
-                <circle cx={`${element.x + 0.15}%`} cy={`${element.y + 0.15}%`} r="1.5" fill="white" opacity="0.5" />
-                <rect x={`${element.x + 0.05}%`} y={`${element.y + 0.3}%`} width={element.size} height={element.size * 0.4} rx="1" fill="white" opacity="0.3" />
-                <line x1={`${element.x + 0.85}%`} y1={`${element.y + 0.15}%`} x2={`${element.x + 1}%`} y2={`${element.y + 0.15}%`} stroke="white" strokeWidth="2" opacity="0.5" />
+                <rect 
+                  x={`${element.x}%`} 
+                  y={`${element.y}%`} 
+                  width={element.size * 1.3} 
+                  height={element.size * 0.9} 
+                  rx="3" 
+                  fill={element.color} 
+                  stroke="white"
+                  strokeWidth="1.5"
+                  opacity="0.6" 
+                />
+                <rect 
+                  x={`${element.x + 0.05}%`} 
+                  y={`${element.y + 0.08}%`} 
+                  width={element.size * 1.2} 
+                  height={element.size * 0.65} 
+                  rx="1" 
+                  fill="white" 
+                  opacity="0.5" 
+                />
+                <rect 
+                  x={`${element.x + 0.5}%`} 
+                  y={`${element.y + 0.9}%`} 
+                  width={element.size * 0.3} 
+                  height="3" 
+                  rx="1.5" 
+                  fill={element.color} 
+                  opacity="0.6" 
+                />
+                <circle 
+                  cx={`${element.x + 0.15}%`} 
+                  cy={`${element.y + 0.15}%`} 
+                  r="1.5" 
+                  fill={element.color} 
+                  opacity="0.7" 
+                />
               </g>
             );
           }
           
-          // Data point/node
+          // Data point/node - network connection hub
           if (element.type === "dataPoint") {
             return (
               <g 
@@ -358,9 +607,31 @@ export const FloatingElements = () => {
                 className="animate-float transition-transform duration-300 ease-out" 
                 style={baseStyle}
               >
-                <circle cx={`${element.x}%`} cy={`${element.y}%`} r="4" fill={element.color} opacity="0.4" />
-                <circle cx={`${element.x}%`} cy={`${element.y}%`} r="7" fill="none" stroke={element.color} strokeWidth="1.5" opacity="0.25" />
-                <circle cx={`${element.x}%`} cy={`${element.y}%`} r="10" fill="none" stroke={element.color} strokeWidth="1" opacity="0.15" />
+                <circle 
+                  cx={`${element.x}%`} 
+                  cy={`${element.y}%`} 
+                  r="5" 
+                  fill={element.color} 
+                  opacity="0.7" 
+                />
+                <circle 
+                  cx={`${element.x}%`} 
+                  cy={`${element.y}%`} 
+                  r="9" 
+                  fill="none" 
+                  stroke={element.color} 
+                  strokeWidth="2" 
+                  opacity="0.4" 
+                />
+                <circle 
+                  cx={`${element.x}%`} 
+                  cy={`${element.y}%`} 
+                  r="13" 
+                  fill="none" 
+                  stroke={element.color} 
+                  strokeWidth="1.5" 
+                  opacity="0.25" 
+                />
               </g>
             );
           }
@@ -368,17 +639,17 @@ export const FloatingElements = () => {
           return null;
         })}
         
-        {/* Connecting lines between nearby elements */}
-        {elements.filter((_, i) => i < 15).map((element, idx) => {
+        {/* Subtle connecting lines between nearby elements for network effect */}
+        {elements.filter((_, i) => i < 12).map((element, idx) => {
           const nearbyElements = elements.filter((other, otherIdx) => {
             if (otherIdx <= idx) return false;
             const dx = other.x - element.x;
             const dy = other.y - element.y;
             const distance = Math.sqrt(dx * dx + dy * dy);
-            return distance < 30;
+            return distance < 25;
           });
 
-          return nearbyElements.slice(0, 2).map((nearby, i) => (
+          return nearbyElements.slice(0, 1).map((nearby, i) => (
             <line
               key={`connection-${element.id}-${i}`}
               x1={`${element.x}%`}
@@ -386,12 +657,12 @@ export const FloatingElements = () => {
               x2={`${nearby.x}%`}
               y2={`${nearby.y}%`}
               stroke={element.color}
-              strokeWidth="0.5"
-              opacity="0.1"
+              strokeWidth="1"
+              opacity="0.15"
               className="animate-pulse"
               style={{
                 animationDelay: `${element.delay}s`,
-                animationDuration: `${element.duration * 2}s`,
+                animationDuration: `${element.duration * 2.5}s`,
               }}
             />
           ));
