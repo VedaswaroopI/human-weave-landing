@@ -244,3 +244,9 @@ All colors MUST be HSL.
     display: none;
   }
 }
+
+@layer utilities {
+  /* Ensure SVG detail strokes and fills use design tokens, not hard-coded white */
+  .floating-illustrations [stroke="white"] { stroke: hsl(var(--primary-foreground)) !important; }
+  .floating-illustrations [fill="white"] { fill: hsl(var(--primary-foreground)) !important; }
+}

@@ -21,9 +21,9 @@ export const FloatingElements = () => {
 
   const [elements] = useState<FloatingElement[]>(() => {
     const items: FloatingElement[] = [];
-    const colors = ["hsl(4 100% 75%)", "hsl(237 51% 35%)", "hsl(162 100% 43%)"];
-    const types: Array<"document" | "speechBubble" | "codeSnippet" | "globe" | "mobileDevice" | "checkmark" | "userAvatar" | "chartBar" | "translation" | "annotation" | "testDevice" | "dataPoint"> = 
-      ["document", "speechBubble", "codeSnippet", "globe", "mobileDevice", "checkmark", "userAvatar", "chartBar", "translation", "annotation", "testDevice", "dataPoint"];
+    const colors = ["hsl(var(--secondary))", "hsl(var(--primary))", "hsl(var(--accent))"];
+    const types: Array<"document" | "speechBubble" | "codeSnippet" | "translation" | "testDevice"> = 
+      ["document", "speechBubble", "codeSnippet", "translation", "testDevice"];
     
     // Generate 50 floating elements with 3 speed layers
     for (let i = 0; i < 50; i++) {
@@ -107,7 +107,7 @@ export const FloatingElements = () => {
   };
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.35] dark:opacity-[0.32]">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none floating-illustrations opacity-[0.25] dark:opacity-[0.32]">
       <svg ref={svgRef} className="w-full h-full">
         <defs>
           <filter id="glow">
@@ -129,6 +129,7 @@ export const FloatingElements = () => {
             animationDelay: `${element.delay}s`,
             animationDuration: `${element.duration}s`,
             transform,
+            color: 'hsl(var(--primary-foreground))',
           };
           
           // Document icon - clean, professional document with folded corner
@@ -639,34 +640,6 @@ export const FloatingElements = () => {
           return null;
         })}
         
-        {/* Subtle connecting lines between nearby elements for network effect */}
-        {elements.filter((_, i) => i < 12).map((element, idx) => {
-          const nearbyElements = elements.filter((other, otherIdx) => {
-            if (otherIdx <= idx) return false;
-            const dx = other.x - element.x;
-            const dy = other.y - element.y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-            return distance < 25;
-          });
-
-          return nearbyElements.slice(0, 1).map((nearby, i) => (
-            <line
-              key={`connection-${element.id}-${i}`}
-              x1={`${element.x}%`}
-              y1={`${element.y}%`}
-              x2={`${nearby.x}%`}
-              y2={`${nearby.y}%`}
-              stroke={element.color}
-              strokeWidth="1"
-              opacity="0.15"
-              className="animate-pulse"
-              style={{
-                animationDelay: `${element.delay}s`,
-                animationDuration: `${element.duration * 2.5}s`,
-              }}
-            />
-          ));
-        })}
       </svg>
     </div>
   );
