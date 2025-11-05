@@ -43,18 +43,14 @@ export const ChallengeSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-16 sm:py-24 md:py-32">
+    <section ref={sectionRef} className="py-12 sm:py-16 md:py-20">
       <div className="container mx-auto px-4 sm:px-6">
-        {/* Eyebrow */}
-        <div className="text-center mb-6">
-          <p className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-muted-foreground uppercase">
-            The Reality
-          </p>
-        </div>
-
         {/* Headline */}
-        <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-20">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12">
+          <p className="text-xs sm:text-sm font-semibold tracking-wider text-muted-foreground uppercase mb-4">
+            THE REALITY
+          </p>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
             Every AI breakthrough starts with a human decision:
           </h2>
         </div>

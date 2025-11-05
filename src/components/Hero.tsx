@@ -4,7 +4,7 @@ import { FloatingElements } from "./FloatingElements";
 
 export const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-20">
       {/* Floating Background Elements */}
       <FloatingElements />
 

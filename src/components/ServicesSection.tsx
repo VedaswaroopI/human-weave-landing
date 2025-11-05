@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 const services = [
@@ -30,11 +30,27 @@ const services = [
     color: "from-secondary via-primary to-accent",
     visualType: "network",
   },
+  {
+    badge: "CONTENT MODERATION",
+    title: "Keeping Your Platform Safe",
+    description: "Human moderators trained in cultural nuance review content 24/7, ensuring your community stays healthy without over-moderation.",
+    color: "from-secondary to-accent",
+    visualType: "shield",
+  },
+  {
+    badge: "RESEARCH & INSIGHTS",
+    title: "Understanding What Users Really Want",
+    description: "Real users provide feedback, test concepts, and validate ideas before you invest in development. Make data-driven decisions with confidence.",
+    color: "from-primary to-secondary",
+    visualType: "insights",
+  },
 ];
 
 export const ServicesSection = () => {
   const [visibleCards, setVisibleCards] = useState<number[]>([]);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -55,18 +71,50 @@ export const ServicesSection = () => {
     return () => observer.disconnect();
   }, []);
 
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: -420, behavior: "smooth" });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: 420, behavior: "smooth" });
+    }
+  };
+
   return (
-    <section id="services" ref={sectionRef} className="py-16 sm:py-24 md:py-32 bg-muted/30">
+    <section id="services" ref={sectionRef} className="py-12 sm:py-16 md:py-20 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6">
         {/* Headline */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
             How We <span className="gradient-text animate-gradient">Power Your AI</span>
           </h2>
         </div>
 
-        {/* Horizontal Scrolling Cards */}
-        <div className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory md:snap-none scrollbar-hide">
+        {/* Horizontal Scrolling Cards with Navigation */}
+        <div className="relative group">
+          {/* Gradient Overlays */}
+          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-muted/30 to-transparent pointer-events-none z-10" />
+          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-muted/30 to-transparent pointer-events-none z-10" />
+
+          {/* Navigation Buttons */}
+          <button
+            onClick={scrollLeft}
+            className="absolute left-2 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-card/80 backdrop-blur border border-border hidden md:flex items-center justify-center opacity-0 group-hover:opacity-100 hover:scale-110 transition-all duration-300 z-20"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button
+            onClick={scrollRight}
+            className="absolute right-2 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-card/80 backdrop-blur border border-border hidden md:flex items-center justify-center opacity-0 group-hover:opacity-100 hover:scale-110 transition-all duration-300 z-20"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+
+          {/* Scroll Container */}
+          <div ref={scrollContainerRef} className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory md:snap-none scrollbar-hide">
           {services.map((service, index) => {
             const isVisible = visibleCards.includes(index);
 
@@ -148,6 +196,24 @@ export const ServicesSection = () => {
                       <line x1="200" y1="100" x2="300" y2="140" stroke="white" strokeWidth="1" />
                     </svg>
                   )}
+
+                  {service.visualType === "shield" && (
+                    <svg className="absolute inset-0 w-full h-full opacity-40" viewBox="0 0 400 200">
+                      <path d="M200 60 L230 80 L230 130 Q230 150 200 160 Q170 150 170 130 L170 80 Z" stroke="white" strokeWidth="2" fill="white" fillOpacity="0.2" className="animate-pulse" />
+                      <path d="M185 110 L195 120 L215 95" stroke="white" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  )}
+
+                  {service.visualType === "insights" && (
+                    <svg className="absolute inset-0 w-full h-full opacity-40" viewBox="0 0 400 200">
+                      <circle cx="200" cy="100" r="40" stroke="white" strokeWidth="2" fill="none" className="animate-pulse" />
+                      <circle cx="200" cy="100" r="8" fill="white" />
+                      <path d="M200 100 L240 70" stroke="white" strokeWidth="2" className="animate-pulse" style={{ animationDelay: "0.3s" }} />
+                      <circle cx="240" cy="70" r="4" fill="white" />
+                      <path d="M200 100 L160 70" stroke="white" strokeWidth="2" className="animate-pulse" style={{ animationDelay: "0.6s" }} />
+                      <circle cx="160" cy="70" r="4" fill="white" />
+                    </svg>
+                  )}
                 </div>
 
                 {/* Bottom Content Section - 60% */}
@@ -173,6 +239,19 @@ export const ServicesSection = () => {
               </div>
             );
           })}
+        </div>
+
+        {/* Progress Indicator */}
+          <div className="flex justify-center gap-2 mt-6">
+            {services.map((_, i) => (
+              <div
+                key={i}
+                className={`h-1 w-8 rounded-full transition-all duration-300 ${
+                  i === currentIndex ? "bg-secondary" : "bg-border"
+                }`}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Scroll hint */}
