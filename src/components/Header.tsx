@@ -45,6 +45,17 @@ export const Header = () => {
 
           {/* Right Side Actions */}
           <div className="flex items-center space-x-3 sm:space-x-4">
+            {/* Projects Board Link */}
+            <a
+              href="#"
+              className="hidden md:flex items-center gap-2 text-sm font-medium hover:text-secondary transition-colors"
+            >
+              Projects Board
+              <span className="px-2 py-0.5 rounded-full bg-accent/10 text-accent text-xs font-semibold">
+                Join 300K+
+              </span>
+            </a>
+
             {/* Dark Mode Toggle */}
             <button
               onClick={toggleDarkMode}

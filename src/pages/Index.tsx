@@ -1,11 +1,10 @@
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { ProblemSection } from "@/components/ProblemSection";
-import { NetworkSection } from "@/components/NetworkSection";
-import { ProcessTimeline } from "@/components/ProcessTimeline";
+import { ChallengeSection } from "@/components/ChallengeSection";
+import { ServicesSection } from "@/components/ServicesSection";
+import { JourneySection } from "@/components/JourneySection";
 import { TrustSection } from "@/components/TrustSection";
-import { CaseStudies } from "@/components/CaseStudies";
-import { ComparisonSection } from "@/components/ComparisonSection";
+import { CaseStudiesRevised } from "@/components/CaseStudiesRevised";
 import { FinalCTA } from "@/components/FinalCTA";
 import { Footer } from "@/components/Footer";
 
@@ -15,12 +14,11 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
-        <ProblemSection />
-        <NetworkSection />
-        <ProcessTimeline />
+        <ChallengeSection />
+        <ServicesSection />
+        <JourneySection />
         <TrustSection />
-        <CaseStudies />
-        <ComparisonSection />
+        <CaseStudiesRevised />
         <FinalCTA />
       </main>
       <Footer />
