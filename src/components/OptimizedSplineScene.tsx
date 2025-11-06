@@ -5,13 +5,20 @@ import { SplineScene } from './ui/splite';
 import { SplineLoader } from './ui/spline-loader';
 import { SplineMobileFallback } from './ui/spline-mobile-fallback';
 import { useSplineAnalytics } from '@/hooks/use-analytics';
+import { useWebGLSupport } from '@/hooks/use-webgl-support';
+
+const TIMEOUT_MS = 8000;
+const POSTER_URL = '/images/hero-spline-poster.webp';
 
 export function OptimizedSplineScene({ scene, className }: { scene: string; className?: string }) {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isTimedOut, setIsTimedOut] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const loadStartTime = useRef<number>(0);
-  const { trackSplineLoad } = useSplineAnalytics();
+  const checkIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const { trackSplineLoad, trackSplineError } = useSplineAnalytics();
+  const webglSupported = useWebGLSupport();
 
   // Detect mobile viewport
   useEffect(() => {
@@ -24,38 +31,54 @@ export function OptimizedSplineScene({ scene, className }: { scene: string; clas
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  // Handle Spline load completion
+  const handleSplineLoad = () => {
+    if (isLoaded) return;
+    
+    setIsLoaded(true);
+    const loadTime = Date.now() - loadStartTime.current;
+    trackSplineLoad(loadTime);
+    
+    if (checkIntervalRef.current) {
+      clearInterval(checkIntervalRef.current);
+      checkIntervalRef.current = null;
+    }
+  };
+
   useEffect(() => {
-    // Skip Spline loading on mobile
-    if (isMobile) {
-      setIsLoaded(true);
+    // Skip Spline loading on mobile or without WebGL
+    if (isMobile || !webglSupported) {
       return;
     }
 
     loadStartTime.current = Date.now();
     
-    const checkLoadTimer = setInterval(() => {
+    // Backup check: poll for canvas readiness
+    checkIntervalRef.current = setInterval(() => {
       const canvas = containerRef.current?.querySelector('canvas');
       if (canvas && canvas.width > 0) {
-        setIsLoaded(true);
-        const loadTime = Date.now() - loadStartTime.current;
-        trackSplineLoad(loadTime);
-        clearInterval(checkLoadTimer);
+        handleSplineLoad();
       }
     }, 100);
 
-    const fallbackTimer = setTimeout(() => {
-      setIsLoaded(true);
-      clearInterval(checkLoadTimer);
-    }, 3000);
+    // Timeout: don't hide poster/loader, just flag timeout
+    const timeoutTimer = setTimeout(() => {
+      if (!isLoaded) {
+        setIsTimedOut(true);
+        trackSplineError('load_timeout');
+      }
+    }, TIMEOUT_MS);
 
     return () => {
-      clearInterval(checkLoadTimer);
-      clearTimeout(fallbackTimer);
+      if (checkIntervalRef.current) {
+        clearInterval(checkIntervalRef.current);
+      }
+      clearTimeout(timeoutTimer);
     };
-  }, [isMobile, trackSplineLoad]);
+  }, [isMobile, webglSupported, isLoaded]);
 
-  // Mobile: Show animated fallback
-  if (isMobile) {
+  // Mobile or no WebGL: Show static poster fallback
+  if (isMobile || !webglSupported) {
     return (
       <div className={className}>
         <SplineMobileFallback />
@@ -63,26 +86,43 @@ export function OptimizedSplineScene({ scene, className }: { scene: string; clas
     );
   }
 
-  // Desktop: Full Spline experience
+  // Desktop: Three-layer approach (Spline → Poster → Loader/Status)
   return (
     <div 
       ref={containerRef} 
-      className={`${className} relative`}
+      className={`${className} relative overflow-hidden rounded-2xl`}
     >
+      {/* Layer 1: Spline scene - always mounted, z-0 */}
+      <div className="absolute inset-0 z-0">
+        <SplineScene 
+          scene={scene} 
+          className="w-full h-full" 
+          onLoad={handleSplineLoad}
+        />
+      </div>
+      
+      {/* Layer 2: Poster image - fades out when loaded, z-10 */}
       <div 
-        className={`absolute inset-0 transition-opacity duration-700 ${
+        className={`absolute inset-0 z-10 transition-opacity duration-700 ${
           isLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'
         }`}
       >
-        <SplineLoader />
+        <img 
+          src={POSTER_URL}
+          alt="3D Character Preview"
+          className="w-full h-full object-cover"
+          loading="eager"
+          decoding="async"
+        />
       </div>
       
+      {/* Layer 3: Loader/Status - z-20 */}
       <div 
-        className={`absolute inset-0 transition-opacity duration-700 ${
-          isLoaded ? 'opacity-100' : 'opacity-0'
+        className={`absolute inset-0 z-20 transition-opacity duration-700 ${
+          isLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'
         }`}
       >
-        <SplineScene scene={scene} className="w-full h-full" />
+        <SplineLoader isTimedOut={isTimedOut} />
       </div>
     </div>
   );

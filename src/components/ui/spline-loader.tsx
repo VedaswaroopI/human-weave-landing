@@ -1,6 +1,6 @@
-export function SplineLoader() {
+export function SplineLoader({ isTimedOut = false }: { isTimedOut?: boolean }) {
   return (
-    <div className="absolute inset-0 w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 rounded-2xl overflow-hidden">
+    <div className="absolute inset-0 w-full h-full flex items-center justify-center bg-slate-900/95 dark:bg-slate-950/95 backdrop-blur-sm rounded-2xl overflow-hidden">
       {/* Animated character silhouette placeholder */}
       <div className="relative w-48 h-64 md:w-64 md:h-80 animate-pulse">
         {/* Head */}
@@ -22,10 +22,18 @@ export function SplineLoader() {
       <div className="absolute inset-0 bg-gradient-to-t from-primary/5 via-transparent to-transparent pointer-events-none" />
       
       {/* Loading indicator - subtle, bottom corner */}
-      <div className="absolute bottom-4 right-4 flex items-center gap-2 text-xs text-muted-foreground">
-        <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-        <span className="opacity-60">Loading 3D</span>
-      </div>
+      {!isTimedOut ? (
+        <div className="absolute bottom-4 right-4 flex items-center gap-2 text-xs text-muted-foreground">
+          <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+          <span className="opacity-60">Loading 3D</span>
+        </div>
+      ) : (
+        <div className="absolute bottom-4 right-4 bg-muted/80 backdrop-blur-sm border border-border rounded-lg px-3 py-1.5">
+          <p className="text-xs text-muted-foreground">
+            Still loading...
+          </p>
+        </div>
+      )}
     </div>
   );
 }

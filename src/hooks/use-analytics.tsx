@@ -74,6 +74,11 @@ export function useSplineAnalytics() {
       category: 'error',
       label: errorMessage,
     });
+    
+    // Log timeout warnings
+    if (errorMessage === 'load_timeout') {
+      console.warn('Spline scene load timeout - still loading after 8s');
+    }
   };
 
   return {
