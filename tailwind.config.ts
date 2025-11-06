@@ -98,6 +98,10 @@ export default {
           "0%": { opacity: "0", transform: "translateY(10px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(calc(-100% - var(--gap)))" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -108,6 +112,7 @@ export default {
         spotlight: "spotlight 2s ease .75s 1 forwards",
         "fade-in": "fadeIn 0.6s ease-out",
         "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        marquee: "marquee var(--duration) linear infinite",
       },
     },
   },
