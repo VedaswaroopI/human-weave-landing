@@ -3,12 +3,13 @@ import { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 
 export const Header = () => {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    const isDarkMode = document.documentElement.classList.contains("dark");
-    setIsDark(isDarkMode);
+    // Set dark mode as default on initial load
+    document.documentElement.classList.add("dark");
+    setIsDark(true);
   }, []);
 
   const toggleDarkMode = () => {
