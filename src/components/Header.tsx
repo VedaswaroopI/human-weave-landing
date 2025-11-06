@@ -1,20 +1,14 @@
 import { Moon, Sun, Menu } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button } from "./ui/button";
+import { useTheme } from "next-themes";
 
 export const Header = () => {
-  const [isDark, setIsDark] = useState(true);
+  const { theme, setTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  useEffect(() => {
-    // Set dark mode as default on initial load
-    document.documentElement.classList.add("dark");
-    setIsDark(true);
-  }, []);
-
   const toggleDarkMode = () => {
-    document.documentElement.classList.toggle("dark");
-    setIsDark(!isDark);
+    setTheme(theme === "dark" ? "light" : "dark");
   };
 
   return (
@@ -63,7 +57,7 @@ export const Header = () => {
               className="p-2 rounded-full hover:bg-muted transition-all duration-300 transform hover:rotate-180"
               aria-label="Toggle dark mode"
             >
-              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
 
             {/* CTA Button */}
