@@ -80,29 +80,17 @@ export function OptimizedSplineScene({ scene, className }: { scene: string; clas
     return null;
   }
 
-  // Desktop: Two-layer approach (Spline → Loader)
+  // Desktop: Show only Spline scene, no loader overlay
   return (
     <div 
       ref={containerRef} 
       className={`${className} relative overflow-hidden rounded-2xl`}
     >
-      {/* Layer 1: Spline scene - always mounted, z-0 */}
-      <div className="absolute inset-0 z-0">
-        <SplineScene 
-          scene={scene} 
-          className="w-full h-full" 
-          onLoad={handleSplineLoad}
-        />
-      </div>
-      
-      {/* Layer 2: Loader/Status - z-10 */}
-      <div 
-        className={`absolute inset-0 z-10 transition-opacity duration-700 ${
-          isLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'
-        }`}
-      >
-        <SplineLoader isTimedOut={isTimedOut} />
-      </div>
+      <SplineScene 
+        scene={scene} 
+        className="w-full h-full" 
+        onLoad={handleSplineLoad}
+      />
     </div>
   );
 }
