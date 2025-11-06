@@ -3,12 +3,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { SplineScene } from './ui/splite';
 import { SplineLoader } from './ui/spline-loader';
-import { SplineMobileFallback } from './ui/spline-mobile-fallback';
 import { useSplineAnalytics } from '@/hooks/use-analytics';
 import { useWebGLSupport } from '@/hooks/use-webgl-support';
 
 const TIMEOUT_MS = 8000;
-const POSTER_URL = '/images/hero-spline-poster.webp';
 
 export function OptimizedSplineScene({ scene, className }: { scene: string; className?: string }) {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -77,16 +75,12 @@ export function OptimizedSplineScene({ scene, className }: { scene: string; clas
     };
   }, [isMobile, webglSupported, isLoaded]);
 
-  // Mobile or no WebGL: Show static poster fallback
+  // Mobile or no WebGL: Don't render Spline at all
   if (isMobile || !webglSupported) {
-    return (
-      <div className={className}>
-        <SplineMobileFallback />
-      </div>
-    );
+    return null;
   }
 
-  // Desktop: Three-layer approach (Spline → Poster → Loader/Status)
+  // Desktop: Two-layer approach (Spline → Loader)
   return (
     <div 
       ref={containerRef} 
@@ -101,24 +95,9 @@ export function OptimizedSplineScene({ scene, className }: { scene: string; clas
         />
       </div>
       
-      {/* Layer 2: Poster image - fades out when loaded, z-10 */}
+      {/* Layer 2: Loader/Status - z-10 */}
       <div 
         className={`absolute inset-0 z-10 transition-opacity duration-700 ${
-          isLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'
-        }`}
-      >
-        <img 
-          src={POSTER_URL}
-          alt="3D Character Preview"
-          className="w-full h-full object-cover"
-          loading="eager"
-          decoding="async"
-        />
-      </div>
-      
-      {/* Layer 3: Loader/Status - z-20 */}
-      <div 
-        className={`absolute inset-0 z-20 transition-opacity duration-700 ${
           isLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'
         }`}
       >

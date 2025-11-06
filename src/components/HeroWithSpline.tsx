@@ -132,9 +132,9 @@ export const HeroWithSpline = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Content - Spline 3D Scene */}
+          {/* Right Content - Spline 3D Scene (Desktop Only) */}
           <motion.div 
-            className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-full order-1 lg:order-2"
+            className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-full order-1 lg:order-2 hidden lg:block"
             initial={prefersReducedMotion ? {} : { opacity: 0, scale: 0.98 }}
             animate={prefersReducedMotion ? {} : { opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.1 }}

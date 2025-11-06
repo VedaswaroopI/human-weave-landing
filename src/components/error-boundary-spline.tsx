@@ -3,7 +3,6 @@
 import React, { Component, ReactNode } from 'react';
 import { AlertCircle, RefreshCw } from 'lucide-react';
 import { Button } from './ui/button';
-import { SplineMobileFallback } from './ui/spline-mobile-fallback';
 
 interface Props {
   children: ReactNode;
@@ -49,10 +48,10 @@ export class SplineErrorBoundary extends Component<Props, State> {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="w-full h-full relative">
-          <SplineMobileFallback />
-          <div className="absolute top-4 left-4 bg-destructive/10 border border-destructive/20 rounded-lg px-3 py-2">
-            <p className="text-xs text-destructive">
+        <div className="w-full h-full flex items-center justify-center bg-muted/30 rounded-2xl">
+          <div className="text-center p-6">
+            <AlertCircle className="w-12 h-12 text-destructive mx-auto mb-4" />
+            <p className="text-sm text-muted-foreground">
               3D scene unavailable
             </p>
           </div>
