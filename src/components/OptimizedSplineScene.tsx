@@ -3,60 +3,87 @@
 import { useEffect, useRef, useState } from 'react';
 import { SplineScene } from './ui/splite';
 import { SplineLoader } from './ui/spline-loader';
+import { SplineMobileFallback } from './ui/spline-mobile-fallback';
 import { useSplineAnalytics } from '@/hooks/use-analytics';
 
 export function OptimizedSplineScene({ scene, className }: { scene: string; className?: string }) {
-  const [isVisible, setIsVisible] = useState(false);
-  const [hasLoaded, setHasLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const { trackSplineLoad, trackSplineInteraction } = useSplineAnalytics();
+  const loadStartTime = useRef<number>(0);
+  const { trackSplineLoad } = useSplineAnalytics();
 
+  // Detect mobile viewport
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-
-    return () => observer.disconnect();
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   useEffect(() => {
-    if (isVisible && !hasLoaded) {
-      // Track when Spline starts loading
-      const timer = setTimeout(() => {
-        setHasLoaded(true);
-        trackSplineLoad();
-      }, 2000); // Approximate load time
-
-      return () => clearTimeout(timer);
+    // Skip Spline loading on mobile
+    if (isMobile) {
+      setIsLoaded(true);
+      return;
     }
-  }, [isVisible, hasLoaded, trackSplineLoad]);
 
-  const handleInteraction = () => {
-    trackSplineInteraction();
-  };
+    loadStartTime.current = Date.now();
+    
+    const checkLoadTimer = setInterval(() => {
+      const canvas = containerRef.current?.querySelector('canvas');
+      if (canvas && canvas.width > 0) {
+        setIsLoaded(true);
+        const loadTime = Date.now() - loadStartTime.current;
+        trackSplineLoad(loadTime);
+        clearInterval(checkLoadTimer);
+      }
+    }, 100);
 
+    const fallbackTimer = setTimeout(() => {
+      setIsLoaded(true);
+      clearInterval(checkLoadTimer);
+    }, 3000);
+
+    return () => {
+      clearInterval(checkLoadTimer);
+      clearTimeout(fallbackTimer);
+    };
+  }, [isMobile, trackSplineLoad]);
+
+  // Mobile: Show animated fallback
+  if (isMobile) {
+    return (
+      <div className={className}>
+        <SplineMobileFallback />
+      </div>
+    );
+  }
+
+  // Desktop: Full Spline experience
   return (
     <div 
       ref={containerRef} 
-      className={className}
-      onClick={handleInteraction}
-      onMouseEnter={handleInteraction}
+      className={`${className} relative`}
     >
-      {isVisible ? (
-        <SplineScene scene={scene} className="w-full h-full" />
-      ) : (
+      <div 
+        className={`absolute inset-0 transition-opacity duration-700 ${
+          isLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'
+        }`}
+      >
         <SplineLoader />
-      )}
+      </div>
+      
+      <div 
+        className={`absolute inset-0 transition-opacity duration-700 ${
+          isLoaded ? 'opacity-100' : 'opacity-0'
+        }`}
+      >
+        <SplineScene scene={scene} className="w-full h-full" />
+      </div>
     </div>
   );
 }

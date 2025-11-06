@@ -6,7 +6,7 @@ import { Card } from "./ui/card";
 import { Spotlight } from "./ui/spotlight";
 import { SplineErrorBoundary } from "./error-boundary-spline";
 import { OptimizedSplineScene } from "./OptimizedSplineScene";
-import { useTheme } from "next-themes";
+import { useSplinePreload } from "@/hooks/use-spline-preload";
 import { useEffect, useState } from "react";
 import { motion, Variants } from "framer-motion";
 
@@ -41,13 +41,12 @@ const scrollToNextSection = () => {
 };
 
 export const HeroWithSpline = () => {
-  const { theme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  // Preload Spline scene on component mount
+  useSplinePreload('https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode');
+  
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-    
     // Check for reduced motion preference
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     setPrefersReducedMotion(mediaQuery.matches);
@@ -68,7 +67,7 @@ export const HeroWithSpline = () => {
       
       {/* Main Hero Card */}
       <Card className="relative w-full min-h-[calc(85vh-80px)] bg-background/80 dark:bg-background/95 backdrop-blur-xl border-border/40 shadow-2xl mx-4 sm:mx-6">
-        {mounted && !prefersReducedMotion && (
+        {!prefersReducedMotion && (
           <Spotlight
             className="-top-40 left-0 md:left-60 md:-top-20"
             size={300}
@@ -135,10 +134,10 @@ export const HeroWithSpline = () => {
 
           {/* Right Content - Spline 3D Scene */}
           <motion.div 
-            className="relative lg:h-full min-h-[400px] md:min-h-[500px] lg:min-h-[600px] order-1 lg:order-2"
-            initial={prefersReducedMotion ? {} : { opacity: 0, scale: 0.95 }}
+            className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-full order-1 lg:order-2"
+            initial={prefersReducedMotion ? {} : { opacity: 0, scale: 0.98 }}
             animate={prefersReducedMotion ? {} : { opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
           >
             {/* Decorative gradient background */}
             <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-primary/5 dark:from-primary/20 dark:to-primary/10 rounded-2xl blur-3xl" aria-hidden="true" />

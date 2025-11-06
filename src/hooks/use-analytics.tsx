@@ -44,14 +44,20 @@ export function useSplineAnalytics() {
     loadStartTime.current = Date.now();
   }, []);
 
-  const trackSplineLoad = () => {
-    const loadTime = Date.now() - loadStartTime.current;
+  const trackSplineLoad = (loadTime?: number) => {
+    const actualLoadTime = loadTime || (Date.now() - loadStartTime.current);
+    
     trackEvent({
       event: 'spline_load_complete',
       category: 'performance',
       label: 'hero_3d_scene',
-      value: loadTime,
+      value: actualLoadTime,
     });
+
+    // Warn if load time is slow
+    if (actualLoadTime > 3000) {
+      console.warn(`Spline loaded slowly: ${actualLoadTime}ms`);
+    }
   };
 
   const trackSplineInteraction = () => {
