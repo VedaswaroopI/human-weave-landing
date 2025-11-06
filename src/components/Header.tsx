@@ -1,7 +1,8 @@
-import { Moon, Sun, Menu } from "lucide-react";
+import { Moon, Sun, Menu, Home, Wrench, Route, Award } from "lucide-react";
 import { useState } from "react";
 import { Button } from "./ui/button";
 import { useTheme } from "next-themes";
+import { TubelightNavbar } from "./ui/tubelight-navbar";
 
 export const Header = () => {
   const { theme, setTheme } = useTheme();
@@ -10,6 +11,13 @@ export const Header = () => {
   const toggleDarkMode = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
+
+  const navItems = [
+    { name: "Services", url: "#services", icon: Wrench },
+    { name: "How It Works", url: "#process", icon: Route },
+    { name: "Why Us", url: "#why-us", icon: Award },
+    { name: "Case Studies", url: "#case-studies", icon: Home },
+  ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glassmorphic bg-card/80 border-b border-border/50 shadow-sm">
@@ -22,20 +30,9 @@ export const Header = () => {
             </div>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <a href="#services" className="text-sm font-medium hover:text-secondary transition-colors">
-              Services
-            </a>
-            <a href="#process" className="text-sm font-medium hover:text-secondary transition-colors">
-              How It Works
-            </a>
-            <a href="#why-us" className="text-sm font-medium hover:text-secondary transition-colors">
-              Why Us
-            </a>
-            <a href="#case-studies" className="text-sm font-medium hover:text-secondary transition-colors">
-              Case Studies
-            </a>
+          {/* Desktop Navigation with Tubelight Effect */}
+          <nav className="hidden md:flex items-center">
+            <TubelightNavbar items={navItems} />
           </nav>
 
           {/* Right Side Actions */}
