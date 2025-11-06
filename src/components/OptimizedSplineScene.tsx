@@ -6,23 +6,40 @@ import { SplineLoader } from './ui/spline-loader';
 import { useSplineAnalytics } from '@/hooks/use-analytics';
 
 export function OptimizedSplineScene({ scene, className }: { scene: string; className?: string }) {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
+  const [hasLoaded, setHasLoaded] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const { trackSplineLoad, trackSplineInteraction } = useSplineAnalytics();
 
   useEffect(() => {
-    // Start loading immediately, no intersection observer delay
-    const loadStartTime = Date.now();
-    
-    // Simulate Spline load completion detection
-    const loadTimer = setTimeout(() => {
-      setIsLoading(false);
-      const loadTime = Date.now() - loadStartTime;
-      trackSplineLoad();
-    }, 1200); // Reduced from 2000ms for faster perceived load
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
 
-    return () => clearTimeout(loadTimer);
-  }, [trackSplineLoad]);
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (isVisible && !hasLoaded) {
+      // Track when Spline starts loading
+      const timer = setTimeout(() => {
+        setHasLoaded(true);
+        trackSplineLoad();
+      }, 2000); // Approximate load time
+
+      return () => clearTimeout(timer);
+    }
+  }, [isVisible, hasLoaded, trackSplineLoad]);
 
   const handleInteraction = () => {
     trackSplineInteraction();
@@ -31,20 +48,14 @@ export function OptimizedSplineScene({ scene, className }: { scene: string; clas
   return (
     <div 
       ref={containerRef} 
-      className={`${className} relative`}
+      className={className}
       onClick={handleInteraction}
       onMouseEnter={handleInteraction}
     >
-      {/* Always show Spline, use opacity transition for smooth fade-in */}
-      <div className={`transition-opacity duration-700 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
+      {isVisible ? (
         <SplineScene scene={scene} className="w-full h-full" />
-      </div>
-      
-      {/* Loader overlays during loading */}
-      {isLoading && (
-        <div className="absolute inset-0 flex items-center justify-center">
-          <SplineLoader />
-        </div>
+      ) : (
+        <SplineLoader />
       )}
     </div>
   );

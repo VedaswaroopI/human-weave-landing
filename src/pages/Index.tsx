@@ -1,4 +1,4 @@
-import { HeaderWithTubelight } from "@/components/HeaderWithTubelight";
+import { Header } from "@/components/Header";
 import { HeroWithSpline } from "@/components/HeroWithSpline";
 import { ChallengeSection } from "@/components/ChallengeSection";
 import { ServicesSection } from "@/components/ServicesSection";
@@ -11,7 +11,7 @@ import { Footer } from "@/components/Footer";
 const Index = () => {
   return (
     <div className="min-h-screen">
-      <HeaderWithTubelight />
+      <Header />
       <main>
         <HeroWithSpline />
         <ChallengeSection />

@@ -16,7 +16,7 @@ const container: Variants = {
     opacity: 1,
     transition: {
       staggerChildren: 0.15,
-      delayChildren: 0.1 // Reduced from 0.2s for faster appearance
+      delayChildren: 0.2
     }
   }
 };
@@ -27,7 +27,7 @@ const item: Variants = {
     opacity: 1, 
     y: 0,
     transition: {
-      duration: 0.5, // Reduced from 0.6s for snappier feel
+      duration: 0.6,
       ease: [0.4, 0, 0.2, 1] as any
     }
   }
@@ -42,9 +42,12 @@ const scrollToNextSection = () => {
 
 export const HeroWithSpline = () => {
   const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+    
     // Check for reduced motion preference
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     setPrefersReducedMotion(mediaQuery.matches);
@@ -56,7 +59,7 @@ export const HeroWithSpline = () => {
 
   return (
     <section 
-      className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-24"
+      className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-20"
       role="banner"
       aria-label="Hero section"
     >
@@ -65,7 +68,7 @@ export const HeroWithSpline = () => {
       
       {/* Main Hero Card */}
       <Card className="relative w-full min-h-[calc(85vh-80px)] bg-background/80 dark:bg-background/95 backdrop-blur-xl border-border/40 shadow-2xl mx-4 sm:mx-6">
-        {!prefersReducedMotion && (
+        {mounted && !prefersReducedMotion && (
           <Spotlight
             className="-top-40 left-0 md:left-60 md:-top-20"
             size={300}
@@ -133,9 +136,9 @@ export const HeroWithSpline = () => {
           {/* Right Content - Spline 3D Scene */}
           <motion.div 
             className="relative lg:h-full min-h-[400px] md:min-h-[500px] lg:min-h-[600px] order-1 lg:order-2"
-            initial={prefersReducedMotion ? {} : { opacity: 0, scale: 0.98 }}
+            initial={prefersReducedMotion ? {} : { opacity: 0, scale: 0.95 }}
             animate={prefersReducedMotion ? {} : { opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.1 }} // Faster animation
+            transition={{ duration: 0.8, delay: 0.3 }}
           >
             {/* Decorative gradient background */}
             <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-primary/5 dark:from-primary/20 dark:to-primary/10 rounded-2xl blur-3xl" aria-hidden="true" />
