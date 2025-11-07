@@ -62,10 +62,10 @@ export const JourneyScrollRevamped = () => {
   }
 
   return (
-    <section id="process" className="py-12 sm:py-16 md:py-20 bg-background">
+    <section id="process" className="py-8 sm:py-12 md:py-16 bg-background">
       <ContainerScroll
         titleComponent={
-          <div className="space-y-4 mb-8 sm:mb-12">
+          <div className="space-y-3 mb-6">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
               Your Journey with <span className="gradient-text animate-gradient">UsergyAI</span>
             </h2>
