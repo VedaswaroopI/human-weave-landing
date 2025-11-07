@@ -130,7 +130,7 @@ export const ServicesSection = () => {
                 {/* Top Visual Section - 40% */}
                 <div className={`h-48 bg-gradient-to-br ${service.color} relative overflow-hidden`}>
                   {service.visualType === "flow" && (
-                    <svg className="absolute inset-0 w-full h-full opacity-40" viewBox="0 0 400 200">
+                    <svg className="absolute inset-0 w-full h-full opacity-55" viewBox="0 0 400 200">
                       <path
                         d="M 0,100 Q 100,50 200,100 T 400,100"
                         stroke="white"
@@ -158,7 +158,7 @@ export const ServicesSection = () => {
                   )}
 
                   {service.visualType === "grid" && (
-                    <svg className="absolute inset-0 w-full h-full opacity-40" viewBox="0 0 400 200">
+                    <svg className="absolute inset-0 w-full h-full opacity-55" viewBox="0 0 400 200">
                       {[...Array(5)].map((_, row) =>
                         [...Array(8)].map((_, col) => (
                           <circle
@@ -176,7 +176,7 @@ export const ServicesSection = () => {
                   )}
 
                   {service.visualType === "speech" && (
-                    <div className="absolute inset-0 flex items-center justify-center gap-4 text-white/40 text-2xl font-bold">
+                    <div className="absolute inset-0 flex items-center justify-center gap-4 text-white/65 text-2xl font-bold">
                       <div className="animate-pulse">你好</div>
                       <div className="animate-pulse" style={{ animationDelay: "0.3s" }}>مرحبا</div>
                       <div className="animate-pulse" style={{ animationDelay: "0.6s" }}>Hello</div>
@@ -184,34 +184,34 @@ export const ServicesSection = () => {
                   )}
 
                   {service.visualType === "network" && (
-                    <svg className="absolute inset-0 w-full h-full opacity-40" viewBox="0 0 400 200">
-                      <circle cx="200" cy="100" r="8" fill="white" />
-                      <circle cx="100" cy="60" r="6" fill="white" className="animate-pulse" />
-                      <circle cx="300" cy="60" r="6" fill="white" className="animate-pulse" style={{ animationDelay: "0.3s" }} />
+                    <svg className="absolute inset-0 w-full h-full opacity-55" viewBox="0 0 400 200">
+                      <circle cx="200" cy="100" r="8" fill="white" className="animate-pulse" />
+                      <circle cx="100" cy="60" r="6" fill="white" className="animate-pulse" style={{ animationDelay: "0.2s" }} />
+                      <circle cx="300" cy="60" r="6" fill="white" className="animate-pulse" style={{ animationDelay: "0.4s" }} />
                       <circle cx="100" cy="140" r="6" fill="white" className="animate-pulse" style={{ animationDelay: "0.6s" }} />
-                      <circle cx="300" cy="140" r="6" fill="white" className="animate-pulse" style={{ animationDelay: "0.9s" }} />
-                      <line x1="200" y1="100" x2="100" y2="60" stroke="white" strokeWidth="1" />
-                      <line x1="200" y1="100" x2="300" y2="60" stroke="white" strokeWidth="1" />
-                      <line x1="200" y1="100" x2="100" y2="140" stroke="white" strokeWidth="1" />
-                      <line x1="200" y1="100" x2="300" y2="140" stroke="white" strokeWidth="1" />
+                      <circle cx="300" cy="140" r="6" fill="white" className="animate-pulse" style={{ animationDelay: "0.8s" }} />
+                      <line x1="200" y1="100" x2="100" y2="60" stroke="white" strokeWidth="1" className="animate-pulse" style={{ animationDelay: "0.1s" }} />
+                      <line x1="200" y1="100" x2="300" y2="60" stroke="white" strokeWidth="1" className="animate-pulse" style={{ animationDelay: "0.3s" }} />
+                      <line x1="200" y1="100" x2="100" y2="140" stroke="white" strokeWidth="1" className="animate-pulse" style={{ animationDelay: "0.5s" }} />
+                      <line x1="200" y1="100" x2="300" y2="140" stroke="white" strokeWidth="1" className="animate-pulse" style={{ animationDelay: "0.7s" }} />
                     </svg>
                   )}
 
                   {service.visualType === "shield" && (
-                    <svg className="absolute inset-0 w-full h-full opacity-40" viewBox="0 0 400 200">
-                      <path d="M200 60 L230 80 L230 130 Q230 150 200 160 Q170 150 170 130 L170 80 Z" stroke="white" strokeWidth="2" fill="white" fillOpacity="0.2" className="animate-pulse" />
-                      <path d="M185 110 L195 120 L215 95" stroke="white" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                    <svg className="absolute inset-0 w-full h-full opacity-55" viewBox="0 0 400 200">
+                      <path d="M200 60 L230 80 L230 130 Q230 150 200 160 Q170 150 170 130 L170 80 Z" stroke="white" strokeWidth="2" fill="white" fillOpacity="0.25" className="animate-pulse" />
+                      <path d="M185 110 L195 120 L215 95" stroke="white" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" className="animate-pulse" style={{ animationDelay: "0.3s" }} />
                     </svg>
                   )}
 
                   {service.visualType === "insights" && (
-                    <svg className="absolute inset-0 w-full h-full opacity-40" viewBox="0 0 400 200">
+                    <svg className="absolute inset-0 w-full h-full opacity-55" viewBox="0 0 400 200">
                       <circle cx="200" cy="100" r="40" stroke="white" strokeWidth="2" fill="none" className="animate-pulse" />
-                      <circle cx="200" cy="100" r="8" fill="white" />
+                      <circle cx="200" cy="100" r="8" fill="white" className="animate-pulse" style={{ animationDelay: "0.2s" }} />
                       <path d="M200 100 L240 70" stroke="white" strokeWidth="2" className="animate-pulse" style={{ animationDelay: "0.3s" }} />
-                      <circle cx="240" cy="70" r="4" fill="white" />
+                      <circle cx="240" cy="70" r="4" fill="white" className="animate-pulse" style={{ animationDelay: "0.4s" }} />
                       <path d="M200 100 L160 70" stroke="white" strokeWidth="2" className="animate-pulse" style={{ animationDelay: "0.6s" }} />
-                      <circle cx="160" cy="70" r="4" fill="white" />
+                      <circle cx="160" cy="70" r="4" fill="white" className="animate-pulse" style={{ animationDelay: "0.7s" }} />
                     </svg>
                   )}
                 </div>
