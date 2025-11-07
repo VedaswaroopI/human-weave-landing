@@ -287,39 +287,6 @@ All colors MUST be HSL.
   display: none;
 }
 
-/* Additional animations for service cards */
-@keyframes flow-horizontal {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(10px); }
-}
-
-@keyframes rotate-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes ripple {
-  0% {
-    r: 4;
-    opacity: 0.5;
-  }
-  100% {
-    r: 20;
-    opacity: 0;
-  }
-}
-
-@keyframes float {
-  0%, 100% { 
-    transform: translateY(0px);
-    opacity: 0.3;
-  }
-  50% { 
-    transform: translateY(-10px);
-    opacity: 0.5;
-  }
-}
-
 /* Custom scrollbar for journey section */
 .scrollbar-thin::-webkit-scrollbar {
   width: 6px;
