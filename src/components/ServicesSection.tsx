@@ -84,7 +84,7 @@ export const ServicesSection = () => {
   };
 
   return (
-    <section id="services" ref={sectionRef} className="py-12 sm:py-16 md:py-20 bg-muted/30">
+    <section id="services" ref={sectionRef} className="py-16 sm:py-20 md:py-24 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6">
         {/* Headline */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12">

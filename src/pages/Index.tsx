@@ -1,6 +1,6 @@
 import { Header } from "@/components/Header";
 import { HeroWithSpline } from "@/components/HeroWithSpline";
-import { ChallengeSection } from "@/components/ChallengeSection";
+import { RealitySection } from "@/components/RealitySection";
 import { ServicesSection } from "@/components/ServicesSection";
 import { JourneyScrollRevamped } from "@/components/JourneyScrollRevamped";
 import { TrustSection } from "@/components/TrustSection";
@@ -14,7 +14,7 @@ const Index = () => {
       <Header />
       <main>
         <HeroWithSpline />
-        <ChallengeSection />
+        <RealitySection />
         <ServicesSection />
         <JourneyScrollRevamped />
         <TrustSection />

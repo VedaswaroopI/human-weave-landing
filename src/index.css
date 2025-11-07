@@ -277,6 +277,16 @@ All colors MUST be HSL.
   .floating-illustrations [fill="white"] { fill: hsl(var(--primary-foreground)) !important; }
 }
 
+/* Hide scrollbar for stat cards while maintaining scroll functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Custom scrollbar for journey section */
 .scrollbar-thin::-webkit-scrollbar {
   width: 6px;

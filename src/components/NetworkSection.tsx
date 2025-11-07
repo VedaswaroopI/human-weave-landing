@@ -74,7 +74,7 @@ export const NetworkSection = () => {
   }, []);
 
   return (
-    <section id="services" ref={sectionRef} className="py-16 sm:py-24 md:py-32 relative overflow-hidden">
+    <section id="services" ref={sectionRef} className="py-16 sm:py-20 md:py-24 relative overflow-hidden">
       {/* Background world map illustration */}
       <div className="absolute inset-0 opacity-5 pointer-events-none">
         <svg className="w-full h-full" viewBox="0 0 1000 600">
