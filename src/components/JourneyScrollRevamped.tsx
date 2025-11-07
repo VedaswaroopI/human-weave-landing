@@ -3,6 +3,7 @@ import { Handshake, Users, Zap, Shield, Package } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { JourneySection } from "@/components/JourneySection";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 const journeySteps = [
   {
@@ -87,8 +88,17 @@ export const JourneyScrollRevamped = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ delay: index * 0.1, duration: 0.5 }}
-                  className="glassmorphic bg-card/50 border border-border rounded-2xl p-4 md:p-6 hover:border-primary/30 transition-all duration-300 group"
+                  className="glassmorphic bg-card/50 border border-border rounded-2xl p-4 md:p-6 hover:border-primary/30 transition-all duration-300 group relative"
                 >
+                  <GlowingEffect
+                    spread={40}
+                    glow={true}
+                    disabled={false}
+                    proximity={70}
+                    inactiveZone={0.15}
+                    borderWidth={2}
+                    movementDuration={2.3}
+                  />
                   <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-start">
                     {/* Number Badge */}
                     <div className="flex-shrink-0">

@@ -123,22 +123,23 @@ export const ServicesSection = () => {
               <div
                 key={index}
                 data-index={index}
-                className={`flex-shrink-0 w-[85vw] sm:w-[400px] snap-center glassmorphic bg-card border border-border rounded-3xl overflow-hidden group hover-lift transition-all duration-700 relative ${
+                className={`flex-shrink-0 w-[85vw] sm:w-[400px] snap-center transition-all duration-700 ${
                   isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <GlowingEffect
-                  spread={45}
-                  glow={true}
-                  disabled={false}
-                  proximity={100}
-                  inactiveZone={0.1}
-                  borderWidth={2.5}
-                  movementDuration={2}
-                />
-                {/* Top Visual Section - 40% */}
-                <div className={`h-48 bg-gradient-to-br ${service.color} relative overflow-hidden`}>
+                <div className="relative h-full glassmorphic bg-card border border-border rounded-3xl overflow-hidden group hover-lift">
+                  <GlowingEffect
+                    spread={45}
+                    glow={true}
+                    disabled={false}
+                    proximity={100}
+                    inactiveZone={0.1}
+                    borderWidth={2.5}
+                    movementDuration={2}
+                  />
+                  {/* Top Visual Section - 40% */}
+                  <div className={`h-48 bg-gradient-to-br ${service.color} relative overflow-hidden`}>
                   {service.visualType === "flow" && (
                     <svg className="absolute inset-0 w-full h-full opacity-55" viewBox="0 0 400 200">
                       <path
@@ -245,6 +246,7 @@ export const ServicesSection = () => {
                   <button className="flex items-center gap-2 text-sm font-semibold text-secondary group-hover:gap-3 transition-all duration-300 pt-2">
                     Explore Services <ArrowRight className="w-4 h-4" />
                   </button>
+                </div>
                 </div>
               </div>
             );
