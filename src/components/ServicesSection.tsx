@@ -1,5 +1,6 @@
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 const services = [
   {
@@ -122,11 +123,20 @@ export const ServicesSection = () => {
               <div
                 key={index}
                 data-index={index}
-                className={`flex-shrink-0 w-[85vw] sm:w-[400px] snap-center glassmorphic bg-card border border-border rounded-3xl overflow-hidden group hover-lift transition-all duration-700 ${
+                className={`flex-shrink-0 w-[85vw] sm:w-[400px] snap-center glassmorphic bg-card border border-border rounded-3xl overflow-hidden group hover-lift transition-all duration-700 relative ${
                   isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
+                <GlowingEffect
+                  spread={45}
+                  glow={true}
+                  disabled={false}
+                  proximity={100}
+                  inactiveZone={0.1}
+                  borderWidth={2.5}
+                  movementDuration={2}
+                />
                 {/* Top Visual Section - 40% */}
                 <div className={`h-48 bg-gradient-to-br ${service.color} relative overflow-hidden`}>
                   {service.visualType === "flow" && (

@@ -1,5 +1,6 @@
 import { ArrowRight, Heart, Car, Globe, DollarSign, ShoppingCart, Gamepad } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 const allCases = [
   {
@@ -103,10 +104,19 @@ export const CaseStudiesRevised = () => {
                 <div
                   key={index}
                   data-index={index}
-                  className={`flex-shrink-0 w-[85vw] sm:w-[400px] snap-center glassmorphic bg-card border border-border rounded-2xl p-6 hover-lift transition-all duration-700 ${
+                  className={`flex-shrink-0 w-[85vw] sm:w-[400px] snap-center glassmorphic bg-card border border-border rounded-2xl p-6 hover-lift transition-all duration-700 relative ${
                     isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
                   }`}
                 >
+                  <GlowingEffect
+                    spread={48}
+                    glow={true}
+                    disabled={false}
+                    proximity={90}
+                    inactiveZone={0.08}
+                    borderWidth={2}
+                    movementDuration={2.2}
+                  />
                   <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${caseStudy.color} flex items-center justify-center mb-4`}>
                     <Icon className="w-6 h-6 text-white" />
                   </div>

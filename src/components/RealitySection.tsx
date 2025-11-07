@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 const statCards = [
   {
@@ -69,8 +70,17 @@ export const RealitySection = () => {
             {statCards.map((card, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 w-[280px] sm:w-[300px] snap-center glassmorphic bg-card/50 border border-border rounded-2xl p-6 sm:p-8 hover:border-primary/30 transition-all duration-300"
+                className="flex-shrink-0 w-[280px] sm:w-[300px] snap-center glassmorphic bg-card/50 border border-border rounded-2xl p-6 sm:p-8 hover:border-primary/30 transition-all duration-300 relative"
               >
+                <GlowingEffect
+                  spread={50}
+                  glow={true}
+                  disabled={false}
+                  proximity={80}
+                  inactiveZone={0.05}
+                  borderWidth={2}
+                  movementDuration={2.5}
+                />
                 {/* Number Display */}
                 <div className="mb-4">
                   <div className="text-5xl sm:text-6xl font-bold gradient-text">
