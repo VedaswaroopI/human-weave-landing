@@ -1,4 +1,4 @@
-import { ArrowRight, Heart, Car, Globe, DollarSign, ShoppingCart, Gamepad } from "lucide-react";
+import { ArrowRight, Heart, Car, Globe, DollarSign, ShoppingCart, Gamepad, ChevronRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 
@@ -167,7 +167,7 @@ export const CaseStudiesRevised = () => {
                     <Icon className="w-6 h-6 text-white" />
                   </div>
 
-                  <div className="inline-block px-2 py-1 rounded-full bg-accent/10 text-accent text-xs font-bold uppercase mb-3">
+                  <div className="inline-block px-2 py-1 rounded-full bg-accent/10 text-accent text-sm font-bold uppercase mb-3">
                     {caseStudy.industry}
                   </div>
 
@@ -179,14 +179,14 @@ export const CaseStudiesRevised = () => {
                     <div className={`text-3xl sm:text-4xl font-bold bg-gradient-to-r ${caseStudy.color} bg-clip-text text-transparent`}>
                       {caseStudy.metric}
                     </div>
-                    <p className="text-xs text-muted-foreground">{caseStudy.metricLabel}</p>
+                    <p className="text-sm text-muted-foreground">{caseStudy.metricLabel}</p>
                   </div>
 
-                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                  <p className="text-base text-muted-foreground mb-4 leading-relaxed">
                     {caseStudy.story}
                   </p>
 
-                  <button className="text-sm font-semibold text-secondary flex items-center gap-2 hover:gap-3 transition-all">
+                  <button className="text-base font-semibold text-secondary flex items-center gap-2 hover:gap-3 transition-all">
                     Read Story <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
@@ -216,6 +216,13 @@ export const CaseStudiesRevised = () => {
                 }`}
               />
             ))}
+          </div>
+
+          {/* Scroll hint - Mobile only */}
+          <div className="md:hidden flex items-center justify-center gap-2 mt-4 text-base text-secondary font-medium animate-pulse">
+            <ChevronRight className="w-5 h-5" />
+            <span>Swipe for more stories</span>
+            <ChevronRight className="w-5 h-5" />
           </div>
         </div>
       </div>

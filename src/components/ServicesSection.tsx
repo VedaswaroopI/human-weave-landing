@@ -275,7 +275,7 @@ export const ServicesSection = () => {
                 {/* Bottom Content Section - 60% */}
                 <div className="p-6 sm:p-8 space-y-4">
                   {/* Badge */}
-                  <div className="inline-block px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-bold tracking-wider uppercase">
+                  <div className="inline-block px-3 py-1 rounded-full bg-accent/10 text-accent text-sm font-bold tracking-wider uppercase">
                     {service.badge}
                   </div>
 
@@ -283,12 +283,12 @@ export const ServicesSection = () => {
                   <h3 className="text-xl sm:text-2xl font-bold leading-tight">{service.title}</h3>
 
                   {/* Description */}
-                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                  <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
                     {service.description}
                   </p>
 
                   {/* Link */}
-                  <button className="flex items-center gap-2 text-sm font-semibold text-secondary group-hover:gap-3 transition-all duration-300 pt-2">
+                  <button className="flex items-center gap-2 text-base font-semibold text-secondary group-hover:gap-3 transition-all duration-300 pt-2">
                     Explore Services <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
@@ -324,9 +324,11 @@ export const ServicesSection = () => {
           </div>
         </div>
 
-        {/* Scroll hint */}
-        <div className="md:hidden text-center mt-4 text-sm text-muted-foreground">
-          ← Swipe to explore all services →
+        {/* Scroll hint - Mobile only */}
+        <div className="md:hidden flex items-center justify-center gap-2 mt-4 text-base text-secondary font-medium animate-pulse">
+          <ChevronRight className="w-5 h-5" />
+          <span>Swipe to explore</span>
+          <ChevronRight className="w-5 h-5" />
         </div>
       </div>
     </section>

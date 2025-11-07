@@ -84,7 +84,7 @@ export const HeroWithSpline = () => {
           >
             {/* Small Text */}
             <motion.div variants={prefersReducedMotion ? {} : item}>
-              <p className="text-xs sm:text-sm font-semibold tracking-wider text-muted-foreground uppercase">
+              <p className="text-sm sm:text-base font-semibold tracking-wider text-muted-foreground uppercase">
                 300,000+ Humans Powering AI
               </p>
             </motion.div>
@@ -132,9 +132,9 @@ export const HeroWithSpline = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Content - Spline 3D Scene (Desktop Only) */}
+          {/* Right Content - Spline 3D Scene (Desktop Only, Hidden on Mobile) */}
           <motion.div 
-            className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-full order-1 lg:order-2 hidden lg:block"
+            className="relative w-full h-full order-1 lg:order-2 hidden lg:block"
             initial={prefersReducedMotion ? {} : { opacity: 0, scale: 0.98 }}
             animate={prefersReducedMotion ? {} : { opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.1 }}
