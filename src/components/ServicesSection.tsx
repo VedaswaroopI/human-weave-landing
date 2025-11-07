@@ -114,7 +114,7 @@ export const ServicesSection = () => {
           </button>
 
           {/* Scroll Container */}
-          <div ref={scrollContainerRef} className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory md:snap-none scrollbar-hide">
+          <div ref={scrollContainerRef} className="flex overflow-x-auto gap-6 py-8 snap-x snap-mandatory md:snap-none scrollbar-hide">
           {services.map((service, index) => {
             const isVisible = visibleCards.includes(index);
 
