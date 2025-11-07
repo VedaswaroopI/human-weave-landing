@@ -61,7 +61,9 @@ const allCases = [
 
 export const CaseStudiesRevised = () => {
   const [visibleCards, setVisibleCards] = useState<number[]>([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -82,6 +84,50 @@ export const CaseStudiesRevised = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Update currentIndex based on scroll position
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const updateIndex = () => {
+      const containerCenter = container.scrollLeft + container.clientWidth / 2;
+      const cards = container.querySelectorAll("[data-index]");
+      
+      let closestIndex = 0;
+      let closestDistance = Infinity;
+
+      cards.forEach((card) => {
+        const index = parseInt(card.getAttribute("data-index") || "0");
+        const cardElement = card as HTMLElement;
+        const cardCenter = cardElement.offsetLeft + cardElement.offsetWidth / 2;
+        const distance = Math.abs(cardCenter - containerCenter);
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
+        }
+      });
+
+      setCurrentIndex(closestIndex);
+    };
+
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateIndex();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    container.addEventListener("scroll", handleScroll);
+    updateIndex(); // Initial update
+
+    return () => container.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <section ref={sectionRef} className="py-16 sm:py-20 md:py-24 relative">
       <div className="container mx-auto px-4 sm:px-6">
@@ -95,7 +141,7 @@ export const CaseStudiesRevised = () => {
           <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
           <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
 
-          <div className="flex overflow-x-auto gap-6 pb-4 snap-x snap-mandatory scrollbar-hide">
+          <div ref={scrollContainerRef} className="flex overflow-x-auto gap-6 py-8 snap-x snap-mandatory scrollbar-hide">
             {allCases.map((caseStudy, index) => {
               const Icon = caseStudy.icon;
               const isVisible = visibleCards.includes(index);
@@ -150,7 +196,25 @@ export const CaseStudiesRevised = () => {
 
           <div className="flex justify-center gap-2 mt-4">
             {allCases.map((_, i) => (
-              <div key={i} className="h-1 w-8 rounded-full bg-border" />
+              <button
+                key={i}
+                onClick={() => {
+                  const container = scrollContainerRef.current;
+                  if (!container) return;
+                  const cards = container.querySelectorAll("[data-index]");
+                  const targetCard = cards[i] as HTMLElement;
+                  if (targetCard) {
+                    container.scrollTo({
+                      left: targetCard.offsetLeft - 20,
+                      behavior: "smooth"
+                    });
+                  }
+                }}
+                aria-label={`Go to case study ${i + 1}`}
+                className={`h-1 rounded-full transition-all duration-300 cursor-pointer hover:scale-110 ${
+                  i === currentIndex ? "bg-secondary w-10" : "bg-border w-8"
+                }`}
+              />
             ))}
           </div>
         </div>
