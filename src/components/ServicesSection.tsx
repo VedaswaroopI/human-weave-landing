@@ -72,6 +72,50 @@ export const ServicesSection = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Update currentIndex based on scroll position
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const updateIndex = () => {
+      const containerCenter = container.scrollLeft + container.clientWidth / 2;
+      const cards = container.querySelectorAll("[data-index]");
+      
+      let closestIndex = 0;
+      let closestDistance = Infinity;
+
+      cards.forEach((card) => {
+        const index = parseInt(card.getAttribute("data-index") || "0");
+        const cardElement = card as HTMLElement;
+        const cardCenter = cardElement.offsetLeft + cardElement.offsetWidth / 2;
+        const distance = Math.abs(cardCenter - containerCenter);
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
+        }
+      });
+
+      setCurrentIndex(closestIndex);
+    };
+
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateIndex();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    container.addEventListener("scroll", handleScroll);
+    updateIndex(); // Initial update
+
+    return () => container.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({ left: -420, behavior: "smooth" });
@@ -128,7 +172,7 @@ export const ServicesSection = () => {
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <div className="relative h-full">
+                <div className="relative h-full glassmorphic bg-card border border-border rounded-3xl overflow-hidden group hover-lift isolate">
                   <GlowingEffect
                     spread={45}
                     glow={true}
@@ -137,8 +181,8 @@ export const ServicesSection = () => {
                     inactiveZone={0.1}
                     borderWidth={2.5}
                     movementDuration={2}
+                    className="z-10"
                   />
-                  <div className="relative h-full glassmorphic bg-card border border-border rounded-3xl overflow-hidden group hover-lift">
                   {/* Top Visual Section - 40% */}
                   <div className={`h-48 bg-gradient-to-br ${service.color} relative overflow-hidden`}>
                   {service.visualType === "flow" && (
@@ -249,7 +293,6 @@ export const ServicesSection = () => {
                   </button>
                 </div>
                 </div>
-                </div>
               </div>
             );
           })}
@@ -258,10 +301,23 @@ export const ServicesSection = () => {
         {/* Progress Indicator */}
           <div className="flex justify-center gap-2 mt-6">
             {services.map((_, i) => (
-              <div
+              <button
                 key={i}
-                className={`h-1 w-8 rounded-full transition-all duration-300 ${
-                  i === currentIndex ? "bg-secondary" : "bg-border"
+                onClick={() => {
+                  const container = scrollContainerRef.current;
+                  if (!container) return;
+                  const cards = container.querySelectorAll("[data-index]");
+                  const targetCard = cards[i] as HTMLElement;
+                  if (targetCard) {
+                    container.scrollTo({
+                      left: targetCard.offsetLeft - 20,
+                      behavior: "smooth"
+                    });
+                  }
+                }}
+                aria-label={`Go to service ${i + 1}`}
+                className={`h-1 rounded-full transition-all duration-300 cursor-pointer hover:scale-110 ${
+                  i === currentIndex ? "bg-secondary w-10" : "bg-border w-8"
                 }`}
               />
             ))}
