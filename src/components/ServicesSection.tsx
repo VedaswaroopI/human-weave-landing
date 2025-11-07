@@ -130,229 +130,353 @@ export const ServicesSection = () => {
                 {/* Top Visual Section - 40% */}
                 <div className={`h-48 bg-gradient-to-br ${service.color} relative overflow-hidden`}>
                   {service.visualType === "flow" && (
-                    <svg className="absolute inset-0 w-full h-full opacity-30 group-hover:opacity-40 transition-opacity duration-300" viewBox="0 0 400 200">
-                      {/* Chaotic waves on left transitioning to organized on right */}
-                      <path
-                        d="M 0,65 Q 70,40 130,70 T 250,75 T 400,80"
-                        stroke="white"
-                        strokeWidth="2.5"
-                        fill="none"
-                        opacity="0.35"
-                        className="animate-pulse"
-                      />
-                      <path
-                        d="M 0,90 Q 80,70 150,95 T 280,98 T 400,100"
-                        stroke="white"
-                        strokeWidth="2.5"
-                        fill="none"
-                        opacity="0.3"
-                        className="animate-pulse"
-                        style={{ animationDelay: "0.4s" }}
-                      />
-                      <path
-                        d="M 0,115 Q 90,100 160,118 T 300,120 T 400,120"
-                        stroke="white"
-                        strokeWidth="2.5"
-                        fill="none"
-                        opacity="0.25"
-                        className="animate-pulse"
-                        style={{ animationDelay: "0.8s" }}
-                      />
-                      <path
-                        d="M 0,135 Q 75,122 140,138 T 290,140 T 400,140"
-                        stroke="white"
-                        strokeWidth="2"
-                        fill="none"
-                        opacity="0.2"
-                        className="animate-pulse"
-                        style={{ animationDelay: "1.2s" }}
-                      />
-                      {/* Transformation dots along the path */}
-                      <circle cx="80" cy="52" r="3" fill="white" opacity="0.4" className="animate-pulse" />
-                      <circle cx="160" cy="78" r="3" fill="white" opacity="0.45" className="animate-pulse" style={{ animationDelay: "0.3s" }} />
-                      <circle cx="240" cy="75" r="3" fill="white" opacity="0.4" className="animate-pulse" style={{ animationDelay: "0.6s" }} />
-                      <circle cx="320" cy="82" r="3" fill="white" opacity="0.5" className="animate-pulse" style={{ animationDelay: "0.9s" }} />
-                      <circle cx="150" cy="100" r="2.5" fill="white" opacity="0.35" className="animate-pulse" style={{ animationDelay: "1.1s" }} />
-                      <circle cx="280" cy="120" r="3" fill="white" opacity="0.4" className="animate-pulse" style={{ animationDelay: "1.4s" }} />
+                    <svg className="absolute inset-0 w-full h-full opacity-35 group-hover:opacity-50 transition-opacity duration-500" viewBox="0 0 400 200">
+                      {/* Neural network / Brain-like connections forming */}
+                      {/* Left side: scattered, unconnected neurons */}
+                      <circle cx="40" cy="60" r="5" fill="white" opacity="0.3" className="animate-pulse" />
+                      <circle cx="60" cy="100" r="4" fill="white" opacity="0.25" className="animate-pulse" style={{ animationDelay: "0.2s" }} />
+                      <circle cx="50" cy="140" r="5" fill="white" opacity="0.3" className="animate-pulse" style={{ animationDelay: "0.4s" }} />
+                      <circle cx="90" cy="80" r="4" fill="white" opacity="0.25" className="animate-pulse" style={{ animationDelay: "0.6s" }} />
+                      
+                      {/* Center: connections forming (synapses) */}
+                      <g className="animate-pulse" style={{ animationDelay: "0.5s" }}>
+                        <circle cx="160" cy="70" r="6" fill="white" opacity="0.5" />
+                        <circle cx="180" cy="100" r="6" fill="white" opacity="0.5" />
+                        <circle cx="170" cy="130" r="6" fill="white" opacity="0.5" />
+                        <line x1="160" y1="70" x2="180" y2="100" stroke="white" strokeWidth="2" opacity="0.4" strokeDasharray="3,3" className="animate-pulse" />
+                        <line x1="180" y1="100" x2="170" y2="130" stroke="white" strokeWidth="2" opacity="0.4" strokeDasharray="3,3" className="animate-pulse" />
+                      </g>
+                      
+                      {/* Right side: organized, connected network (AI thinking) */}
+                      <g opacity="0.6">
+                        <circle cx="280" cy="60" r="7" fill="white" opacity="0.7" />
+                        <circle cx="320" cy="80" r="7" fill="white" opacity="0.7" />
+                        <circle cx="300" cy="110" r="7" fill="white" opacity="0.7" />
+                        <circle cx="340" cy="130" r="7" fill="white" opacity="0.7" />
+                        <circle cx="360" cy="100" r="6" fill="white" opacity="0.6" />
+                        
+                        {/* Strong connections */}
+                        <line x1="280" y1="60" x2="320" y2="80" stroke="white" strokeWidth="2.5" opacity="0.5" />
+                        <line x1="320" y1="80" x2="300" y2="110" stroke="white" strokeWidth="2.5" opacity="0.5" />
+                        <line x1="300" y1="110" x2="340" y2="130" stroke="white" strokeWidth="2.5" opacity="0.5" />
+                        <line x1="320" y1="80" x2="360" y2="100" stroke="white" strokeWidth="2" opacity="0.45" />
+                        <line x1="280" y1="60" x2="300" y2="110" stroke="white" strokeWidth="2" opacity="0.4" />
+                        
+                        {/* Pulse effect showing "thinking" */}
+                        <circle cx="300" cy="110" r="15" stroke="white" strokeWidth="1.5" fill="none" opacity="0.3" className="animate-pulse" />
+                      </g>
+                      
+                      {/* Arrow showing transformation */}
+                      <path d="M 120,100 L 140,100 L 135,95 M 140,100 L 135,105" stroke="white" strokeWidth="2" opacity="0.4" fill="none" className="animate-pulse" style={{ animationDelay: "1s" }} />
+                      <path d="M 220,100 L 240,100 L 235,95 M 240,100 L 235,105" stroke="white" strokeWidth="2" opacity="0.5" fill="none" className="animate-pulse" style={{ animationDelay: "1.2s" }} />
                     </svg>
                   )}
 
                   {service.visualType === "grid" && (
                     <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 200">
-                      {/* 8x8 grid with highlighted scanning pattern */}
-                      {[...Array(8)].map((_, row) =>
-                        [...Array(8)].map((_, col) => {
-                          const isHighlighted = 
-                            (row === 2 && col === 3) ||
-                            (row === 3 && col === 5) ||
-                            (row === 4 && col === 2) ||
-                            (row === 5 && col === 6) ||
-                            (row === 6 && col === 4);
-                          
-                          return (
-                            <circle
-                              key={`${row}-${col}`}
-                              cx={50 + col * 45}
-                              cy={30 + row * 23}
-                              r="4"
-                              fill={isHighlighted ? "#60a5fa" : "white"}
-                              opacity={isHighlighted ? 0.6 : 0.2}
-                              filter={isHighlighted ? "drop-shadow(0 0 4px rgba(96, 165, 250, 0.6))" : "none"}
-                              className="animate-pulse"
-                              style={{ animationDelay: `${(row + col) * 0.1}s` }}
-                            />
-                          );
-                        })
-                      )}
-                      {/* Connecting lines between highlighted dots */}
-                      <line x1="185" y1="76" x2="275" y2="99" stroke="#60a5fa" strokeWidth="1.5" opacity="0.4" />
-                      <line x1="140" y1="122" x2="185" y2="76" stroke="#60a5fa" strokeWidth="1.5" opacity="0.4" />
-                      <line x1="275" y1="99" x2="320" y2="145" stroke="#60a5fa" strokeWidth="1.5" opacity="0.4" />
-                      <line x1="320" y1="145" x2="230" y2="168" stroke="#60a5fa" strokeWidth="1.5" opacity="0.4" />
+                      {/* Magnifying glass scanning for bugs */}
+                      <g className="animate-pulse" style={{ animationDuration: "3s" }}>
+                        {/* Magnifying glass */}
+                        <circle cx="200" cy="90" r="35" stroke="white" strokeWidth="3" fill="none" opacity="0.5" />
+                        <line x1="225" y1="115" x2="250" y2="140" stroke="white" strokeWidth="4" opacity="0.5" strokeLinecap="round" />
+                        
+                        {/* Crosshair in center */}
+                        <line x1="185" y1="90" x2="215" y2="90" stroke="white" strokeWidth="1.5" opacity="0.4" />
+                        <line x1="200" y1="75" x2="200" y2="105" stroke="white" strokeWidth="1.5" opacity="0.4" />
+                      </g>
+                      
+                      {/* Code/UI elements being inspected */}
+                      <g opacity="0.35">
+                        {/* UI elements (rectangles representing interface) */}
+                        <rect x="60" y="60" width="40" height="25" stroke="white" strokeWidth="1.5" fill="none" rx="3" />
+                        <rect x="60" y="95" width="40" height="25" stroke="white" strokeWidth="1.5" fill="none" rx="3" />
+                        <rect x="60" y="130" width="40" height="25" stroke="white" strokeWidth="1.5" fill="none" rx="3" />
+                        
+                        <rect x="300" y="60" width="40" height="25" stroke="white" strokeWidth="1.5" fill="none" rx="3" />
+                        <rect x="300" y="95" width="40" height="25" stroke="white" strokeWidth="1.5" fill="none" rx="3" />
+                        <rect x="300" y="130" width="40" height="25" stroke="white" strokeWidth="1.5" fill="none" rx="3" />
+                      </g>
+                      
+                      {/* Bugs detected (X marks) */}
+                      <g className="animate-pulse" style={{ animationDelay: "0.5s" }}>
+                        <line x1="73" y1="68" x2="87" y2="77" stroke="#ef4444" strokeWidth="2.5" opacity="0.7" strokeLinecap="round" />
+                        <line x1="87" y1="68" x2="73" y2="77" stroke="#ef4444" strokeWidth="2.5" opacity="0.7" strokeLinecap="round" />
+                      </g>
+                      
+                      <g className="animate-pulse" style={{ animationDelay: "1s" }}>
+                        <line x1="313" y1="103" x2="327" y2="112" stroke="#ef4444" strokeWidth="2.5" opacity="0.7" strokeLinecap="round" />
+                        <line x1="327" y1="103" x2="313" y2="112" stroke="#ef4444" strokeWidth="2.5" opacity="0.7" strokeLinecap="round" />
+                      </g>
+                      
+                      {/* Checkmarks (bugs fixed) */}
+                      <g className="animate-pulse" style={{ animationDelay: "1.5s" }}>
+                        <path d="M 65,145 L 72,152 L 95,135" stroke="#10b981" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.8" />
+                      </g>
+                      
+                      <g className="animate-pulse" style={{ animationDelay: "2s" }}>
+                        <path d="M 305,68 L 312,75 L 335,58" stroke="#10b981" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.8" />
+                      </g>
+                      
+                      {/* Scanning lines */}
+                      <line x1="0" y1="50" x2="400" y2="50" stroke="white" strokeWidth="1" opacity="0.15" strokeDasharray="5,5" className="animate-pulse" />
+                      <line x1="0" y1="100" x2="400" y2="100" stroke="white" strokeWidth="1" opacity="0.2" strokeDasharray="5,5" className="animate-pulse" style={{ animationDelay: "0.3s" }} />
+                      <line x1="0" y1="150" x2="400" y2="150" stroke="white" strokeWidth="1" opacity="0.15" strokeDasharray="5,5" className="animate-pulse" style={{ animationDelay: "0.6s" }} />
                     </svg>
                   )}
 
                   {service.visualType === "speech" && (
-                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-white">
-                      {/* Main trio - larger and more visible */}
-                      <div className="flex items-center justify-center gap-4 text-2xl font-bold">
-                        <div className="animate-pulse" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.4)', opacity: 0.55 }}>
-                          你好
-                        </div>
-                        <div className="animate-pulse" style={{ animationDelay: "0.3s", textShadow: '0 2px 8px rgba(0,0,0,0.4)', opacity: 0.55 }}>
-                          مرحبا
-                        </div>
-                        <div className="animate-pulse" style={{ animationDelay: "0.6s", textShadow: '0 2px 8px rgba(0,0,0,0.4)', opacity: 0.55 }}>
-                          Hello
-                        </div>
-                      </div>
+                    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 200">
+                      {/* Speech bubbles transforming between languages */}
                       
-                      {/* Secondary greetings - smaller, artistic positioning */}
-                      <div className="flex items-center gap-4 text-lg font-semibold">
-                        <div style={{ opacity: 0.45, textShadow: '0 2px 6px rgba(0,0,0,0.3)' }}>
-                          Bonjour
-                        </div>
-                        <span style={{ opacity: 0.35 }}>→</span>
-                        <div style={{ opacity: 0.5, textShadow: '0 2px 6px rgba(0,0,0,0.3)' }}>
-                          こんにちは
-                        </div>
-                      </div>
+                      {/* Left speech bubble - Source language */}
+                      <g className="animate-pulse" opacity="0.5">
+                        <path d="M 60,80 Q 60,60 80,60 L 140,60 Q 160,60 160,80 L 160,100 Q 160,120 140,120 L 90,120 L 75,135 L 80,120 L 80,120 Q 60,120 60,100 Z" 
+                          fill="white" fillOpacity="0.2" stroke="white" strokeWidth="2" />
+                        <text x="110" y="95" fill="white" fontSize="20" fontWeight="bold" textAnchor="middle" opacity="0.7">Hello</text>
+                      </g>
                       
-                      <div className="flex items-center gap-4 text-base font-medium">
-                        <div style={{ opacity: 0.45, textShadow: '0 2px 6px rgba(0,0,0,0.3)' }}>
-                          Hola
-                        </div>
-                        <span style={{ opacity: 0.35 }}>⇄</span>
-                        <div style={{ opacity: 0.45, textShadow: '0 2px 6px rgba(0,0,0,0.3)' }}>
-                          नमस्ते
-                        </div>
-                      </div>
-                    </div>
+                      {/* Center: Translation symbol with rotating effect */}
+                      <g className="animate-pulse" style={{ animationDelay: "0.5s", animationDuration: "2s" }}>
+                        <circle cx="200" cy="100" r="25" stroke="white" strokeWidth="2.5" fill="none" opacity="0.4" />
+                        <circle cx="200" cy="100" r="18" stroke="white" strokeWidth="1.5" fill="none" opacity="0.3" />
+                        
+                        {/* Globe/translation icon */}
+                        <ellipse cx="200" cy="100" rx="18" ry="10" stroke="white" strokeWidth="1.5" fill="none" opacity="0.5" />
+                        <line x1="182" y1="100" x2="218" y2="100" stroke="white" strokeWidth="1.5" opacity="0.5" />
+                        <path d="M 200,82 Q 190,100 200,118" stroke="white" strokeWidth="1.5" fill="none" opacity="0.5" />
+                        <path d="M 200,82 Q 210,100 200,118" stroke="white" strokeWidth="1.5" fill="none" opacity="0.5" />
+                      </g>
+                      
+                      {/* Right speech bubble - Target language */}
+                      <g className="animate-pulse" style={{ animationDelay: "1s" }} opacity="0.55">
+                        <path d="M 240,80 Q 240,60 260,60 L 320,60 Q 340,60 340,80 L 340,100 Q 340,120 320,120 L 310,120 L 325,135 L 320,120 L 260,120 Q 240,120 240,100 Z" 
+                          fill="white" fillOpacity="0.25" stroke="white" strokeWidth="2" />
+                        <text x="290" y="95" fill="white" fontSize="20" fontWeight="bold" textAnchor="middle" opacity="0.8">你好</text>
+                      </g>
+                      
+                      {/* Additional language examples floating around */}
+                      <text x="100" y="40" fill="white" fontSize="14" opacity="0.4" className="animate-pulse" style={{ animationDelay: "0.3s" }}>Bonjour</text>
+                      <text x="280" y="40" fill="white" fontSize="14" opacity="0.4" className="animate-pulse" style={{ animationDelay: "0.7s" }}>こんにちは</text>
+                      <text x="80" y="170" fill="white" fontSize="14" opacity="0.4" className="animate-pulse" style={{ animationDelay: "1.1s" }}>Hola</text>
+                      <text x="290" y="170" fill="white" fontSize="14" opacity="0.4" className="animate-pulse" style={{ animationDelay: "1.5s" }}>مرحبا</text>
+                      <text x="200" y="35" fill="white" fontSize="12" opacity="0.35" className="animate-pulse" style={{ animationDelay: "0.9s" }}>नमस्ते</text>
+                      <text x="200" y="180" fill="white" fontSize="12" opacity="0.35" className="animate-pulse" style={{ animationDelay: "1.3s" }}>Ciao</text>
+                      
+                      {/* Connection arrows showing translation flow */}
+                      <path d="M 165,90 L 175,90" stroke="white" strokeWidth="2" opacity="0.4" fill="none" className="animate-pulse" style={{ animationDelay: "0.6s" }} />
+                      <path d="M 175,90 L 170,87 M 175,90 L 170,93" stroke="white" strokeWidth="2" opacity="0.4" fill="none" />
+                      
+                      <path d="M 225,90 L 235,90" stroke="white" strokeWidth="2" opacity="0.4" fill="none" className="animate-pulse" style={{ animationDelay: "1.1s" }} />
+                      <path d="M 235,90 L 230,87 M 235,90 L 230,93" stroke="white" strokeWidth="2" opacity="0.4" fill="none" />
+                    </svg>
                   )}
 
                   {service.visualType === "network" && (
-                    <svg className="absolute inset-0 w-full h-full opacity-35 group-hover:opacity-45 transition-opacity duration-300" viewBox="0 0 400 200">
-                      {/* Background waves for flow */}
-                      <path d="M 0,80 Q 100,70 200,80 T 400,80" stroke="white" strokeWidth="1.5" fill="none" opacity="0.2" />
-                      <path d="M 0,120 Q 100,110 200,120 T 400,120" stroke="white" strokeWidth="1.5" fill="none" opacity="0.15" className="animate-pulse" style={{ animationDelay: "0.5s" }} />
+                    <svg className="absolute inset-0 w-full h-full opacity-40 group-hover:opacity-55 transition-opacity duration-500" viewBox="0 0 400 200">
+                      {/* Growing network showing scalability */}
                       
-                      {/* Center node with pulse rings */}
-                      <circle cx="200" cy="100" r="10" fill="white" opacity="0.8" />
-                      <circle cx="200" cy="100" r="18" stroke="white" strokeWidth="1.5" fill="none" opacity="0.25" className="animate-pulse" />
-                      <circle cx="200" cy="100" r="26" stroke="white" strokeWidth="1" fill="none" opacity="0.15" className="animate-pulse" style={{ animationDelay: "0.5s" }} />
+                      {/* Small starting point (startup/small team) */}
+                      <g opacity="0.4">
+                        <circle cx="80" cy="100" r="8" fill="white" opacity="0.6" />
+                        <circle cx="60" cy="85" r="5" fill="white" opacity="0.5" className="animate-pulse" />
+                        <circle cx="100" cy="85" r="5" fill="white" opacity="0.5" className="animate-pulse" style={{ animationDelay: "0.2s" }} />
+                        <line x1="80" y1="100" x2="60" y2="85" stroke="white" strokeWidth="1" opacity="0.4" />
+                        <line x1="80" y1="100" x2="100" y2="85" stroke="white" strokeWidth="1" opacity="0.4" />
+                      </g>
                       
-                      {/* Outer nodes - larger and more visible */}
-                      <circle cx="100" cy="60" r="7" fill="white" opacity="0.75" className="animate-pulse" />
-                      <circle cx="300" cy="60" r="7" fill="white" opacity="0.75" className="animate-pulse" style={{ animationDelay: "0.3s" }} />
-                      <circle cx="100" cy="140" r="7" fill="white" opacity="0.75" className="animate-pulse" style={{ animationDelay: "0.6s" }} />
-                      <circle cx="300" cy="140" r="7" fill="white" opacity="0.75" className="animate-pulse" style={{ animationDelay: "0.9s" }} />
+                      {/* Growth arrow */}
+                      <path d="M 130,100 L 160,100 L 155,95 M 160,100 L 155,105" stroke="white" strokeWidth="2.5" opacity="0.5" fill="none" className="animate-pulse" style={{ animationDelay: "0.5s" }} />
                       
-                      {/* Connecting lines - thicker */}
-                      <line x1="200" y1="100" x2="100" y2="60" stroke="white" strokeWidth="1.5" opacity="0.4" />
-                      <line x1="200" y1="100" x2="300" y2="60" stroke="white" strokeWidth="1.5" opacity="0.4" />
-                      <line x1="200" y1="100" x2="100" y2="140" stroke="white" strokeWidth="1.5" opacity="0.4" />
-                      <line x1="200" y1="100" x2="300" y2="140" stroke="white" strokeWidth="1.5" opacity="0.4" />
+                      {/* Medium network (scaling up) */}
+                      <g opacity="0.5" className="animate-pulse" style={{ animationDelay: "0.7s" }}>
+                        <circle cx="200" cy="100" r="10" fill="white" opacity="0.7" />
+                        <circle cx="175" cy="75" r="6" fill="white" opacity="0.6" />
+                        <circle cx="225" cy="75" r="6" fill="white" opacity="0.6" />
+                        <circle cx="175" cy="125" r="6" fill="white" opacity="0.6" />
+                        <circle cx="225" cy="125" r="6" fill="white" opacity="0.6" />
+                        <circle cx="200" cy="65" r="5" fill="white" opacity="0.5" />
+                        <circle cx="200" cy="135" r="5" fill="white" opacity="0.5" />
+                        
+                        <line x1="200" y1="100" x2="175" y2="75" stroke="white" strokeWidth="1.5" opacity="0.5" />
+                        <line x1="200" y1="100" x2="225" y2="75" stroke="white" strokeWidth="1.5" opacity="0.5" />
+                        <line x1="200" y1="100" x2="175" y2="125" stroke="white" strokeWidth="1.5" opacity="0.5" />
+                        <line x1="200" y1="100" x2="225" y2="125" stroke="white" strokeWidth="1.5" opacity="0.5" />
+                        <line x1="200" y1="100" x2="200" y2="65" stroke="white" strokeWidth="1.5" opacity="0.5" />
+                        <line x1="200" y1="100" x2="200" y2="135" stroke="white" strokeWidth="1.5" opacity="0.5" />
+                      </g>
+                      
+                      {/* Growth arrow */}
+                      <path d="M 250,100 L 280,100 L 275,95 M 280,100 L 275,105" stroke="white" strokeWidth="2.5" opacity="0.6" fill="none" className="animate-pulse" style={{ animationDelay: "1s" }} />
+                      
+                      {/* Large enterprise network (fully scaled) */}
+                      <g opacity="0.6" className="animate-pulse" style={{ animationDelay: "1.2s" }}>
+                        <circle cx="330" cy="100" r="12" fill="white" opacity="0.8" />
+                        
+                        {/* Outer ring of nodes */}
+                        <circle cx="305" cy="70" r="6" fill="white" opacity="0.7" />
+                        <circle cx="355" cy="70" r="6" fill="white" opacity="0.7" />
+                        <circle cx="305" cy="130" r="6" fill="white" opacity="0.7" />
+                        <circle cx="355" cy="130" r="6" fill="white" opacity="0.7" />
+                        <circle cx="330" cy="55" r="5" fill="white" opacity="0.65" />
+                        <circle cx="330" cy="145" r="5" fill="white" opacity="0.65" />
+                        <circle cx="295" cy="100" r="5" fill="white" opacity="0.65" />
+                        <circle cx="365" cy="100" r="5" fill="white" opacity="0.65" />
+                        
+                        {/* Connections */}
+                        <line x1="330" y1="100" x2="305" y2="70" stroke="white" strokeWidth="2" opacity="0.6" />
+                        <line x1="330" y1="100" x2="355" y2="70" stroke="white" strokeWidth="2" opacity="0.6" />
+                        <line x1="330" y1="100" x2="305" y2="130" stroke="white" strokeWidth="2" opacity="0.6" />
+                        <line x1="330" y1="100" x2="355" y2="130" stroke="white" strokeWidth="2" opacity="0.6" />
+                        <line x1="330" y1="100" x2="330" y2="55" stroke="white" strokeWidth="2" opacity="0.6" />
+                        <line x1="330" y1="100" x2="330" y2="145" stroke="white" strokeWidth="2" opacity="0.6" />
+                        <line x1="330" y1="100" x2="295" y2="100" stroke="white" strokeWidth="2" opacity="0.6" />
+                        <line x1="330" y1="100" x2="365" y2="100" stroke="white" strokeWidth="2" opacity="0.6" />
+                        
+                        {/* Pulse rings showing active scaling */}
+                        <circle cx="330" cy="100" r="22" stroke="white" strokeWidth="1.5" fill="none" opacity="0.3" className="animate-pulse" />
+                        <circle cx="330" cy="100" r="32" stroke="white" strokeWidth="1" fill="none" opacity="0.2" className="animate-pulse" style={{ animationDelay: "0.5s" }} />
+                      </g>
                     </svg>
                   )}
 
                   {service.visualType === "shield" && (
-                    <svg className="absolute inset-0 w-full h-full opacity-30 group-hover:opacity-40 transition-opacity duration-300" viewBox="0 0 400 200">
-                      {/* Main shield - larger and more visible */}
-                      <path 
-                        d="M200 50 L238 74 L238 132 Q238 158 200 172 Q162 158 162 132 L162 74 Z" 
-                        stroke="white" 
-                        strokeWidth="3" 
-                        fill="white" 
-                        fillOpacity="0.15" 
-                        filter="drop-shadow(0 0 8px rgba(255,255,255,0.3))"
-                        className="animate-pulse" 
-                      />
+                    <svg className="absolute inset-0 w-full h-full opacity-35 group-hover:opacity-50 transition-opacity duration-500" viewBox="0 0 400 200">
+                      {/* Shield deflecting threats */}
                       
-                      {/* Checkmark - bolder */}
-                      <path 
-                        d="M180 112 L196 128 L220 98" 
-                        stroke="white" 
-                        strokeWidth="4" 
-                        fill="none" 
-                        strokeLinecap="round" 
-                        strokeLinejoin="round"
-                        opacity="0.9"
-                      />
+                      {/* Main shield - larger and centered */}
+                      <g className="animate-pulse" style={{ animationDuration: "2s" }}>
+                        <path 
+                          d="M200 40 L245 68 L245 135 Q245 165 200 182 Q155 165 155 135 L155 68 Z" 
+                          stroke="white" 
+                          strokeWidth="3.5" 
+                          fill="white" 
+                          fillOpacity="0.18" 
+                          filter="drop-shadow(0 0 10px rgba(255,255,255,0.4))"
+                        />
+                        
+                        {/* Shield emblem - checkmark */}
+                        <path 
+                          d="M175 110 L193 128 L225 90" 
+                          stroke="white" 
+                          strokeWidth="5" 
+                          fill="none" 
+                          strokeLinecap="round" 
+                          strokeLinejoin="round"
+                          opacity="0.9"
+                        />
+                      </g>
                       
-                      {/* Floating particles around shield */}
-                      <circle cx="155" cy="85" r="3" fill="white" opacity="0.35" className="animate-pulse" />
-                      <circle cx="245" cy="90" r="2.5" fill="white" opacity="0.25" className="animate-pulse" style={{ animationDelay: "0.3s" }} />
-                      <circle cx="165" cy="145" r="3.5" fill="white" opacity="0.4" className="animate-pulse" style={{ animationDelay: "0.6s" }} />
-                      <circle cx="235" cy="150" r="2" fill="white" opacity="0.2" className="animate-pulse" style={{ animationDelay: "0.9s" }} />
-                      <circle cx="148" cy="115" r="2.5" fill="white" opacity="0.3" className="animate-pulse" style={{ animationDelay: "1.2s" }} />
-                      <circle cx="252" cy="120" r="3" fill="white" opacity="0.35" className="animate-pulse" style={{ animationDelay: "1.5s" }} />
-                      <circle cx="170" cy="70" r="2" fill="white" opacity="0.25" className="animate-pulse" style={{ animationDelay: "1.8s" }} />
-                      <circle cx="230" cy="65" r="2.5" fill="white" opacity="0.3" className="animate-pulse" style={{ animationDelay: "2.1s" }} />
-                      <circle cx="160" cy="160" r="2.5" fill="white" opacity="0.28" className="animate-pulse" style={{ animationDelay: "2.4s" }} />
-                      <circle cx="240" cy="165" r="3" fill="white" opacity="0.32" className="animate-pulse" style={{ animationDelay: "2.7s" }} />
+                      {/* Threats coming from left (represented as dangerous symbols) */}
+                      <g className="animate-pulse" opacity="0.5" style={{ animationDelay: "0.3s" }}>
+                        {/* Spam/malicious content */}
+                        <path d="M 40,80 L 50,90 M 50,80 L 40,90" stroke="#ef4444" strokeWidth="3" opacity="0.6" strokeLinecap="round" />
+                        <circle cx="45" cy="85" r="12" stroke="#ef4444" strokeWidth="2" fill="none" opacity="0.5" />
+                      </g>
+                      
+                      <g className="animate-pulse" opacity="0.5" style={{ animationDelay: "0.6s" }}>
+                        <path d="M 70,130 L 80,140 M 80,130 L 70,140" stroke="#ef4444" strokeWidth="3" opacity="0.6" strokeLinecap="round" />
+                        <circle cx="75" cy="135" r="12" stroke="#ef4444" strokeWidth="2" fill="none" opacity="0.5" />
+                      </g>
+                      
+                      <g className="animate-pulse" opacity="0.5" style={{ animationDelay: "0.9s" }}>
+                        <path d="M 50,50 L 60,60 M 60,50 L 50,60" stroke="#ef4444" strokeWidth="3" opacity="0.6" strokeLinecap="round" />
+                        <circle cx="55" cy="55" r="12" stroke="#ef4444" strokeWidth="2" fill="none" opacity="0.5" />
+                      </g>
+                      
+                      {/* Deflection arrows showing threats being blocked */}
+                      <path d="M 90,85 Q 120,75 130,50" stroke="white" strokeWidth="2" opacity="0.4" fill="none" strokeDasharray="4,4" className="animate-pulse" style={{ animationDelay: "0.4s" }} />
+                      <path d="M 105,135 Q 125,140 135,160" stroke="white" strokeWidth="2" opacity="0.4" fill="none" strokeDasharray="4,4" className="animate-pulse" style={{ animationDelay: "0.7s" }} />
+                      
+                      {/* Safe zone indicator on the right */}
+                      <g opacity="0.45" className="animate-pulse" style={{ animationDelay: "1.2s" }}>
+                        <text x="300" y="90" fill="white" fontSize="16" fontWeight="bold" opacity="0.7">SAFE</text>
+                        <rect x="280" y="70" width="80" height="35" stroke="white" strokeWidth="2" fill="none" rx="5" opacity="0.5" />
+                        <circle cx="340" cy="60" r="3" fill="#10b981" opacity="0.8" />
+                        <circle cx="350" cy="60" r="3" fill="#10b981" opacity="0.8" />
+                        <circle cx="360" cy="60" r="3" fill="#10b981" opacity="0.8" />
+                      </g>
+                      
+                      {/* 24/7 monitoring indicator */}
+                      <g opacity="0.4" className="animate-pulse" style={{ animationDelay: "1.5s" }}>
+                        <circle cx="330" cy="140" r="15" stroke="white" strokeWidth="2" fill="none" />
+                        <circle cx="330" cy="140" r="3" fill="white" />
+                        <line x1="330" y1="140" x2="330" y2="130" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                        <line x1="330" y1="140" x2="338" y2="140" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                      </g>
                     </svg>
                   )}
 
                   {service.visualType === "insights" && (
-                    <svg className="absolute inset-0 w-full h-full opacity-30 group-hover:opacity-40 transition-opacity duration-300" viewBox="0 0 400 200">
-                      {/* Outer compass ring */}
-                      <circle cx="200" cy="100" r="50" stroke="white" strokeWidth="2" fill="none" opacity="0.3" className="animate-pulse" />
+                    <svg className="absolute inset-0 w-full h-full opacity-40 group-hover:opacity-55 transition-opacity duration-500" viewBox="0 0 400 200">
+                      {/* User personas providing insights */}
                       
-                      {/* Center focal point */}
-                      <circle cx="200" cy="100" r="9" fill="white" opacity="0.8" />
+                      {/* Three user personas (human silhouettes) */}
+                      <g opacity="0.45" className="animate-pulse">
+                        {/* User 1 */}
+                        <circle cx="80" cy="80" r="18" fill="white" opacity="0.3" />
+                        <path d="M 60,110 Q 80,95 100,110 L 100,130 L 60,130 Z" fill="white" opacity="0.3" />
+                        {/* Thought bubble */}
+                        <circle cx="95" cy="60" r="8" fill="white" opacity="0.25" />
+                        <circle cx="105" cy="52" r="5" fill="white" opacity="0.2" />
+                        <text x="95" y="64" fill="white" fontSize="10" textAnchor="middle" opacity="0.5">💡</text>
+                      </g>
                       
-                      {/* 8 radiating lines (compass points) with nodes */}
-                      <path d="M200 100 L200 50" stroke="white" strokeWidth="2" opacity="0.4" className="animate-pulse" style={{ animationDelay: "0s" }} />
-                      <circle cx="200" cy="50" r="5" fill="white" opacity="0.5" />
+                      <g opacity="0.5" className="animate-pulse" style={{ animationDelay: "0.4s" }}>
+                        {/* User 2 */}
+                        <circle cx="200" cy="75" r="18" fill="white" opacity="0.35" />
+                        <path d="M 180,105 Q 200,90 220,105 L 220,125 L 180,125 Z" fill="white" opacity="0.35" />
+                        {/* Thought bubble */}
+                        <circle cx="215" cy="55" r="8" fill="white" opacity="0.3" />
+                        <circle cx="225" cy="47" r="5" fill="white" opacity="0.25" />
+                        <text x="215" y="59" fill="white" fontSize="10" textAnchor="middle" opacity="0.6">💡</text>
+                      </g>
                       
-                      <path d="M200 100 L237 63" stroke="white" strokeWidth="2" opacity="0.4" className="animate-pulse" style={{ animationDelay: "0.2s" }} />
-                      <circle cx="237" cy="63" r="5" fill="white" opacity="0.5" />
+                      <g opacity="0.45" className="animate-pulse" style={{ animationDelay: "0.8s" }}>
+                        {/* User 3 */}
+                        <circle cx="320" cy="80" r="18" fill="white" opacity="0.3" />
+                        <path d="M 300,110 Q 320,95 340,110 L 340,130 L 300,130 Z" fill="white" opacity="0.3" />
+                        {/* Thought bubble */}
+                        <circle cx="305" cy="60" r="8" fill="white" opacity="0.25" />
+                        <circle cx="295" cy="52" r="5" fill="white" opacity="0.2" />
+                        <text x="305" y="64" fill="white" fontSize="10" textAnchor="middle" opacity="0.5">💡</text>
+                      </g>
                       
-                      <path d="M200 100 L250 100" stroke="white" strokeWidth="2" opacity="0.4" className="animate-pulse" style={{ animationDelay: "0.4s" }} />
-                      <circle cx="250" cy="100" r="5" fill="white" opacity="0.5" />
+                      {/* Data points/insights flowing to center */}
+                      <g opacity="0.4">
+                        <circle cx="80" cy="140" r="3" fill="white" className="animate-pulse" />
+                        <circle cx="120" cy="150" r="3" fill="white" className="animate-pulse" style={{ animationDelay: "0.2s" }} />
+                        <circle cx="160" cy="155" r="3" fill="white" className="animate-pulse" style={{ animationDelay: "0.4s" }} />
+                        <circle cx="200" cy="150" r="3" fill="white" className="animate-pulse" style={{ animationDelay: "0.6s" }} />
+                        <circle cx="240" cy="155" r="3" fill="white" className="animate-pulse" style={{ animationDelay: "0.8s" }} />
+                        <circle cx="280" cy="150" r="3" fill="white" className="animate-pulse" style={{ animationDelay: "1s" }} />
+                        <circle cx="320" cy="140" r="3" fill="white" className="animate-pulse" style={{ animationDelay: "1.2s" }} />
+                        
+                        {/* Lines connecting insights */}
+                        <path d="M 80,140 Q 140,165 200,165" stroke="white" strokeWidth="1.5" opacity="0.3" fill="none" strokeDasharray="3,3" />
+                        <path d="M 200,165 Q 260,165 320,140" stroke="white" strokeWidth="1.5" opacity="0.3" fill="none" strokeDasharray="3,3" />
+                      </g>
                       
-                      <path d="M200 100 L237 137" stroke="white" strokeWidth="2" opacity="0.4" className="animate-pulse" style={{ animationDelay: "0.6s" }} />
-                      <circle cx="237" cy="137" r="5" fill="white" opacity="0.5" />
+                      {/* Central insight/lightbulb moment */}
+                      <g className="animate-pulse" style={{ animationDelay: "1.5s", animationDuration: "2s" }}>
+                        <circle cx="200" cy="165" r="15" fill="white" opacity="0.15" />
+                        <circle cx="200" cy="165" r="10" fill="white" opacity="0.25" />
+                        
+                        {/* Star/sparkle showing insight */}
+                        <path d="M 200,155 L 202,162 L 209,162 L 204,167 L 206,174 L 200,170 L 194,174 L 196,167 L 191,162 L 198,162 Z" 
+                          fill="white" opacity="0.6" />
+                      </g>
                       
-                      <path d="M200 100 L200 150" stroke="white" strokeWidth="2" opacity="0.4" className="animate-pulse" style={{ animationDelay: "0.8s" }} />
-                      <circle cx="200" cy="150" r="5" fill="white" opacity="0.5" />
-                      
-                      <path d="M200 100 L163 137" stroke="white" strokeWidth="2" opacity="0.4" className="animate-pulse" style={{ animationDelay: "1s" }} />
-                      <circle cx="163" cy="137" r="5" fill="white" opacity="0.5" />
-                      
-                      <path d="M200 100 L150 100" stroke="white" strokeWidth="2" opacity="0.4" className="animate-pulse" style={{ animationDelay: "1.2s" }} />
-                      <circle cx="150" cy="100" r="5" fill="white" opacity="0.5" />
-                      
-                      <path d="M200 100 L163 63" stroke="white" strokeWidth="2" opacity="0.4" className="animate-pulse" style={{ animationDelay: "1.4s" }} />
-                      <circle cx="163" cy="63" r="5" fill="white" opacity="0.5" />
-                      
-                      {/* Human profile silhouettes in lower area */}
-                      <path d="M95 165 Q90 160 90 155 L90 150 Q90 145 95 140 L100 140 Q105 145 105 150 L105 160 Q103 163 100 165 Z" 
-                        fill="white" opacity="0.22" />
-                      <path d="M295 170 Q290 165 290 160 L290 155 Q290 150 295 145 L300 145 Q305 150 305 155 L305 165 Q303 168 300 170 Z" 
-                        fill="white" opacity="0.25" />
-                      <path d="M190 175 Q185 170 185 165 L185 160 Q185 155 190 150 L195 150 Q200 155 200 160 L200 170 Q198 173 195 175 Z" 
-                        fill="white" opacity="0.2" />
+                      {/* Graph/chart showing validated insights */}
+                      <g opacity="0.35" className="animate-pulse" style={{ animationDelay: "2s" }}>
+                        <line x1="30" y1="190" x2="370" y2="190" stroke="white" strokeWidth="1.5" />
+                        <line x1="30" y1="150" x2="30" y2="190" stroke="white" strokeWidth="1.5" />
+                        
+                        {/* Bar chart */}
+                        <rect x="60" y="175" width="25" height="15" fill="white" opacity="0.4" />
+                        <rect x="140" y="165" width="25" height="25" fill="white" opacity="0.5" />
+                        <rect x="220" y="170" width="25" height="20" fill="white" opacity="0.45" />
+                        <rect x="300" y="160" width="25" height="30" fill="white" opacity="0.55" />
+                      </g>
                     </svg>
                   )}
                 </div>
