@@ -1,16 +1,10 @@
-import { Moon, Sun, Menu, Home, Wrench, Route, Award } from "lucide-react";
+import { Menu, Home, Wrench, Route, Award } from "lucide-react";
 import { useState } from "react";
 import { Button } from "./ui/button";
-import { useTheme } from "next-themes";
 import { TubelightNavbar } from "./ui/tubelight-navbar";
 
 export const Header = () => {
-  const { theme, setTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleDarkMode = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  };
 
   const navItems = [
     { name: "Services", url: "#services", icon: Wrench },
@@ -48,14 +42,6 @@ export const Header = () => {
               </span>
             </a>
 
-            {/* Dark Mode Toggle */}
-            <button
-              onClick={toggleDarkMode}
-              className="p-2 rounded-full hover:bg-muted transition-all duration-300 transform hover:rotate-180"
-              aria-label="Toggle dark mode"
-            >
-              {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </button>
 
             {/* CTA Button */}
             <Button

@@ -15,6 +15,7 @@ const App = () => (
       attribute="class"
       defaultTheme="dark"
       enableSystem={false}
+      forcedTheme="dark"
       disableTransitionOnChange={false}
     >
       <TooltipProvider>
