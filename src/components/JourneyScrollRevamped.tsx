@@ -1,8 +1,6 @@
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import { Handshake, Users, Zap, Shield, Package } from "lucide-react";
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
-import { JourneySection } from "@/components/JourneySection";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 const journeySteps = [
@@ -49,18 +47,6 @@ const journeySteps = [
 ];
 
 export const JourneyScrollRevamped = () => {
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setPrefersReducedMotion(mediaQuery.matches);
-  }, []);
-
-  // If reduced motion is preferred, render simpler version
-  if (prefersReducedMotion) {
-    return <JourneySection />;
-  }
-
   return (
     <section id="process" className="py-8 sm:py-12 md:py-16 bg-background">
       <ContainerScroll
