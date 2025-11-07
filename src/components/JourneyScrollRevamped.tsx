@@ -98,6 +98,7 @@ export const JourneyScrollRevamped = () => {
                     inactiveZone={0.15}
                     borderWidth={2}
                     movementDuration={2.3}
+                    className="z-10"
                   />
                   <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-start">
                     {/* Number Badge */}

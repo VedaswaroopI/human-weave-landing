@@ -128,7 +128,7 @@ export const ServicesSection = () => {
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <div className="relative h-full glassmorphic bg-card border border-border rounded-3xl overflow-hidden group hover-lift">
+                <div className="relative h-full glassmorphic bg-card border border-border rounded-3xl overflow-visible group hover-lift">
                   <GlowingEffect
                     spread={45}
                     glow={true}
@@ -137,6 +137,7 @@ export const ServicesSection = () => {
                     inactiveZone={0.1}
                     borderWidth={2.5}
                     movementDuration={2}
+                    className="z-20"
                   />
                   {/* Top Visual Section - 40% */}
                   <div className={`h-48 bg-gradient-to-br ${service.color} relative overflow-hidden`}>
