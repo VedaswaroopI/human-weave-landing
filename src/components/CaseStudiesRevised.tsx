@@ -137,11 +137,11 @@ export const CaseStudiesRevised = () => {
           </h2>
         </div>
 
-        <div className="relative group py-4">
+        <div className="relative group">
           <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-background to-transparent pointer-events-none z-10" />
           <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
 
-          <div ref={scrollContainerRef} className="flex overflow-x-auto gap-6 snap-x snap-mandatory scrollbar-hide overflow-y-visible">
+          <div ref={scrollContainerRef} className="flex overflow-x-auto gap-6 py-8 snap-x snap-mandatory scrollbar-hide">
             {allCases.map((caseStudy, index) => {
               const Icon = caseStudy.icon;
               const isVisible = visibleCards.includes(index);
