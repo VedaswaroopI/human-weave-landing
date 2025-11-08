@@ -23,7 +23,8 @@ function createBeam(width: number, height: number, layer: number): Beam {
   const angle = -35 + Math.random() * 10;
   const baseSpeed = 0.2 + layer * 0.2;
   // Use our theme's primary color: hsl(237, 75%, 70%)
-  const baseOpacity = 0.08 + layer * 0.05;
+  // Reduced opacity by 20%
+  const baseOpacity = (0.08 + layer * 0.05) * 0.8;
   const baseWidth = 10 + layer * 5;
   return {
     x: Math.random() * width,
@@ -32,7 +33,7 @@ function createBeam(width: number, height: number, layer: number): Beam {
     length: height * 2.5,
     angle,
     speed: baseSpeed + Math.random() * 0.2,
-    opacity: baseOpacity + Math.random() * 0.1,
+    opacity: baseOpacity + Math.random() * 0.08,
     pulse: Math.random() * Math.PI * 2,
     pulseSpeed: 0.01 + Math.random() * 0.015,
     layer,
