@@ -3,6 +3,7 @@ import { SolutionHero } from "@/components/SolutionHero";
 import { CharacterIllustration } from "@/components/CharacterIllustration";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { TrustSection } from "@/components/TrustSection";
+import { Meteors } from "@/components/ui/meteors";
 import {
   ShieldCheck,
   X,
@@ -38,10 +39,10 @@ const DifferentiatorSection = () => (
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-        {/* The Old Way */}
-        <div className="glassmorphic bg-destructive/5 border-destructive/20 p-8 rounded-2xl border">
-          <h3 className="text-2xl font-bold mb-6 text-destructive">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        {/* The Old Way - Crowd Platforms */}
+        <div className="glassmorphic bg-muted/30 border-destructive/30 p-8 rounded-2xl border hover:border-destructive/40 transition-all duration-300 opacity-80 hover:opacity-90">
+          <h3 className="text-2xl font-bold mb-6 text-destructive/90">
             Crowd Platforms
           </h3>
           <ul className="space-y-4">
@@ -93,58 +94,73 @@ const DifferentiatorSection = () => (
           </ul>
         </div>
 
-        {/* The UsergyAI Way */}
-        <div className="glassmorphic bg-accent/5 border-accent/20 p-8 rounded-2xl border">
-          <h3 className="text-2xl font-bold mb-6 text-accent">
-            UsergyAI Network
-          </h3>
-          <ul className="space-y-4">
-            <li className="flex items-start gap-3">
-              <CheckCircle className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="font-semibold text-foreground">Verified Experts (MDs, PhDs)</p>
-                <p className="text-sm text-muted-foreground">
-                  Board-certified professionals with domain credentials
-                </p>
+        {/* The UsergyAI Way - Superior Design with Meteors */}
+        <div className="relative glassmorphic bg-gradient-to-br from-secondary/10 via-primary/10 to-accent/10 border-secondary/40 p-8 rounded-2xl border-2 hover:border-secondary/60 transition-all duration-300 shadow-lg hover:shadow-secondary/20 hover:shadow-2xl overflow-hidden">
+          {/* Meteors Effect */}
+          <Meteors number={15} />
+          
+          {/* Gradient Glow Background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 via-transparent to-primary/5 rounded-2xl pointer-events-none" />
+          
+          {/* Content */}
+          <div className="relative z-10">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-secondary to-primary flex items-center justify-center">
+                <CheckCircle className="w-6 h-6 text-white" />
               </div>
-            </li>
-            <li className="flex items-start gap-3">
-              <CheckCircle className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="font-semibold text-foreground">Managed, Multi-Layer QA</p>
-                <p className="text-sm text-muted-foreground">
-                  Every project overseen by dedicated quality managers
-                </p>
-              </div>
-            </li>
-            <li className="flex items-start gap-3">
-              <CheckCircle className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="font-semibold text-foreground">99.5%+ Guaranteed Accuracy</p>
-                <p className="text-sm text-muted-foreground">
-                  SLA-backed quality metrics with financial guarantees
-                </p>
-              </div>
-            </li>
-            <li className="flex items-start gap-3">
-              <CheckCircle className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="font-semibold text-foreground">SOC 2 & HIPAA Secure</p>
-                <p className="text-sm text-muted-foreground">
-                  Enterprise-grade security with full audit trails
-                </p>
-              </div>
-            </li>
-            <li className="flex items-start gap-3">
-              <CheckCircle className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="font-semibold text-foreground">Deep Domain Context</p>
-                <p className="text-sm text-muted-foreground">
-                  Experts who understand the "why" behind your requirements
-                </p>
-              </div>
-            </li>
-          </ul>
+              <h3 className="text-2xl font-bold bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+                UsergyAI Network
+              </h3>
+            </div>
+            
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3 bg-background/40 p-3 rounded-lg backdrop-blur-sm">
+                <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-semibold text-foreground">Verified Experts (MDs, PhDs)</p>
+                  <p className="text-sm text-muted-foreground">
+                    Board-certified professionals with domain credentials
+                  </p>
+                </div>
+              </li>
+              <li className="flex items-start gap-3 bg-background/40 p-3 rounded-lg backdrop-blur-sm">
+                <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-semibold text-foreground">Managed, Multi-Layer QA</p>
+                  <p className="text-sm text-muted-foreground">
+                    Every project overseen by dedicated quality managers
+                  </p>
+                </div>
+              </li>
+              <li className="flex items-start gap-3 bg-background/40 p-3 rounded-lg backdrop-blur-sm">
+                <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-semibold text-foreground">99.5%+ Guaranteed Accuracy</p>
+                  <p className="text-sm text-muted-foreground">
+                    SLA-backed quality metrics with financial guarantees
+                  </p>
+                </div>
+              </li>
+              <li className="flex items-start gap-3 bg-background/40 p-3 rounded-lg backdrop-blur-sm">
+                <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-semibold text-foreground">SOC 2 & HIPAA Secure</p>
+                  <p className="text-sm text-muted-foreground">
+                    Enterprise-grade security with full audit trails
+                  </p>
+                </div>
+              </li>
+              <li className="flex items-start gap-3 bg-background/40 p-3 rounded-lg backdrop-blur-sm">
+                <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-semibold text-foreground">Deep Domain Context</p>
+                  <p className="text-sm text-muted-foreground">
+                    Experts who understand the "why" behind your requirements
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
