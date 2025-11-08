@@ -6,7 +6,7 @@ const services = [
   {
     badge: "DATA SERVICES",
     title: "Building AI That Thinks Like Humans",
-    description: "From medical imaging annotation by actual doctors to LLM fine-tuning by linguists, we match your project with genuine experts—not crowd workers.",
+    description: "From medical imaging annotation by actual doctors to LLM fine-tuning by linguists, we match your project with genuine experts, not crowd workers.",
     color: "from-secondary to-secondary/70",
     visualType: "flow",
   },
@@ -27,7 +27,7 @@ const services = [
   {
     badge: "ENTERPRISE & BPO",
     title: "Scale Without the Growing Pains",
-    description: "From customer support to data management, we give you expert human capacity on demand—no hiring headaches, no overhead.",
+    description: "From customer support to data management, we give you expert human capacity on demand with no hiring headaches, no overhead.",
     color: "from-secondary via-primary to-accent",
     visualType: "network",
   },

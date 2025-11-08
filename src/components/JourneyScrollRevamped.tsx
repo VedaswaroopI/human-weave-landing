@@ -8,7 +8,7 @@ const journeySteps = [
     number: "01",
     icon: Handshake,
     title: "Discovery Call",
-    description: "We dive deep into your vision, challenges, and goals. No sales pitch—just understanding your data needs.",
+    description: "We dive deep into your vision, challenges, and goals. No sales pitch, just understanding your data needs.",
     time: "24-48 hours",
     gradient: "from-secondary to-primary"
   },
@@ -16,7 +16,7 @@ const journeySteps = [
     number: "02",
     icon: Users,
     title: "Expert Matching",
-    description: "Handpicked specialists from our 300K+ network. Medical annotators, linguists, or testers—perfectly matched.",
+    description: "Handpicked specialists from our 300K+ network. Medical annotators, linguists, or testers, perfectly matched.",
     time: "1-3 days",
     gradient: "from-primary to-accent"
   },
@@ -56,7 +56,7 @@ export const JourneyScrollRevamped = () => {
               Your Journey with <span className="gradient-text animate-gradient">UsergyAI</span>
             </h2>
             <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-              From first call to final delivery—experience precision at every step
+              From first call to final delivery: experience precision at every step
             </p>
           </div>
         }
