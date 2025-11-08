@@ -88,7 +88,7 @@ export const HeroWithSpline = () => {
             </motion.div>
 
             {/* Subheadline */}
-            <motion.p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl leading-relaxed" variants={prefersReducedMotion ? {} : item}>Expert-led data annotation, multilingual QA, localization, and global testing delivered with 99.5%+ accuracy and enterprise-grade security.</motion.p>
+            <motion.p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl leading-relaxed" variants={prefersReducedMotion ? {} : item}>Expert-led data annotation, multilingual QA, localization, and global testing delivered with 99.5%+ accuracy and enterprise-grade security. SOC 2, HIPAA, and ISO 27001 compliant.</motion.p>
 
             {/* CTAs */}
             <motion.div className="flex flex-col sm:flex-row gap-4 items-start pt-4" variants={prefersReducedMotion ? {} : item}>
