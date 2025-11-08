@@ -10,7 +10,7 @@ export const Header = () => {
   const navItems = [
     { name: "Solutions", url: "/solutions", icon: Wrench },
     { name: "How It Works", url: "#process", icon: Route },
-    { name: "Why Us", url: "#why-us", icon: Award },
+    { name: "Why Us", url: "/why-us", icon: Award },
     { name: "Case Studies", url: "#case-studies", icon: Home },
   ];
 
@@ -82,13 +82,13 @@ export const Header = () => {
             >
               How It Works
             </a>
-            <a
-              href="#why-us"
+            <Link
+              to="/why-us"
               className="block py-2 text-base font-medium hover:text-secondary transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               Why Us
-            </a>
+            </Link>
             <a
               href="#case-studies"
               className="block py-2 text-base font-medium hover:text-secondary transition-colors"

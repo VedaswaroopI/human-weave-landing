@@ -19,8 +19,35 @@ interface NavBarProps {
 
 export function TubelightNavbar({ items, className }: NavBarProps) {
   const location = useLocation()
-  const [activeTab, setActiveTab] = useState(items[0].name)
+  
+  // Determine initial active tab based on current route
+  const getInitialActiveTab = () => {
+    const currentItem = items.find(item => {
+      if (item.url.startsWith('/')) {
+        return location.pathname === item.url || location.pathname.startsWith(item.url + '/')
+      }
+      return false
+    })
+    return currentItem?.name || ''
+  }
+  
+  const [activeTab, setActiveTab] = useState(getInitialActiveTab())
   const [isMobile, setIsMobile] = useState(false)
+  
+  // Update active tab when route changes
+  useEffect(() => {
+    const currentItem = items.find(item => {
+      if (item.url.startsWith('/')) {
+        return location.pathname === item.url || location.pathname.startsWith(item.url + '/')
+      }
+      return false
+    })
+    if (currentItem) {
+      setActiveTab(currentItem.name)
+    } else {
+      setActiveTab('')
+    }
+  }, [location.pathname, items])
 
   useEffect(() => {
     const handleResize = () => {
