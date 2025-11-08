@@ -147,15 +147,17 @@ export const ServicesSection = () => {
           {/* Navigation Buttons */}
           <button
             onClick={scrollLeft}
+            aria-label="Scroll to previous service"
             className="absolute left-2 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-card/80 backdrop-blur border border-border hidden md:flex items-center justify-center opacity-0 group-hover:opacity-100 hover:scale-110 transition-all duration-300 z-20"
           >
-            <ChevronLeft className="w-5 h-5" />
+            <ChevronLeft className="w-5 h-5" aria-hidden="true" />
           </button>
           <button
             onClick={scrollRight}
+            aria-label="Scroll to next service"
             className="absolute right-2 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-card/80 backdrop-blur border border-border hidden md:flex items-center justify-center opacity-0 group-hover:opacity-100 hover:scale-110 transition-all duration-300 z-20"
           >
-            <ChevronRight className="w-5 h-5" />
+            <ChevronRight className="w-5 h-5" aria-hidden="true" />
           </button>
 
           {/* Scroll Container */}
@@ -288,8 +290,8 @@ export const ServicesSection = () => {
                   </p>
 
                   {/* Link */}
-                  <button className="flex items-center gap-2 text-base font-semibold text-secondary group-hover:gap-3 transition-all duration-300 pt-2">
-                    Explore Services <ArrowRight className="w-4 h-4" />
+                  <button aria-label={`Explore ${service.badge} services`} className="flex items-center gap-2 text-base font-semibold text-secondary group-hover:gap-3 transition-all duration-300 pt-2">
+                    Explore Services <ArrowRight className="w-4 h-4" aria-hidden="true" />
                   </button>
                 </div>
                 </div>
@@ -316,8 +318,8 @@ export const ServicesSection = () => {
                   }
                 }}
                 aria-label={`Go to service ${i + 1}`}
-                className={`h-1 rounded-full transition-all duration-300 cursor-pointer hover:scale-110 ${
-                  i === currentIndex ? "bg-secondary w-10" : "bg-border w-8"
+                className={`h-2.5 w-2.5 md:h-1 md:w-8 rounded-full transition-all duration-300 cursor-pointer hover:scale-110 touch-manipulation ${
+                  i === currentIndex ? "bg-secondary md:w-10" : "bg-border"
                 }`}
               />
             ))}

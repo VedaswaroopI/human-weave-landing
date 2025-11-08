@@ -9,6 +9,7 @@ import { OptimizedSplineScene } from "./OptimizedSplineScene";
 import { useSplinePreload } from "@/hooks/use-spline-preload";
 import { useEffect, useState } from "react";
 import { motion, Variants } from "framer-motion";
+
 const container: Variants = {
   hidden: {
     opacity: 0
@@ -21,6 +22,7 @@ const container: Variants = {
     }
   }
 };
+
 const item: Variants = {
   hidden: {
     opacity: 0,
@@ -35,6 +37,7 @@ const item: Variants = {
     }
   }
 };
+
 const scrollToNextSection = () => {
   const nextSection = document.querySelector('main > section:nth-child(2)');
   if (nextSection) {
@@ -43,10 +46,12 @@ const scrollToNextSection = () => {
     });
   }
 };
+
 export const HeroWithSpline = () => {
   // Preload Spline scene on component mount
   useSplinePreload('https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode');
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
   useEffect(() => {
     // Check for reduced motion preference
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -55,12 +60,13 @@ export const HeroWithSpline = () => {
     mediaQuery.addEventListener('change', handler);
     return () => mediaQuery.removeEventListener('change', handler);
   }, []);
-  return <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-20" role="banner" aria-label="Hero section">
+
+  return <section className="relative min-h-[70vh] md:min-h-[85vh] flex items-center justify-center overflow-hidden pt-16 md:pt-20" role="banner" aria-label="Hero section">
       {/* Background gradient that adapts to theme */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20" aria-hidden="true" />
       
       {/* Main Hero Card */}
-      <Card className="relative w-full min-h-[calc(85vh-80px)] bg-background/80 dark:bg-background/95 backdrop-blur-xl border-border/40 shadow-2xl mx-4 sm:mx-6">
+      <Card className="relative w-full min-h-[calc(70vh-64px)] md:min-h-[calc(85vh-80px)] bg-background/80 dark:bg-background/95 backdrop-blur-xl border-border/40 shadow-2xl mx-4 sm:mx-6">
         {!prefersReducedMotion && <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" size={300} />}
         
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 h-full items-center p-6 md:p-12 lg:p-16">
@@ -81,14 +87,16 @@ export const HeroWithSpline = () => {
 
             {/* Main Headline */}
             <motion.div className="space-y-3 sm:space-y-4" variants={prefersReducedMotion ? {} : item}>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
                 The Humans Behind<br />
                 <span className="gradient-text animate-gradient">Your AI Breakthrough</span>
               </h1>
             </motion.div>
 
             {/* Subheadline */}
-            <motion.p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl leading-relaxed" variants={prefersReducedMotion ? {} : item}>Expert-led data annotation, multilingual QA, localization, and global testing delivered with 99.5%+ accuracy and enterprise-grade security. SOC 2, HIPAA, and ISO 27001 compliant.</motion.p>
+            <motion.p className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground max-w-3xl leading-relaxed" variants={prefersReducedMotion ? {} : item}>
+              Expert-led data annotation, multilingual QA, localization, and global testing delivered with 99.5%+ accuracy and enterprise-grade security. SOC 2, HIPAA, and ISO 27001 compliant.
+            </motion.p>
 
             {/* CTAs */}
             <motion.div className="flex flex-col sm:flex-row gap-4 items-start pt-4" variants={prefersReducedMotion ? {} : item}>
