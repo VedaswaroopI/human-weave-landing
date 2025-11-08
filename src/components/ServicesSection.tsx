@@ -1,5 +1,6 @@
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 const services = [
@@ -9,6 +10,7 @@ const services = [
     description: "From medical imaging annotation by actual doctors to LLM fine-tuning by linguists, we match your project with genuine experts, not crowd workers.",
     color: "from-secondary to-secondary/70",
     visualType: "flow",
+    url: "/solutions/data-services",
   },
   {
     badge: "QUALITY ASSURANCE",
@@ -16,6 +18,7 @@ const services = [
     description: "Real humans on real devices in real-world conditions. From bug hunting to AI model validation, we ensure your product works flawlessly everywhere.",
     color: "from-primary to-primary/70",
     visualType: "grid",
+    url: "/solutions/quality-assurance",
   },
   {
     badge: "MULTILINGUAL",
@@ -23,6 +26,7 @@ const services = [
     description: "Native speakers who understand context, not just words. Translation and localization in 150+ languages with zero cultural mishaps.",
     color: "from-accent to-accent/70",
     visualType: "speech",
+    url: "/solutions/multilingual",
   },
   {
     badge: "ENTERPRISE & BPO",
@@ -30,6 +34,7 @@ const services = [
     description: "From customer support to data management, we give you expert human capacity on demand with no hiring headaches, no overhead.",
     color: "from-secondary via-primary to-accent",
     visualType: "network",
+    url: "/solutions/enterprise-bpo",
   },
   {
     badge: "CONTENT MODERATION",
@@ -37,6 +42,7 @@ const services = [
     description: "Human moderators trained in cultural nuance review content 24/7, ensuring your community stays healthy without over-moderation.",
     color: "from-secondary to-accent",
     visualType: "shield",
+    url: "/solutions/content-moderation",
   },
   {
     badge: "RESEARCH & INSIGHTS",
@@ -44,6 +50,7 @@ const services = [
     description: "Real users provide feedback, test concepts, and validate ideas before you invest in development. Make data-driven decisions with confidence.",
     color: "from-primary to-secondary",
     visualType: "insights",
+    url: "/solutions/research-insights",
   },
 ];
 
@@ -290,9 +297,13 @@ export const ServicesSection = () => {
                   </p>
 
                   {/* Link */}
-                  <button aria-label={`Explore ${service.badge} services`} className="flex items-center gap-2 text-base font-semibold text-secondary group-hover:gap-3 transition-all duration-300 pt-2">
+                  <Link 
+                    to={service.url}
+                    aria-label={`Explore ${service.badge} services`} 
+                    className="flex items-center gap-2 text-base font-semibold text-secondary group-hover:gap-3 transition-all duration-300 pt-2"
+                  >
                     Explore Services <ArrowRight className="w-4 h-4" aria-hidden="true" />
-                  </button>
+                  </Link>
                 </div>
                 </div>
               </div>
