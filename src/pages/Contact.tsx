@@ -55,8 +55,7 @@ const Contact = () => {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
     
-    // NOTE TO USER: Replace this URL with your own from formspree.io
-    const FORM_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID"; 
+    const FORM_ENDPOINT = "https://formspree.io/f/xblqrklj";
 
     try {
       const response = await fetch(FORM_ENDPOINT, {
@@ -169,7 +168,7 @@ const Contact = () => {
                     <form 
                       onSubmit={form.handleSubmit(onSubmit)} 
                       className="space-y-6"
-                      action="https://formspree.io/f/YOUR_FORM_ID" // Placeholder
+                      action="https://formspree.io/f/xblqrklj"
                       method="POST"
                     >
                       <FormField

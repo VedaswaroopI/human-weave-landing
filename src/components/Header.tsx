@@ -73,9 +73,9 @@ export const Header = () => {
               asChild
               className="hidden sm:inline-flex bg-gradient-to-r from-secondary to-secondary/90 hover:from-secondary/90 hover:to-secondary hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
             >
-              <a href="https://calendly.com/swaroop-usergy/30min" target="_blank" rel="noopener noreferrer">
-                Talk to Us
-              </a>
+              <Link to="/contact">
+                Contact Us
+              </Link>
             </ParticleButton>
 
             {/* Mobile Menu */}
@@ -131,9 +131,9 @@ export const Header = () => {
               </span>
             </a>
             <ParticleButton asChild className="w-full mt-2 bg-gradient-to-r from-secondary to-secondary/90">
-              <a href="https://calendly.com/swaroop-usergy/30min" target="_blank" rel="noopener noreferrer">
-                Talk to Us
-              </a>
+              <Link to="/contact">
+                Contact Us
+              </Link>
             </ParticleButton>
           </nav>
         )}
