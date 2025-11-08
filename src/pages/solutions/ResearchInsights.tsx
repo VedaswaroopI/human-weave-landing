@@ -1,16 +1,27 @@
 import { PageLayout } from "@/components/layouts/PageLayout";
+import { SolutionHero } from "@/components/SolutionHero";
 
 const ResearchInsights = () => {
   return (
     <PageLayout>
-      <section className="container mx-auto px-4 sm:px-6 py-16 sm:py-24 text-center">
-        <h1 className="text-4xl sm:text-5xl font-bold gradient-text animate-gradient">
-          Research & Insights
-        </h1>
-        <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-          Content for Research & Insights will be built here.
-        </p>
-      </section>
+      <SolutionHero
+        badge="Research & Insights"
+        title={
+          <>
+            Data-Driven Decisions.
+            <br />
+            <span className="gradient-text animate-gradient">Human-Powered Insights.</span>
+          </>
+        }
+        subtitle="From market research to user studies, we collect, analyze, and deliver the actionable insights that fuel your strategic decisions."
+      />
+      
+      {/* Placeholder for future content */}
+      <div className="container mx-auto px-4 sm:px-6 py-16 sm:py-24 text-center">
+        <h2 className="text-3xl font-bold text-muted-foreground">
+          More Content Coming Soon...
+        </h2>
+      </div>
     </PageLayout>
   );
 };

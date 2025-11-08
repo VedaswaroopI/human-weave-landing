@@ -1,7 +1,7 @@
 // src/pages/solutions/DataServices.tsx
 
 import { PageLayout } from "@/components/layouts/PageLayout";
-import { ParticleButton } from "@/components/ui/particle-button";
+import { SolutionHero } from "@/components/SolutionHero";
 import {
   Tabs,
   TabsContent,
@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/tabs";
 import { CharacterIllustration } from "@/components/CharacterIllustration";
 import {
-  ArrowRight,
   CheckCircle,
   ShieldCheck,
   Video,
@@ -20,38 +19,17 @@ import {
 
 // Section 1: Hero
 const HeroSection = () => (
-  <section className="container mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-24">
-    <div className="max-w-4xl mx-auto text-center space-y-6">
-      <div className="inline-block px-4 py-1.5 rounded-full bg-secondary/10 text-secondary text-sm font-bold tracking-wider uppercase mb-4">
-        AI & Data Services
-      </div>
-      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+  <SolutionHero
+    badge="AI & Data Services"
+    title={
+      <>
         Data That Doesn't Just Inform.
         <br />
         <span className="gradient-text animate-gradient">It Understands.</span>
-      </h1>
-      <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-        Your AI model is only as smart as the data it learns from. We provide
-        high-quality, 99.5%+ accurate, and context-rich data annotated by
-        genuine domain experts, not crowd workers.
-      </p>
-      <div className="pt-4">
-        <ParticleButton
-          asChild
-          size="lg"
-          className="h-11 sm:h-12 px-6 sm:px-8 text-sm sm:text-base bg-gradient-to-r from-secondary to-secondary/90 hover:from-secondary/90 hover:to-secondary hover:shadow-lg hover:-translate-y-0.5"
-        >
-          <a
-            href="https://calendly.com/swaroop-usergy/30min"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Start Your Project <ArrowRight className="ml-2 w-4 h-4" />
-          </a>
-        </ParticleButton>
-      </div>
-    </div>
-  </section>
+      </>
+    }
+    subtitle="Your AI model is only as smart as the data it learns from. We provide high-quality, 99.5%+ accurate, and context-rich data annotated by genuine domain experts, not crowd workers."
+  />
 );
 
 // Section 2: The Problem (The "Why")
