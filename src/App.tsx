@@ -10,6 +10,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import WhyUs from "./pages/WhyUs";
 import CaseStudies from "./pages/CaseStudies";
+import Contact from "./pages/Contact";
 import SolutionsLanding from "./pages/SolutionsLanding";
 import DataServices from "./pages/solutions/DataServices";
 import QualityAssurance from "./pages/solutions/QualityAssurance";
@@ -39,6 +40,7 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/why-us" element={<WhyUs />} />
               <Route path="/case-studies" element={<CaseStudies />} />
+              <Route path="/contact" element={<Contact />} />
               
               {/* SOLUTIONS PAGES */}
               <Route path="/solutions" element={<SolutionsLanding />} />
