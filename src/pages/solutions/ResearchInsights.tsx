@@ -65,7 +65,7 @@ const ProblemSection = () => (
           <p className="text-muted-foreground leading-relaxed">
             Your product roadmap is driven by the opinion of the highest-paid
             person in the room or a single, angry enterprise client, not by
-            *what most* of your users actually need.
+            what most of your users actually need.
           </p>
         </div>
         <div className="glassmorphic bg-card/50 p-6 rounded-2xl border border-border">
@@ -258,7 +258,7 @@ const ExpertSection = () => (
           />
           <h3 className="text-xl font-bold mt-4">The Niche B2B Persona</h3>
           <p className="text-muted-foreground leading-relaxed mt-2 max-w-xs">
-            **Rachel** sourced and interviewed 20 "Series A FinTech CFOs" for a
+            Rachel sourced and interviewed 20 "Series A FinTech CFOs" for a
             new budgeting tool, uncovering insights that generic testers
             could never provide.
           </p>
@@ -271,7 +271,7 @@ const ExpertSection = () => (
           />
           <h3 className="text-xl font-bold mt-4">The Certified Expert</h3>
           <p className="text-muted-foreground leading-relaxed mt-2 max-w-xs">
-            **Dr. Dan** led a panel of 30 "board-certified radiologists" to
+            Dr. Dan led a panel of 30 "board-certified radiologists" to
             test a new AI diagnostic tool, providing expert validation that
             was critical for the client's FDA submission.
           </p>
@@ -284,7 +284,7 @@ const ExpertSection = () => (
           />
           <h3 className="text-xl font-bold mt-4">The Real-World Consumer</h3>
           <p className="text-muted-foreground leading-relaxed mt-2 max-w-xs">
-            **Tom** and 50 other parents ran a 2-week diary study for a new
+            Tom and 50 other parents ran a 2-week diary study for a new
             smart-home device, finding 3 critical usability flaws that only
             emerged in a chaotic family environment.
           </p>
@@ -328,7 +328,7 @@ const ProcessSection = () => (
             <p className="text-muted-foreground leading-relaxed">
               Our expert researchers run the studies, moderate the sessions,
               and analyze the results. We know which questions to ask and how
-              to dig for the "why."
+              to dig for the why.
             </p>
           </div>
         </div>
@@ -337,7 +337,7 @@ const ProcessSection = () => (
           <div>
             <h3 className="text-xl font-bold mb-1">3. We Deliver Insights</h3>
             <p className="text-muted-foreground leading-relaxed">
-              You receive a final, actionable report—not a data dump. We
+              You receive a final, actionable report, not a data dump. We
               deliver key themes, video-clipped "a-ha" moments, and clear
               recommendations to fix your product.
             </p>

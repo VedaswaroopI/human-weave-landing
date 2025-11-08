@@ -46,7 +46,7 @@ const ProblemSection = () => (
         </h2>
         <p className="text-lg text-muted-foreground mt-4">
           Automated scripts are fast, but they have no patience, no cultural
-          context, and can't tell you how a feature *feels*.
+          context, and can't tell you how a feature feels.
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -246,7 +246,7 @@ const ExpertSection = () => (
         <p className="text-lg text-muted-foreground mt-4">
           Our network is not just "testers." They are gamers, parents,
           bankers, and students from 150+ countries. We match your product
-          with its *exact* target audience.
+          with its exact target audience.
         </p>
       </div>
 
@@ -259,7 +259,7 @@ const ExpertSection = () => (
           />
           <h3 className="text-xl font-bold mt-4">The Device Specialist</h3>
           <p className="text-muted-foreground leading-relaxed mt-2 max-w-xs">
-            **Tester Tom** tested a new mobile game on a 3-year-old Android
+            Tester Tom tested a new mobile game on a 3-year-old Android
             phone in rural India, finding a critical bug that emulators
             missed, saving the launch.
           </p>
@@ -272,7 +272,7 @@ const ExpertSection = () => (
           />
           <h3 className="text-xl font-bold mt-4">The Usability Expert</h3>
           <p className="text-muted-foreground leading-relaxed mt-2 max-w-xs">
-            **Researcher Rachel** led a "first impressions" test for a new
+            Researcher Rachel led a "first impressions" test for a new
             e-commerce app, providing a 20-page report on user friction that
             led to a 34% increase in conversion.
           </p>
@@ -285,7 +285,7 @@ const ExpertSection = () => (
           />
           <h3 className="text-xl font-bold mt-4">The AI Ethicist</h3>
           <p className="text-muted-foreground leading-relaxed mt-2 max-w-xs">
-            **Engineer Erik** led an adversarial attack team that
+            Engineer Erik led an adversarial attack team that
             stress-tested a new FinTech AI, identifying 3 critical security
             and bias vulnerabilities before they became headlines.
           </p>

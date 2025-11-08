@@ -240,7 +240,7 @@ const ExpertSection = () => (
           Your Global Team is Already Local
         </h2>
         <p className="text-lg text-muted-foreground mt-4">
-          Our network isn't just people who *speak* a language; they *live*
+          Our network isn't just people who speak a language; they live
           the culture. We deploy in-country experts, not remote translators.
         </p>
       </div>
@@ -254,7 +254,7 @@ const ExpertSection = () => (
           />
           <h3 className="text-xl font-bold mt-4">The Native Linguist</h3>
           <p className="text-muted-foreground leading-relaxed mt-2 max-w-xs">
-            **Leila** reviewed a new chatbot's Japanese, catching subtle
+            Leila reviewed a new chatbot's Japanese, catching subtle
             politeness errors that would have alienated users. She then provided
             100+ new prompts to fix its tone.
           </p>
@@ -267,7 +267,7 @@ const ExpertSection = () => (
           />
           <h3 className="text-xl font-bold mt-4">The Cultural Strategist</h3>
           <p className="text-muted-foreground leading-relaxed mt-2 max-w-xs">
-            **Rachel** advised a US tech brand on a Middle East launch,
+            Rachel advised a US tech brand on a Middle East launch,
             recommending changes to ad imagery and color palettes to build
             local trust and avoid cultural missteps.
           </p>
@@ -280,7 +280,7 @@ const ExpertSection = () => (
           />
           <h3 className="text-xl font-bold mt-4">The In-Country Tester</h3>
           <p className="text-muted-foreground leading-relaxed mt-2 max-w-xs">
-            **Tom**, based in Berlin, tested a new app's German localization.
+            Tom, based in Berlin, tested a new app's German localization.
             He found 5 instances of text overlapping and breaking the UI, a bug
             the dev team's emulators never caught.
           </p>
@@ -333,7 +333,7 @@ const ProcessSection = () => (
             <h3 className="text-xl font-bold mb-1">3. In-Context Validation</h3>
             <p className="text-muted-foreground leading-relaxed">
               We do not just send you a file. We test the final, translated
-              content *live* in your app or on your website to catch layout,
+              content live in your app or on your website to catch layout,
               formatting, and functional errors before your users do.
             </p>
           </div>

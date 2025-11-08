@@ -61,8 +61,8 @@ const ProblemSection = () => (
         <div className="glassmorphic bg-card/50 p-6 rounded-2xl border border-border">
           <h3 className="text-xl font-bold mb-3">The Compliance Risk</h3>
           <p className="text-muted-foreground leading-relaxed">
-            You cannot send sensitive work—like financial data or KYC
-            verification—to an anonymous, unvetted crowd. The risk of a data
+            You cannot send sensitive work like financial data or KYC
+            verification to an anonymous, unvetted crowd. The risk of a data
             breach or compliance failure is too high.
           </p>
         </div>
@@ -256,7 +256,7 @@ const ExpertSection = () => (
           />
           <h3 className="text-xl font-bold mt-4">The Compliance Analyst</h3>
           <p className="text-muted-foreground leading-relaxed mt-2 max-w-xs">
-            **Rachel** leads a KYC team that verifies 5,000+ user identities
+            Rachel leads a KYC team that verifies 5,000+ user identities
             daily for a neobank, ensuring 100% AML compliance and handling
             all edge cases manually.
           </p>
@@ -269,7 +269,7 @@ const ExpertSection = () => (
           />
           <h3 className="text-xl font-bold mt-4">The AI Ops Specialist</h3>
           <p className="text-muted-foreground leading-relaxed mt-2 max-w-xs">
-            **Erik's** team monitors a self-driving AI's production data,
+            Erik's team monitors a self-driving AI's production data,
             flagging and re-labeling 1,000+ incorrect "pedestrian" tags per
             week, preventing model drift.
           </p>
@@ -282,7 +282,7 @@ const ExpertSection = () => (
           />
           <h3 className="text-xl font-bold mt-4">The Support Engineer</h3>
           <p className="text-muted-foreground leading-relaxed mt-2 max-w-xs">
-            **Tom**, a former developer, provides Tier 2 support for a complex
+            Tom, a former developer, provides Tier 2 support for a complex
             SaaS API, resolving technical tickets 40% faster than the previous
             BPO vendor.
           </p>

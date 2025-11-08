@@ -115,7 +115,7 @@ const ServicesTabs = () => (
                 Proactive Moderation
               </h3>
               <p className="text-muted-foreground mb-6 leading-relaxed">
-                Stop harmful content *before* it impacts your community. Our
+                Stop harmful content before it impacts your community. Our
                 teams review user-generated content (UGC) as it's submitted,
                 ensuring brand safety from the start.
               </p>
@@ -193,7 +193,7 @@ const ServicesTabs = () => (
               <p className="text-muted-foreground mb-6 leading-relaxed">
                 Don't just moderate; improve. We use our expert decisions to
                 create high-quality datasets to train, test, and fine-tune
-                your *own* automated moderation models.
+                your own automated moderation models.
               </p>
               <ul className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
                 <li className="flex items-center gap-2">
@@ -257,7 +257,7 @@ const ExpertSection = () => (
           />
           <h3 className="text-xl font-bold mt-4">Cultural Nuance Experts</h3>
           <p className="text-muted-foreground leading-relaxed mt-2 max-w-xs">
-            **Leila**, a cultural expert, identified a new, trending emoji
+            Leila, a cultural expert, identified a new, trending emoji
             combination as a coded dog-whistle for hate speech, stopping a
             new harassment campaign before it spread.
           </p>
@@ -270,7 +270,7 @@ const ExpertSection = () => (
           />
           <h3 className="text-xl font-bold mt-4">Policy Specialists</h3>
           <p className="text-muted-foreground leading-relaxed mt-2 max-w-xs">
-            **Rachel**, a policy analyst, reviewed 500 user appeals for a
+            Rachel, a policy analyst, reviewed 500 user appeals for a
             gaming client. She found 20% were false positives from an AI
             update, helping them fix the algorithm.
           </p>
@@ -283,7 +283,7 @@ const ExpertSection = () => (
           />
           <h3 className="text-xl font-bold mt-4">Resilience-Trained Pros</h3>
           <p className="text-muted-foreground leading-relaxed mt-2 max-w-xs">
-            **Tom** is part of our team with full mental health support and
+            Tom is part of our team with full mental health support and
             managed shift rotations. This allows him to make clear,
             consistent, high-stakes decisions 8 hours a day.
           </p>
@@ -324,8 +324,8 @@ const ProcessSection = () => (
           <div>
             <h3 className="text-xl font-bold mb-1">2. Human Review</h3>
             <p className="text-muted-foreground leading-relaxed">
-              The remaining 5-10%—the complex, contextual, and sensitive
-              cases—are escalated to our trained Trust & Safety experts for a
+              The remaining 5-10% (the complex, contextual, and sensitive
+              cases) are escalated to our trained Trust & Safety experts for a
               final, nuanced decision.
             </p>
           </div>
