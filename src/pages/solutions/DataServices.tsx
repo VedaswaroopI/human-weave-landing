@@ -47,7 +47,7 @@ const ProblemSection = () => (
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div className="relative glassmorphic bg-card/50 p-6 rounded-2xl border border-border overflow-hidden">
-          <GlowingEffect spread={40} glow={true} proximity={100} borderWidth={1} />
+          <GlowingEffect spread={40} glow={true} proximity={100} borderWidth={2.5} disabled={false} />
           <div className="relative z-10">
             <h3 className="text-xl font-bold mb-3">Bias In, Bias Out</h3>
             <p className="text-muted-foreground leading-relaxed">
@@ -58,7 +58,7 @@ const ProblemSection = () => (
           </div>
         </div>
         <div className="relative glassmorphic bg-card/50 p-6 rounded-2xl border border-border overflow-hidden">
-          <GlowingEffect spread={40} glow={true} proximity={100} borderWidth={1} />
+          <GlowingEffect spread={40} glow={true} proximity={100} borderWidth={2.5} disabled={false} />
           <div className="relative z-10">
             <h3 className="text-xl font-bold mb-3">A 1% Error is a 100% Failure</h3>
             <p className="text-muted-foreground leading-relaxed">
@@ -69,7 +69,7 @@ const ProblemSection = () => (
           </div>
         </div>
         <div className="relative glassmorphic bg-card/50 p-6 rounded-2xl border border-border overflow-hidden">
-          <GlowingEffect spread={40} glow={true} proximity={100} borderWidth={1} />
+          <GlowingEffect spread={40} glow={true} proximity={100} borderWidth={2.5} disabled={false} />
           <div className="relative z-10">
             <h3 className="text-xl font-bold mb-3">Context is Everything</h3>
             <p className="text-muted-foreground leading-relaxed">
@@ -116,7 +116,7 @@ const ServicesTabs = () => (
         <div className="mt-8">
           <TabsContent value="image-video">
             <div className="relative glassmorphic bg-card/50 p-8 rounded-2xl border border-border overflow-hidden">
-              <GlowingEffect spread={40} glow={true} proximity={100} borderWidth={1} />
+              <GlowingEffect spread={40} glow={true} proximity={100} borderWidth={2.5} disabled={false} />
               <div className="relative z-10">
                 <h3 className="text-xl font-bold mb-4">
                   For Computer Vision That Truly Sees
@@ -157,7 +157,7 @@ const ServicesTabs = () => (
           </TabsContent>
           <TabsContent value="text-nlp">
             <div className="relative glassmorphic bg-card/50 p-8 rounded-2xl border border-border overflow-hidden">
-              <GlowingEffect spread={40} glow={true} proximity={100} borderWidth={1} />
+              <GlowingEffect spread={40} glow={true} proximity={100} borderWidth={2.5} disabled={false} />
               <div className="relative z-10">
                 <h3 className="text-xl font-bold mb-4">
                   For Models That Understand Language, Not Just Words
@@ -197,7 +197,7 @@ const ServicesTabs = () => (
           </TabsContent>
           <TabsContent value="audio-speech">
             <div className="relative glassmorphic bg-card/50 p-8 rounded-2xl border border-border overflow-hidden">
-              <GlowingEffect spread={40} glow={true} proximity={100} borderWidth={1} />
+              <GlowingEffect spread={40} glow={true} proximity={100} borderWidth={2.5} disabled={false} />
               <div className="relative z-10">
                 <h3 className="text-xl font-bold mb-4">
                   For Applications That Hear the Difference
@@ -324,7 +324,7 @@ const SecuritySection = () => (
 
       <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div className="relative glassmorphic bg-card/50 p-6 rounded-2xl border border-border overflow-hidden">
-          <GlowingEffect spread={40} glow={true} proximity={100} borderWidth={1} />
+          <GlowingEffect spread={40} glow={true} proximity={100} borderWidth={2.5} disabled={false} />
           <div className="relative z-10 flex items-start gap-4">
             <ShieldCheck className="w-8 h-8 text-accent flex-shrink-0 mt-1" />
             <div>
@@ -337,7 +337,7 @@ const SecuritySection = () => (
           </div>
         </div>
         <div className="relative glassmorphic bg-card/50 p-6 rounded-2xl border border-border overflow-hidden">
-          <GlowingEffect spread={40} glow={true} proximity={100} borderWidth={1} />
+          <GlowingEffect spread={40} glow={true} proximity={100} borderWidth={2.5} disabled={false} />
           <div className="relative z-10 flex items-start gap-4">
             <ShieldCheck className="w-8 h-8 text-accent flex-shrink-0 mt-1" />
             <div>
@@ -350,7 +350,7 @@ const SecuritySection = () => (
           </div>
         </div>
         <div className="relative glassmorphic bg-card/50 p-6 rounded-2xl border border-border overflow-hidden">
-          <GlowingEffect spread={40} glow={true} proximity={100} borderWidth={1} />
+          <GlowingEffect spread={40} glow={true} proximity={100} borderWidth={2.5} disabled={false} />
           <div className="relative z-10 flex items-start gap-4">
             <ShieldCheck className="w-8 h-8 text-accent flex-shrink-0 mt-1" />
             <div>

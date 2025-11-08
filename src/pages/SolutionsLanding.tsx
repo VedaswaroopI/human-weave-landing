@@ -93,15 +93,16 @@ const SolutionsLanding = () => {
                 to={service.url}
                 className="group block h-full"
               >
-                <Card className="relative h-full overflow-hidden border-border hover:border-secondary/50 transition-all duration-300 hover-lift">
+                <Card className="relative h-full overflow-hidden border-border hover:border-secondary/50 transition-all duration-300 hover-lift isolate">
                   <GlowingEffect
                     spread={40}
                     glow={true}
                     disabled={false}
                     proximity={100}
                     inactiveZone={0.1}
-                    borderWidth={1}
+                    borderWidth={2.5}
                     movementDuration={2}
+                    className="z-20"
                   />
                   
                   {/* Gradient Top Section */}
