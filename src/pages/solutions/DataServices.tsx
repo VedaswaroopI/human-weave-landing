@@ -46,32 +46,38 @@ const ProblemSection = () => (
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="relative glassmorphic bg-card/50 p-6 rounded-2xl border border-border">
-          <GlowingEffect spread={40} glow={true} proximity={100} />
-          <h3 className="text-xl font-bold mb-3">Bias In, Bias Out</h3>
-          <p className="text-muted-foreground leading-relaxed">
-            Generic annotators introduce subtle, invisible biases that your
-            models will learn, amplify, and scale. This is not just a
-            technical problem; it is a reputational one.
-          </p>
+        <div className="relative glassmorphic bg-card/50 p-6 rounded-2xl border border-border overflow-hidden">
+          <GlowingEffect spread={40} glow={true} proximity={100} borderWidth={1} />
+          <div className="relative z-10">
+            <h3 className="text-xl font-bold mb-3">Bias In, Bias Out</h3>
+            <p className="text-muted-foreground leading-relaxed">
+              Generic annotators introduce subtle, invisible biases that your
+              models will learn, amplify, and scale. This is not just a
+              technical problem; it is a reputational one.
+            </p>
+          </div>
         </div>
-        <div className="relative glassmorphic bg-card/50 p-6 rounded-2xl border border-border">
-          <GlowingEffect spread={40} glow={true} proximity={100} />
-          <h3 className="text-xl font-bold mb-3">A 1% Error is a 100% Failure</h3>
-          <p className="text-muted-foreground leading-relaxed">
-            In fields like medicine or autonomous driving, a single mislabeled
-            data point is not a rounding error. It is a misdiagnosis, a missed
-            obstacle, a critical failure.
-          </p>
+        <div className="relative glassmorphic bg-card/50 p-6 rounded-2xl border border-border overflow-hidden">
+          <GlowingEffect spread={40} glow={true} proximity={100} borderWidth={1} />
+          <div className="relative z-10">
+            <h3 className="text-xl font-bold mb-3">A 1% Error is a 100% Failure</h3>
+            <p className="text-muted-foreground leading-relaxed">
+              In fields like medicine or autonomous driving, a single mislabeled
+              data point is not a rounding error. It is a misdiagnosis, a missed
+              obstacle, a critical failure.
+            </p>
+          </div>
         </div>
-        <div className="relative glassmorphic bg-card/50 p-6 rounded-2xl border border-border">
-          <GlowingEffect spread={40} glow={true} proximity={100} />
-          <h3 className="text-xl font-bold mb-3">Context is Everything</h3>
-          <p className="text-muted-foreground leading-relaxed">
-            A machine cannot teach another machine context. You need humans who
-            understand slang, irony, medical terminology, and cultural nuance.
-            Without it, your model is just guessing.
-          </p>
+        <div className="relative glassmorphic bg-card/50 p-6 rounded-2xl border border-border overflow-hidden">
+          <GlowingEffect spread={40} glow={true} proximity={100} borderWidth={1} />
+          <div className="relative z-10">
+            <h3 className="text-xl font-bold mb-3">Context is Everything</h3>
+            <p className="text-muted-foreground leading-relaxed">
+              A machine cannot teach another machine context. You need humans who
+              understand slang, irony, medical terminology, and cultural nuance.
+              Without it, your model is just guessing.
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -109,118 +115,124 @@ const ServicesTabs = () => (
         </TabsList>
         <div className="mt-8">
           <TabsContent value="image-video">
-            <div className="relative glassmorphic bg-card/50 p-8 rounded-2xl border border-border">
-              <GlowingEffect spread={40} glow={true} proximity={100} />
-              <h3 className="text-xl font-bold mb-4">
-                For Computer Vision That Truly Sees
-              </h3>
-              <p className="text-muted-foreground mb-6 leading-relaxed">
-                From autonomous vehicles to medical diagnostics, our pixel-perfect
-                annotations train your models to perceive the world with superhuman
-                accuracy.
-              </p>
-              <ul className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-accent" />
-                  2D Bounding Boxes
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-accent" />
-                  Polygons & Segmentation
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-accent" />
-                  Keypoint Annotation
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-accent" />
-                  3D Point Cloud (LiDAR)
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-accent" />
-                  Object Tracking
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-accent" />
-                  Medical Image Annotation
-                </li>
-              </ul>
+            <div className="relative glassmorphic bg-card/50 p-8 rounded-2xl border border-border overflow-hidden">
+              <GlowingEffect spread={40} glow={true} proximity={100} borderWidth={1} />
+              <div className="relative z-10">
+                <h3 className="text-xl font-bold mb-4">
+                  For Computer Vision That Truly Sees
+                </h3>
+                <p className="text-muted-foreground mb-6 leading-relaxed">
+                  From autonomous vehicles to medical diagnostics, our pixel-perfect
+                  annotations train your models to perceive the world with superhuman
+                  accuracy.
+                </p>
+                <ul className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-accent" />
+                    2D Bounding Boxes
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-accent" />
+                    Polygons & Segmentation
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-accent" />
+                    Keypoint Annotation
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-accent" />
+                    3D Point Cloud (LiDAR)
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-accent" />
+                    Object Tracking
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-accent" />
+                    Medical Image Annotation
+                  </li>
+                </ul>
+              </div>
             </div>
           </TabsContent>
           <TabsContent value="text-nlp">
-            <div className="relative glassmorphic bg-card/50 p-8 rounded-2xl border border-border">
-              <GlowingEffect spread={40} glow={true} proximity={100} />
-              <h3 className="text-xl font-bold mb-4">
-                For Models That Understand Language, Not Just Words
-              </h3>
-              <p className="text-muted-foreground mb-6 leading-relaxed">
-                Our linguists and domain experts fine-tune your LLMs and NLP models
-                to understand intent, sentiment, and complex context.
-              </p>
-              <ul className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-accent" />
-                  Named Entity Recognition
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-accent" />
-                  Sentiment Analysis
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-accent" />
-                  Text Classification
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-accent" />
-                  Chatbot Training
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-accent" />
-                  LLM Fine-Tuning (RLHF)
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-accent" />
-                  Prompt Generation
-                </li>
-              </ul>
+            <div className="relative glassmorphic bg-card/50 p-8 rounded-2xl border border-border overflow-hidden">
+              <GlowingEffect spread={40} glow={true} proximity={100} borderWidth={1} />
+              <div className="relative z-10">
+                <h3 className="text-xl font-bold mb-4">
+                  For Models That Understand Language, Not Just Words
+                </h3>
+                <p className="text-muted-foreground mb-6 leading-relaxed">
+                  Our linguists and domain experts fine-tune your LLMs and NLP models
+                  to understand intent, sentiment, and complex context.
+                </p>
+                <ul className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-accent" />
+                    Named Entity Recognition
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-accent" />
+                    Sentiment Analysis
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-accent" />
+                    Text Classification
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-accent" />
+                    Chatbot Training
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-accent" />
+                    LLM Fine-Tuning (RLHF)
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-accent" />
+                    Prompt Generation
+                  </li>
+                </ul>
+              </div>
             </div>
           </TabsContent>
           <TabsContent value="audio-speech">
-            <div className="relative glassmorphic bg-card/50 p-8 rounded-2xl border border-border">
-              <GlowingEffect spread={40} glow={true} proximity={100} />
-              <h3 className="text-xl font-bold mb-4">
-                For Applications That Hear the Difference
-              </h3>
-              <p className="text-muted-foreground mb-6 leading-relaxed">
-                Train your speech models with clean, accurately transcribed, and
-                tagged audio data from a diverse range of speakers and environments.
-              </p>
-              <ul className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-accent" />
-                  Audio Transcription
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-accent" />
-                  Speaker Diarization
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-accent" />
-                  Sound Classification
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-accent" />
-                  Event Tagging
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-accent" />
-                  Acoustic Event Detection
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-accent" />
-                  Tone & Sentiment Analysis
-                </li>
-              </ul>
+            <div className="relative glassmorphic bg-card/50 p-8 rounded-2xl border border-border overflow-hidden">
+              <GlowingEffect spread={40} glow={true} proximity={100} borderWidth={1} />
+              <div className="relative z-10">
+                <h3 className="text-xl font-bold mb-4">
+                  For Applications That Hear the Difference
+                </h3>
+                <p className="text-muted-foreground mb-6 leading-relaxed">
+                  Train your speech models with clean, accurately transcribed, and
+                  tagged audio data from a diverse range of speakers and environments.
+                </p>
+                <ul className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-accent" />
+                    Audio Transcription
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-accent" />
+                    Speaker Diarization
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-accent" />
+                    Sound Classification
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-accent" />
+                    Event Tagging
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-accent" />
+                    Acoustic Event Detection
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-accent" />
+                    Tone & Sentiment Analysis
+                  </li>
+                </ul>
+              </div>
             </div>
           </TabsContent>
         </div>
@@ -311,37 +323,43 @@ const SecuritySection = () => (
       </div>
 
       <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div className="relative glassmorphic bg-card/50 p-6 rounded-2xl border border-border flex items-start gap-4">
-          <GlowingEffect spread={40} glow={true} proximity={100} />
-          <ShieldCheck className="w-8 h-8 text-accent flex-shrink-0 mt-1" />
-          <div>
-            <h3 className="text-xl font-bold mb-1">SOC 2 Type II</h3>
-            <p className="text-muted-foreground leading-relaxed">
-              Audited and verified processes for data security, availability,
-              and confidentiality.
-            </p>
+        <div className="relative glassmorphic bg-card/50 p-6 rounded-2xl border border-border overflow-hidden">
+          <GlowingEffect spread={40} glow={true} proximity={100} borderWidth={1} />
+          <div className="relative z-10 flex items-start gap-4">
+            <ShieldCheck className="w-8 h-8 text-accent flex-shrink-0 mt-1" />
+            <div>
+              <h3 className="text-xl font-bold mb-1">SOC 2 Type II</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Audited and verified processes for data security, availability,
+                and confidentiality.
+              </p>
+            </div>
           </div>
         </div>
-        <div className="relative glassmorphic bg-card/50 p-6 rounded-2xl border border-border flex items-start gap-4">
-          <GlowingEffect spread={40} glow={true} proximity={100} />
-          <ShieldCheck className="w-8 h-8 text-accent flex-shrink-0 mt-1" />
-          <div>
-            <h3 className="text-xl font-bold mb-1">HIPAA & GDPR</h3>
-            <p className="text-muted-foreground leading-relaxed">
-              Full compliance for handling sensitive Protected Health
-              Information (PHI) and personal user data.
-            </p>
+        <div className="relative glassmorphic bg-card/50 p-6 rounded-2xl border border-border overflow-hidden">
+          <GlowingEffect spread={40} glow={true} proximity={100} borderWidth={1} />
+          <div className="relative z-10 flex items-start gap-4">
+            <ShieldCheck className="w-8 h-8 text-accent flex-shrink-0 mt-1" />
+            <div>
+              <h3 className="text-xl font-bold mb-1">HIPAA & GDPR</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Full compliance for handling sensitive Protected Health
+                Information (PHI) and personal user data.
+              </p>
+            </div>
           </div>
         </div>
-        <div className="relative glassmorphic bg-card/50 p-6 rounded-2xl border border-border flex items-start gap-4">
-          <GlowingEffect spread={40} glow={true} proximity={100} />
-          <ShieldCheck className="w-8 h-8 text-accent flex-shrink-0 mt-1" />
-          <div>
-            <h3 className="text-xl font-bold mb-1">ISO 27001</h3>
-            <p className="text-muted-foreground leading-relaxed">
-              A world-class Information Security Management System (ISMS)
-              protecting your assets.
-            </p>
+        <div className="relative glassmorphic bg-card/50 p-6 rounded-2xl border border-border overflow-hidden">
+          <GlowingEffect spread={40} glow={true} proximity={100} borderWidth={1} />
+          <div className="relative z-10 flex items-start gap-4">
+            <ShieldCheck className="w-8 h-8 text-accent flex-shrink-0 mt-1" />
+            <div>
+              <h3 className="text-xl font-bold mb-1">ISO 27001</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                A world-class Information Security Management System (ISMS)
+                protecting your assets.
+              </p>
+            </div>
           </div>
         </div>
       </div>

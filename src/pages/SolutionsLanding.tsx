@@ -100,9 +100,8 @@ const SolutionsLanding = () => {
                     disabled={false}
                     proximity={100}
                     inactiveZone={0.1}
-                    borderWidth={2}
+                    borderWidth={1}
                     movementDuration={2}
-                    className="z-10"
                   />
                   
                   {/* Gradient Top Section */}
