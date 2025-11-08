@@ -8,6 +8,7 @@ import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import WhyUs from "./pages/WhyUs";
 import SolutionsLanding from "./pages/SolutionsLanding";
 import DataServices from "./pages/solutions/DataServices";
 import QualityAssurance from "./pages/solutions/QualityAssurance";
@@ -35,6 +36,7 @@ const App = () => (
             <ScrollToTop />
             <Routes>
               <Route path="/" element={<Index />} />
+              <Route path="/why-us" element={<WhyUs />} />
               
               {/* SOLUTIONS PAGES */}
               <Route path="/solutions" element={<SolutionsLanding />} />
