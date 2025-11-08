@@ -1,11 +1,35 @@
 import { Menu, Home, Wrench, Route, Award } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { ParticleButton } from "./ui/particle-button";
 import { TubelightNavbar } from "./ui/tubelight-navbar";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleHowItWorksClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsMenuOpen(false);
+    
+    if (location.pathname === '/') {
+      // Already on homepage, just scroll
+      const element = document.querySelector('#process');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // Navigate to homepage first, then scroll
+      navigate('/#process');
+      setTimeout(() => {
+        const element = document.querySelector('#process');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  };
 
   const navItems = [
     { name: "Solutions", url: "/solutions", icon: Wrench },
@@ -27,7 +51,7 @@ export const Header = () => {
 
           {/* Desktop Navigation with Tubelight Effect */}
           <nav className="hidden md:flex items-center">
-            <TubelightNavbar items={navItems} />
+            <TubelightNavbar items={navItems} onHowItWorksClick={handleHowItWorksClick} />
           </nav>
 
           {/* Right Side Actions */}
@@ -77,8 +101,8 @@ export const Header = () => {
             </Link>
             <a
               href="#process"
+              onClick={handleHowItWorksClick}
               className="block py-2 text-base font-medium hover:text-secondary transition-colors"
-              onClick={() => setIsMenuOpen(false)}
             >
               How It Works
             </a>

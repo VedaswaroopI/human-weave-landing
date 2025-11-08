@@ -15,9 +15,10 @@ interface NavItem {
 interface NavBarProps {
   items: NavItem[]
   className?: string
+  onHowItWorksClick?: (e: React.MouseEvent) => void
 }
 
-export function TubelightNavbar({ items, className }: NavBarProps) {
+export function TubelightNavbar({ items, className, onHowItWorksClick }: NavBarProps) {
   const location = useLocation()
   
   // Determine initial active tab based on current route
@@ -89,6 +90,13 @@ export function TubelightNavbar({ items, className }: NavBarProps) {
   }, [items])
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, item: NavItem) => {
+    // Special handling for "How It Works"
+    if (item.name === "How It Works" && onHowItWorksClick) {
+      onHowItWorksClick(e);
+      setActiveTab(item.name);
+      return;
+    }
+    
     // Check if it's a hash link (starts with #)
     if (item.url.startsWith('#')) {
       e.preventDefault()
