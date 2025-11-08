@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useEffect, useState } from "react"
+import { Link, useLocation } from "react-router-dom"
 import { motion } from "framer-motion"
 import { LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -17,6 +18,7 @@ interface NavBarProps {
 }
 
 export function TubelightNavbar({ items, className }: NavBarProps) {
+  const location = useLocation()
   const [activeTab, setActiveTab] = useState(items[0].name)
   const [isMobile, setIsMobile] = useState(false)
 
@@ -60,11 +62,17 @@ export function TubelightNavbar({ items, className }: NavBarProps) {
   }, [items])
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, item: NavItem) => {
-    e.preventDefault()
-    setActiveTab(item.name)
-    const element = document.querySelector(item.url)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+    // Check if it's a hash link (starts with #)
+    if (item.url.startsWith('#')) {
+      e.preventDefault()
+      setActiveTab(item.name)
+      const element = document.querySelector(item.url)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
+    } else {
+      // For non-hash links (like /solutions), let Link component handle it
+      setActiveTab(item.name)
     }
   }
 
@@ -73,18 +81,10 @@ export function TubelightNavbar({ items, className }: NavBarProps) {
       {items.map((item) => {
         const Icon = item.icon
         const isActive = activeTab === item.name
+        const isHashLink = item.url.startsWith('#')
 
-        return (
-          <a
-            key={item.name}
-            href={item.url}
-            onClick={(e) => handleClick(e, item)}
-            className={cn(
-              "relative cursor-pointer text-sm font-medium px-5 py-2 rounded-full transition-colors",
-              "hover:text-secondary",
-              isActive ? "text-foreground" : "text-muted-foreground"
-            )}
-          >
+        const linkContent = (
+          <>
             <span className="relative z-10">{item.name}</span>
             {isActive && (
               <motion.div
@@ -98,8 +98,40 @@ export function TubelightNavbar({ items, className }: NavBarProps) {
                 }}
               />
             )}
-          </a>
+          </>
         )
+
+        if (isHashLink) {
+          return (
+            <a
+              key={item.name}
+              href={item.url}
+              onClick={(e) => handleClick(e, item)}
+              className={cn(
+                "relative cursor-pointer text-sm font-medium px-5 py-2 rounded-full transition-colors",
+                "hover:text-secondary",
+                isActive ? "text-foreground" : "text-muted-foreground"
+              )}
+            >
+              {linkContent}
+            </a>
+          )
+        } else {
+          return (
+            <Link
+              key={item.name}
+              to={item.url}
+              onClick={(e) => handleClick(e as any, item)}
+              className={cn(
+                "relative cursor-pointer text-sm font-medium px-5 py-2 rounded-full transition-colors",
+                "hover:text-secondary",
+                isActive ? "text-foreground" : "text-muted-foreground"
+              )}
+            >
+              {linkContent}
+            </Link>
+          )
+        }
       })}
     </div>
   )

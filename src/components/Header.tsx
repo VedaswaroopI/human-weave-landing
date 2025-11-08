@@ -1,5 +1,6 @@
 import { Menu, Home, Wrench, Route, Award } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { ParticleButton } from "./ui/particle-button";
 import { TubelightNavbar } from "./ui/tubelight-navbar";
 
@@ -7,7 +8,7 @@ export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { name: "Services", url: "#services", icon: Wrench },
+    { name: "Solutions", url: "/solutions", icon: Wrench },
     { name: "How It Works", url: "#process", icon: Route },
     { name: "Why Us", url: "#why-us", icon: Award },
     { name: "Case Studies", url: "#case-studies", icon: Home },
@@ -67,13 +68,13 @@ export const Header = () => {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <nav className="md:hidden py-4 border-t border-border/50 space-y-3">
-            <a
-              href="#services"
+            <Link
+              to="/solutions"
               className="block py-2 text-base font-medium hover:text-secondary transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              Services
-            </a>
+              Solutions
+            </Link>
             <a
               href="#process"
               className="block py-2 text-base font-medium hover:text-secondary transition-colors"
