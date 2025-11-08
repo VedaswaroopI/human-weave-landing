@@ -1,47 +1,82 @@
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
-import { Handshake, Users, Zap, Shield, Package } from "lucide-react";
+import { ClipboardCheck, UsersRound, Workflow, BadgeCheck, Handshake } from "lucide-react";
 import { motion } from "framer-motion";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 const journeySteps = [
   {
     number: "01",
-    icon: Handshake,
-    title: "Discovery Call",
-    description: "We dive deep into your vision, challenges, and goals. No sales pitch, just understanding your data needs.",
-    time: "24-48 hours",
+    icon: ClipboardCheck,
+    title: "Scoping & Requirements",
+    description: "45-minute consultation call to understand:",
+    details: [
+      "Your data type (images, text, audio, video)",
+      "Quality requirements (accuracy, compliance needs)",
+      "Timeline and budget constraints",
+      "Security/compliance requirements (HIPAA, SOC 2, etc.)"
+    ],
+    deliverable: "Detailed project scope & pricing within 24 hours",
+    time: "Day 1",
     gradient: "from-secondary to-primary"
   },
   {
     number: "02",
-    icon: Users,
-    title: "Expert Matching",
-    description: "Handpicked specialists from our 300K+ network. Medical annotators, linguists, or testers, perfectly matched.",
-    time: "1-3 days",
+    icon: UsersRound,
+    title: "Expert Team Assembly",
+    description: "We handpick specialists from our 300K+ network:",
+    details: [
+      "Verify certifications (MDs, JDs, PhDs as needed)",
+      "Test on sample batch to ensure quality",
+      "Assign dedicated project manager",
+      "Set up secure data pipeline (encrypted transfer, NDA)"
+    ],
+    deliverable: "Team assembled, sample batch completed for review",
+    time: "Days 2-3",
     gradient: "from-primary to-accent"
   },
   {
     number: "03",
-    icon: Zap,
-    title: "Flawless Execution",
-    description: "Your dedicated PM orchestrates every detail. Daily updates, transparent communication, real-time adjustments.",
-    time: "Your timeline",
+    icon: Workflow,
+    title: "Production & Quality Control",
+    description: "Parallel execution with multi-layer QA:",
+    details: [
+      "Production team completes initial labeling/testing",
+      "QA team reviews 100% of output",
+      "Your team reviews sample batches (10-20%)",
+      "Real-time dashboard tracks progress"
+    ],
+    deliverable: "Daily progress reports, weekly milestone reviews",
+    time: "Weeks 1-N",
     gradient: "from-accent to-secondary"
   },
   {
     number: "04",
-    icon: Shield,
-    title: "Multi-Layer QA",
-    description: "99.5%+ accuracy guaranteed. Every annotation, translation, and test result verified before delivery.",
-    time: "Continuous",
+    icon: BadgeCheck,
+    title: "Final Validation & Delivery",
+    description: "Before delivery, we guarantee quality:",
+    details: [
+      "Final accuracy check (99.5%+ minimum)",
+      "Format validation (JSON, CSV, XML as specified)",
+      "Documentation package (methodology, edge cases)",
+      "Post-delivery support window (30 days)"
+    ],
+    deliverable: "Complete dataset with quality report & documentation",
+    time: "Final week",
     gradient: "from-secondary to-accent"
   },
   {
     number: "05",
-    icon: Package,
-    title: "Seamless Delivery",
-    description: "Your preferred format, complete documentation, ongoing support. We're not done until you're thrilled.",
-    time: "On schedule",
+    icon: Handshake,
+    title: "Ongoing Partnership",
+    description: "We don't disappear after delivery:",
+    details: [
+      "30-day support for questions/clarifications",
+      "Discounted rates for additional batches",
+      "Priority scheduling for repeat clients",
+      "Quarterly check-ins for evolving needs"
+    ],
+    deliverable: "Long-term partnership, not transactional",
+    time: "Ongoing",
     gradient: "from-primary to-secondary"
   }
 ];
@@ -114,11 +149,29 @@ export const JourneyScrollRevamped = () => {
                         {step.description}
                       </p>
                       
-                      <div className="flex items-center gap-2 pt-1">
-                        <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                        <span className="text-xs md:text-sm text-accent font-medium">
-                          {step.time}
-                        </span>
+                      <ul className="space-y-1.5 ml-4">
+                        {step.details.map((detail, idx) => (
+                          <li key={idx} className="text-sm text-muted-foreground flex items-start gap-2">
+                            <span className="text-accent mt-1.5">•</span>
+                            <span>{detail}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      
+                      <div className="pt-2 space-y-2">
+                        <div className="flex items-start gap-2">
+                          <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5" />
+                          <p className="text-xs md:text-sm text-foreground/80 font-medium">
+                            <span className="text-primary">Deliverable:</span> {step.deliverable}
+                          </p>
+                        </div>
+                        
+                        <div className="flex items-center gap-2">
+                          <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                          <span className="text-xs md:text-sm text-accent font-medium">
+                            {step.time}
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
