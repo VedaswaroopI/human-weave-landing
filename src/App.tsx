@@ -9,6 +9,7 @@ import { ScrollToTop } from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import WhyUs from "./pages/WhyUs";
+import CaseStudies from "./pages/CaseStudies";
 import SolutionsLanding from "./pages/SolutionsLanding";
 import DataServices from "./pages/solutions/DataServices";
 import QualityAssurance from "./pages/solutions/QualityAssurance";
@@ -37,6 +38,7 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/why-us" element={<WhyUs />} />
+              <Route path="/case-studies" element={<CaseStudies />} />
               
               {/* SOLUTIONS PAGES */}
               <Route path="/solutions" element={<SolutionsLanding />} />
