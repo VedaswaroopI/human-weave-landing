@@ -9,6 +9,7 @@ import {
   TabsTrigger,
 } from "@/components/ui/tabs";
 import { CharacterIllustration } from "@/components/CharacterIllustration";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 import {
   CheckCircle,
   ShieldCheck,
@@ -45,7 +46,8 @@ const ProblemSection = () => (
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="glassmorphic bg-card/50 p-6 rounded-2xl border border-border">
+        <div className="relative glassmorphic bg-card/50 p-6 rounded-2xl border border-border">
+          <GlowingEffect spread={40} glow={true} proximity={100} />
           <h3 className="text-xl font-bold mb-3">Bias In, Bias Out</h3>
           <p className="text-muted-foreground leading-relaxed">
             Generic annotators introduce subtle, invisible biases that your
@@ -53,7 +55,8 @@ const ProblemSection = () => (
             technical problem; it is a reputational one.
           </p>
         </div>
-        <div className="glassmorphic bg-card/50 p-6 rounded-2xl border border-border">
+        <div className="relative glassmorphic bg-card/50 p-6 rounded-2xl border border-border">
+          <GlowingEffect spread={40} glow={true} proximity={100} />
           <h3 className="text-xl font-bold mb-3">A 1% Error is a 100% Failure</h3>
           <p className="text-muted-foreground leading-relaxed">
             In fields like medicine or autonomous driving, a single mislabeled
@@ -61,7 +64,8 @@ const ProblemSection = () => (
             obstacle, a critical failure.
           </p>
         </div>
-        <div className="glassmorphic bg-card/50 p-6 rounded-2xl border border-border">
+        <div className="relative glassmorphic bg-card/50 p-6 rounded-2xl border border-border">
+          <GlowingEffect spread={40} glow={true} proximity={100} />
           <h3 className="text-xl font-bold mb-3">Context is Everything</h3>
           <p className="text-muted-foreground leading-relaxed">
             A machine cannot teach another machine context. You need humans who
@@ -105,7 +109,8 @@ const ServicesTabs = () => (
         </TabsList>
         <div className="mt-8">
           <TabsContent value="image-video">
-            <div className="glassmorphic bg-card/50 p-8 rounded-2xl border border-border">
+            <div className="relative glassmorphic bg-card/50 p-8 rounded-2xl border border-border">
+              <GlowingEffect spread={40} glow={true} proximity={100} />
               <h3 className="text-xl font-bold mb-4">
                 For Computer Vision That Truly Sees
               </h3>
@@ -143,7 +148,8 @@ const ServicesTabs = () => (
             </div>
           </TabsContent>
           <TabsContent value="text-nlp">
-            <div className="glassmorphic bg-card/50 p-8 rounded-2xl border border-border">
+            <div className="relative glassmorphic bg-card/50 p-8 rounded-2xl border border-border">
+              <GlowingEffect spread={40} glow={true} proximity={100} />
               <h3 className="text-xl font-bold mb-4">
                 For Models That Understand Language, Not Just Words
               </h3>
@@ -180,7 +186,8 @@ const ServicesTabs = () => (
             </div>
           </TabsContent>
           <TabsContent value="audio-speech">
-            <div className="glassmorphic bg-card/50 p-8 rounded-2xl border border-border">
+            <div className="relative glassmorphic bg-card/50 p-8 rounded-2xl border border-border">
+              <GlowingEffect spread={40} glow={true} proximity={100} />
               <h3 className="text-xl font-bold mb-4">
                 For Applications That Hear the Difference
               </h3>
@@ -304,7 +311,8 @@ const SecuritySection = () => (
       </div>
 
       <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div className="flex items-start gap-4">
+        <div className="relative glassmorphic bg-card/50 p-6 rounded-2xl border border-border flex items-start gap-4">
+          <GlowingEffect spread={40} glow={true} proximity={100} />
           <ShieldCheck className="w-8 h-8 text-accent flex-shrink-0 mt-1" />
           <div>
             <h3 className="text-xl font-bold mb-1">SOC 2 Type II</h3>
@@ -314,7 +322,8 @@ const SecuritySection = () => (
             </p>
           </div>
         </div>
-        <div className="flex items-start gap-4">
+        <div className="relative glassmorphic bg-card/50 p-6 rounded-2xl border border-border flex items-start gap-4">
+          <GlowingEffect spread={40} glow={true} proximity={100} />
           <ShieldCheck className="w-8 h-8 text-accent flex-shrink-0 mt-1" />
           <div>
             <h3 className="text-xl font-bold mb-1">HIPAA & GDPR</h3>
@@ -324,7 +333,8 @@ const SecuritySection = () => (
             </p>
           </div>
         </div>
-        <div className="flex items-start gap-4">
+        <div className="relative glassmorphic bg-card/50 p-6 rounded-2xl border border-border flex items-start gap-4">
+          <GlowingEffect spread={40} glow={true} proximity={100} />
           <ShieldCheck className="w-8 h-8 text-accent flex-shrink-0 mt-1" />
           <div>
             <h3 className="text-xl font-bold mb-1">ISO 27001</h3>
