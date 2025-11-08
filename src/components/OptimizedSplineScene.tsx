@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { SplineScene } from './ui/splite';
 import { useSplineAnalytics } from '@/hooks/use-analytics';
 import { useWebGLSupport } from '@/hooks/use-webgl-support';
-import { Button } from './ui/button';
+import { ParticleButton } from './ui/particle-button';
 import { Sparkles } from 'lucide-react';
 
 const TIMEOUT_MS = 8000;
@@ -133,14 +133,14 @@ export function OptimizedSplineScene({ scene, className }: { scene: string; clas
         ref={containerRef} 
         className={`${className} relative overflow-hidden rounded-2xl flex items-center justify-center bg-gradient-to-br from-muted/50 to-muted/30 backdrop-blur-sm`}
       >
-        <Button
+        <ParticleButton
           onClick={handleManualTrigger}
           size="lg"
           className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-base px-8 py-6 group"
         >
           <Sparkles className="mr-2 w-5 h-5 animate-pulse" />
           Load 3D Experience
-        </Button>
+        </ParticleButton>
       </div>
     );
   }

@@ -1,6 +1,6 @@
 import { Menu, Home, Wrench, Route, Award } from "lucide-react";
 import { useState } from "react";
-import { Button } from "./ui/button";
+import { ParticleButton } from "./ui/particle-button";
 import { TubelightNavbar } from "./ui/tubelight-navbar";
 
 export const Header = () => {
@@ -44,14 +44,14 @@ export const Header = () => {
 
 
             {/* CTA Button */}
-            <Button
+            <ParticleButton
               asChild
               className="hidden sm:inline-flex bg-gradient-to-r from-secondary to-secondary/90 hover:from-secondary/90 hover:to-secondary hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
             >
               <a href="https://calendly.com/swaroop-usergy/30min" target="_blank" rel="noopener noreferrer">
                 Talk to Us
               </a>
-            </Button>
+            </ParticleButton>
 
             {/* Mobile Menu */}
             <button
@@ -105,11 +105,11 @@ export const Header = () => {
                 Join 300K+
               </span>
             </a>
-            <Button asChild className="w-full mt-2 bg-gradient-to-r from-secondary to-secondary/90">
+            <ParticleButton asChild className="w-full mt-2 bg-gradient-to-r from-secondary to-secondary/90">
               <a href="https://calendly.com/swaroop-usergy/30min" target="_blank" rel="noopener noreferrer">
                 Talk to Us
               </a>
-            </Button>
+            </ParticleButton>
           </nav>
         )}
       </div>

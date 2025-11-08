@@ -1,7 +1,7 @@
 'use client';
 
 import { ArrowRight, ChevronDown } from "lucide-react";
-import { Button } from "./ui/button";
+import { ParticleButton } from "./ui/particle-button";
 import { Card } from "./ui/card";
 import { Spotlight } from "./ui/spotlight";
 import { SplineErrorBoundary } from "./error-boundary-spline";
@@ -100,13 +100,28 @@ export const HeroWithSpline = () => {
 
             {/* CTAs */}
             <motion.div className="flex flex-col sm:flex-row gap-4 items-start pt-4" variants={prefersReducedMotion ? {} : item}>
-              <Button size="lg" className="w-full sm:w-auto bg-gradient-to-r from-secondary to-secondary/90 hover:from-secondary/90 hover:to-secondary hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 group" aria-label="Start your AI project">
-                Start Your Project 
-                <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-              </Button>
-              <Button size="lg" variant="outline" className="w-full sm:w-auto border-2 hover:bg-secondary/10 hover:border-secondary transition-all duration-300 text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6" aria-label="Learn about our network">
+              <ParticleButton 
+                size="lg" 
+                className="w-full sm:w-auto bg-gradient-to-r from-secondary to-secondary/90 hover:from-secondary/90 hover:to-secondary hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 group" 
+                aria-label="Start your AI project"
+                asChild
+              >
+                <a href="https://calendly.com/swaroop-usergy/30min" target="_blank" rel="noopener noreferrer">
+                  Start Your Project 
+                  <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                </a>
+              </ParticleButton>
+              <ParticleButton 
+                size="lg" 
+                variant="outline" 
+                className="w-full sm:w-auto border-2 hover:bg-secondary/10 hover:border-secondary transition-all duration-300 text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6" 
+                aria-label="Learn about our network"
+                onClick={() => {
+                  document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
                 Meet Our Network
-              </Button>
+              </ParticleButton>
             </motion.div>
           </motion.div>
 

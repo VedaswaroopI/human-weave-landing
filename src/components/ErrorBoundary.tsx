@@ -1,6 +1,6 @@
 import React, { Component, ReactNode } from 'react';
 import { AlertCircle, RefreshCw } from 'lucide-react';
-import { Button } from './ui/button';
+import { ParticleButton } from './ui/particle-button';
 
 interface Props {
   children: ReactNode;
@@ -53,13 +53,13 @@ export class ErrorBoundary extends Component<Props, State> {
                 We encountered an unexpected error. Please try refreshing the page.
               </p>
             </div>
-            <Button 
+            <ParticleButton 
               onClick={this.handleReset}
               className="gap-2"
             >
               <RefreshCw className="w-4 h-4" />
               Reload Page
-            </Button>
+            </ParticleButton>
           </div>
         </div>
       );
