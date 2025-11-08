@@ -84,9 +84,15 @@ export const HeroWithSpline = () => {
           >
             {/* Small Text */}
             <motion.div variants={prefersReducedMotion ? {} : item}>
-              <p className="text-sm sm:text-base font-semibold tracking-wider text-muted-foreground uppercase">
-                300,000+ Humans Powering AI
-              </p>
+              <div className="flex items-center gap-2">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
+                <p className="text-xs sm:text-sm font-semibold tracking-wider text-green-500 uppercase">
+                  300,000+ Humans Powering AI
+                </p>
+              </div>
             </motion.div>
 
             {/* Main Headline */}
