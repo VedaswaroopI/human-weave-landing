@@ -18,6 +18,7 @@ import Multilingual from "./pages/solutions/Multilingual";
 import EnterpriseBPO from "./pages/solutions/EnterpriseBPO";
 import ContentModeration from "./pages/solutions/ContentModeration";
 import ResearchInsights from "./pages/solutions/ResearchInsights";
+import GlobalAIDevelopment from "./pages/case-studies/GlobalAIDevelopment";
 
 const queryClient = new QueryClient();
 
@@ -51,6 +52,10 @@ const App = () => (
               <Route path="/solutions/content-moderation" element={<ContentModeration />} />
               <Route path="/solutions/research-insights" element={<ResearchInsights />} />
               {/* END SOLUTIONS PAGES */}
+              
+              {/* CASE STUDY PAGES */}
+              <Route path="/case-studies/global-ai-development" element={<GlobalAIDevelopment />} />
+              {/* END CASE STUDY PAGES */}
               
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
