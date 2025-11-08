@@ -35,7 +35,7 @@ export const Header = () => {
     { name: "Solutions", url: "/solutions", icon: Wrench },
     { name: "How It Works", url: "#process", icon: Route },
     { name: "Why Us", url: "/why-us", icon: Award },
-    { name: "Case Studies", url: "#case-studies", icon: Home },
+    { name: "Case Studies", url: "/case-studies", icon: Home },
   ];
 
   return (
@@ -113,13 +113,13 @@ export const Header = () => {
             >
               Why Us
             </Link>
-            <a
-              href="#case-studies"
+            <Link
+              to="/case-studies"
               className="block py-2 text-base font-medium hover:text-secondary transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               Case Studies
-            </a>
+            </Link>
             <a
               href="#"
               className="flex items-center gap-2 py-2 text-base font-medium hover:text-secondary transition-colors"
