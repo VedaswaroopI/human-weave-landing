@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 interface Service {
   title: string;
@@ -19,7 +20,15 @@ const SolutionsGrid = ({ services }: { services: Service[] }) => {
           to={service.url}
           className="group block h-full"
         >
-          <div className="bg-card/50 hover:bg-card/70 border border-border hover:border-secondary/50 rounded-3xl p-6 flex flex-col h-[320px] transition-all duration-300 relative overflow-hidden">
+          <div className="bg-card/50 hover:bg-card/70 border border-border hover:border-secondary/50 rounded-3xl p-6 flex flex-col h-[320px] transition-all duration-300 relative overflow-hidden isolate">
+            <GlowingEffect
+              spread={40}
+              glow={true}
+              disabled={false}
+              proximity={100}
+              borderWidth={2}
+              className="z-20"
+            />
             {/* Content */}
             <div className="relative z-10 flex flex-col h-full">
               {/* Icon */}

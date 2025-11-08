@@ -80,7 +80,7 @@ const SolutionsLanding = () => {
       />
 
       {/* Services Grid */}
-      <section className="container mx-auto px-4 sm:px-6 pb-16 sm:pb-20 md:pb-24">
+      <section className="container mx-auto px-4 sm:px-6 pb-16 sm:pb-20 md:pb-24 pt-8">
         <SolutionsGrid services={services} />
       </section>
     </PageLayout>
