@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
+import { motion } from "framer-motion";
 
 interface Service {
   title: string;
@@ -15,11 +16,21 @@ const SolutionsGrid = ({ services }: { services: Service[] }) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
       {services.map((service, index) => (
-        <Link
+        <motion.div
           key={index}
-          to={service.url}
-          className="group block h-full"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{
+            duration: 0.5,
+            delay: index * 0.1,
+            ease: "easeOut"
+          }}
         >
+          <Link
+            to={service.url}
+            className="group block h-full"
+          >
           <div className="bg-card/50 hover:bg-card/70 border border-border hover:border-secondary/50 rounded-3xl p-6 flex flex-col h-[320px] transition-all duration-300 relative overflow-hidden isolate">
             <GlowingEffect
               spread={40}
@@ -56,7 +67,8 @@ const SolutionsGrid = ({ services }: { services: Service[] }) => {
               </div>
             </div>
           </div>
-        </Link>
+          </Link>
+        </motion.div>
       ))}
     </div>
   );
