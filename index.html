@@ -10,10 +10,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Preconnect to Spline CDN for faster loading -->
+    <!-- Critical resource hints for performance -->
     <link rel="preconnect" href="https://prod.spline.design" />
     <link rel="dns-prefetch" href="https://prod.spline.design" />
     <link rel="preconnect" href="https://unpkg.com" />
+    
+    <!-- Preload critical font for FCP improvement -->
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7W0Q5nw.woff2" as="font" type="font/woff2" crossorigin />
 
     <meta property="og:title" content="UsergyAI - The Humans Behind Your AI Breakthrough" />
     <meta property="og:description" content="Expert human network that powers AI with 99.5%+ accuracy. Data annotation, testing, localization in 150+ languages." />

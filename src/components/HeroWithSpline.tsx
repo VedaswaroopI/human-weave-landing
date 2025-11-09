@@ -48,8 +48,7 @@ const scrollToNextSection = () => {
 };
 
 export const HeroWithSpline = () => {
-  // Preload Spline scene on component mount
-  useSplinePreload('https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode');
+  // Don't preload Spline - let OptimizedSplineScene handle it on-demand
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {

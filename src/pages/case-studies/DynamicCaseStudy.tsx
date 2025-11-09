@@ -35,6 +35,8 @@ const CaseStudyLinkCard: React.FC<{ study: CaseStudy }> = ({ study }) => (
           <img
             src={study.cardImage}
             alt={study.title}
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
           />
         </AspectRatio>
@@ -108,6 +110,9 @@ const DynamicCaseStudy = () => {
           <img
             src={study.heroImage}
             alt={study.title}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
             className="w-full h-full object-cover rounded-3xl shadow-2xl border-4 border-border/30"
           />
         </AspectRatio>

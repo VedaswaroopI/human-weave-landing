@@ -41,21 +41,23 @@ export function OptimizedSplineScene({ scene, className }: { scene: string; clas
     const effectiveType = connection?.effectiveType;
     const prefersReducedData = window.matchMedia('(prefers-reduced-data: reduce)').matches;
 
-    // Don't auto-load on very slow connections
+    // Don't auto-load on slow connections or reduced data preference
     if (effectiveType === '2g' || effectiveType === 'slow-2g' || prefersReducedData) {
       return;
     }
 
+    // Only load when 50% of the container is visible (more aggressive)
     observerRef.current = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.intersectionRatio >= 0.3) {
+          // More aggressive: require 50% visibility instead of 30%
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
             setShouldLoad(true);
             observerRef.current?.disconnect();
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.5 } // Increased from 0.3 to reduce premature loading
     );
 
     if (containerRef.current) {
