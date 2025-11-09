@@ -1,7 +1,12 @@
-import { Linkedin, Mail, MessageCircle } from "lucide-react";
+import { Linkedin, Mail, MessageCircle, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { motion } from "framer-motion";
 
 export const Footer = () => {
+  const [isLoginDialogOpen, setIsLoginDialogOpen] = useState(false);
+
   return (
     <footer id="footer" className="border-t border-border bg-card/50 py-16 sm:py-20" role="contentinfo">
       <div className="container mx-auto px-4 sm:px-6">
@@ -93,18 +98,13 @@ export const Footer = () => {
                 </Link>
               </li>
               <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline">
-                  Projects Board
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline">
+                <a 
+                  href="https://www.linkedin.com/company/usergy-ai/jobs" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline"
+                >
                   Careers
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline">
-                  Blog
                 </a>
               </li>
               <li>
@@ -115,34 +115,22 @@ export const Footer = () => {
             </ul>
           </div>
 
-          {/* Column 4: Resources */}
+          {/* Column 4: Contributor */}
           <div className="space-y-4">
-            <h3 className="text-base font-bold">Resources</h3>
+            <h3 className="text-base font-bold">Contributor</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline">
-                  Security & Compliance
-                </a>
+                <Link to="/projects-board" className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline">
+                  Projects Board
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline">
-                  Documentation
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline">
-                  API Reference
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline">
-                  Help Center
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline">
-                  Status Page
-                </a>
+                <button 
+                  onClick={() => setIsLoginDialogOpen(true)}
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline text-left"
+                >
+                  Login
+                </button>
               </li>
             </ul>
           </div>
@@ -173,6 +161,45 @@ export const Footer = () => {
           </div>
         </div>
       </div>
+
+      {/* Coming Soon Dialog */}
+      <Dialog open={isLoginDialogOpen} onOpenChange={setIsLoginDialogOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-center flex items-center justify-center gap-2">
+              <motion.div
+                animate={{ 
+                  rotate: [0, 10, -10, 10, 0],
+                  scale: [1, 1.1, 1.1, 1.1, 1]
+                }}
+                transition={{ 
+                  duration: 0.6,
+                  repeat: Infinity,
+                  repeatDelay: 2
+                }}
+              >
+                <Sparkles className="w-6 h-6 text-secondary" />
+              </motion.div>
+              Coming Soon
+            </DialogTitle>
+            <DialogDescription className="text-center pt-4">
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="space-y-3"
+              >
+                <p className="text-base">
+                  The contributor portal is currently under development.
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  Check back soon to access your dashboard and manage your projects!
+                </p>
+              </motion.div>
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
     </footer>
   );
 };
