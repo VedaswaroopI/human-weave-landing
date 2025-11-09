@@ -39,18 +39,18 @@ export const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 glassmorphic bg-card/80 border-b border-border/50 shadow-sm">
+    <header id="navigation" className="fixed top-0 left-0 right-0 z-50 glassmorphic bg-card/80 border-b border-border/50 shadow-sm" role="banner">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
+          <Link to="/" className="flex items-center" aria-label="UsergyAI Home">
             <div className="text-xl sm:text-2xl font-bold">
               <span className="gradient-text animate-gradient">UsergyAI</span>
             </div>
           </Link>
 
           {/* Desktop Navigation with Tubelight Effect */}
-          <nav className="hidden md:flex items-center">
+          <nav className="hidden md:flex items-center" aria-label="Main navigation">
             <TubelightNavbar items={navItems} onHowItWorksClick={handleHowItWorksClick} />
           </nav>
 
@@ -60,9 +60,10 @@ export const Header = () => {
             <a
               href="#"
               className="hidden md:flex items-center gap-2 text-sm font-medium hover:text-secondary transition-colors"
+              aria-label="Join our projects board with over 300,000 contributors"
             >
               Projects Board
-              <span className="px-2 py-0.5 rounded-full bg-accent/10 text-accent text-base font-semibold">
+              <span className="px-2 py-0.5 rounded-full bg-accent/10 text-accent text-base font-semibold" aria-label="300,000 plus members">
                 Join 300K+
               </span>
             </a>

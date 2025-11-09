@@ -34,7 +34,7 @@ All colors MUST be HSL.
     --secondary-foreground: 0 0% 100%;
 
     --muted: 30 50% 90%;
-    --muted-foreground: 240 10% 50%;
+    --muted-foreground: 240 15% 35%; /* Improved contrast: was 240 10% 50% */
 
     --accent: 162 100% 43%;
     --accent-foreground: 0 0% 100%;

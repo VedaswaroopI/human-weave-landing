@@ -8,6 +8,7 @@ import { lazy, Suspense } from "react";
 import { CookieConsent } from "./components/CookieConsent";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import { ScrollToTop } from "./components/ScrollToTop";
+import { SkipLinks } from "./components/accessibility/SkipLinks";
 
 // Lazy load pages for better code splitting and performance
 const Index = lazy(() => import("./pages/Index"));
@@ -46,6 +47,7 @@ const App = () => (
       <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
         <TooltipProvider>
           <BrowserRouter>
+            <SkipLinks />
             <ScrollToTop />
             <Toaster />
             <Sonner />
