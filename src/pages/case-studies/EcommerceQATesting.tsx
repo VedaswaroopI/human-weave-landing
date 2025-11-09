@@ -150,9 +150,6 @@ const EcommerceQATesting = () => {
               <p className="text-lg text-muted-foreground leading-relaxed">
                 {study.challenge.body}
               </p>
-              {study.challenge.imagePlaceholder && (
-                <ImagePlaceholder alt="Visual of the challenge" src={study.challenge.imagePlaceholder} />
-              )}
             </article>
             
             <article className="space-y-6">
@@ -179,9 +176,6 @@ const EcommerceQATesting = () => {
                   </li>
                 ))}
               </ul>
-              {study.solution.imagePlaceholder && (
-                <ImagePlaceholder alt="Diagram of the solution" src={study.solution.imagePlaceholder} />
-              )}
             </article>
             
             <article className="space-y-6">
@@ -201,12 +195,6 @@ const EcommerceQATesting = () => {
                   <StatCard key={stat.label} stat={stat} />
                 ))}
               </div>
-
-              {study.results.imagePlaceholder && (
-                <div className="pt-6">
-                  <ImagePlaceholder alt="Chart showing results" src={study.results.imagePlaceholder} />
-                </div>
-              )}
             </article>
             
             <article className="space-y-6">

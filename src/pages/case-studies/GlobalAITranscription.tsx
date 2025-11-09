@@ -136,9 +136,6 @@ const GlobalAITranscription = () => {
               <p className="text-lg text-muted-foreground leading-relaxed">
                 {study.challenge.body}
               </p>
-              {study.challenge.imagePlaceholder && (
-                <ImagePlaceholder alt="Visual of the challenge" />
-              )}
             </article>
             
             <article className="space-y-6">
@@ -165,9 +162,6 @@ const GlobalAITranscription = () => {
                   </li>
                 ))}
               </ul>
-              {study.solution.imagePlaceholder && (
-                <ImagePlaceholder alt="Diagram of the solution" />
-              )}
             </article>
             
             <article className="space-y-6">
@@ -187,18 +181,6 @@ const GlobalAITranscription = () => {
                   <StatCard key={stat.label} stat={stat} />
                 ))}
               </div>
-
-              {study.results.imagePlaceholder && (
-                <div className="pt-6">
-                  <AspectRatio ratio={16 / 9}>
-                    <img
-                      src={study.results.imagePlaceholder}
-                      alt="Chart showing results"
-                      className="w-full h-full object-cover rounded-2xl border border-border"
-                    />
-                  </AspectRatio>
-                </div>
-              )}
             </article>
             
             <article className="space-y-6">

@@ -13,7 +13,6 @@ export interface CaseStudy {
   challenge: {
     headline: string;
     body: string;
-    imagePlaceholder?: string;
   };
   solution: {
     headline: string;
@@ -23,7 +22,6 @@ export interface CaseStudy {
       title: string;
       description: string;
     }[];
-    imagePlaceholder?: string;
   };
   results: {
     headline: string;
@@ -33,7 +31,6 @@ export interface CaseStudy {
       label: string;
       icon: LucideIcon;
     }[];
-    imagePlaceholder?: string;
   };
   impact: {
     headline: string;
@@ -47,8 +44,8 @@ export const allCaseStudies: CaseStudy[] = [
     industry: "AI & Data",
     tags: ["Voice AI", "Multilingual", "Data Services"],
     title: "Accelerating Global AI Through Precision Multilingual Transcription",
-    heroImage: "https://images.unsplash.com/photo-1555949963-ff980847b864?w=1600&h=900&fit=crop",
-    cardImage: "https://images.unsplash.com/photo-1587740922316-c18ab41c6f71?w=600&h=400&fit=crop",
+    heroImage: "https://storage.googleapis.com/website_imagess/transcription",
+    cardImage: "https://storage.googleapis.com/website_imagess/transcription",
     metricValue: "5,000",
     metricLabel: "Hours Transcribed",
     companyLogo: "/placeholder.svg",
@@ -86,7 +83,6 @@ export const allCaseStudies: CaseStudy[] = [
         { value: "12", label: "Consecutive Weeks", icon: CalendarClock },
         { value: "0", label: "Delivery Delays", icon: BadgeCheck },
       ],
-      imagePlaceholder: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&h=900&fit=crop"
     },
     impact: {
       headline: "On-Track Launch & A Foundation for Excellence",
@@ -99,8 +95,8 @@ export const allCaseStudies: CaseStudy[] = [
     industry: "Healthcare",
     tags: ["AI & Data", "Healthcare", "Computer Vision"],
     title: "Training an FDA-Approved AI Diagnostic Tool with 99.8% Accuracy",
-    heroImage: "https://images.unsplash.com/photo-1576091160550-2173ada999af?w=1600&h=900&fit=crop",
-    cardImage: "https://images.unsplash.com/photo-1581091221495-5080f3317f4b?w=600&h=400&fit=crop",
+    heroImage: "https://storage.googleapis.com/website_imagess/Medical%20annotation.png",
+    cardImage: "https://storage.googleapis.com/website_imagess/Medical%20annotation.png",
     metricValue: "99.8%",
     metricLabel: "Annotation Accuracy",
     companyLogo: "/placeholder.svg",
@@ -128,7 +124,6 @@ export const allCaseStudies: CaseStudy[] = [
           description: "All data processing occurred within our SOC 2 and HIPAA-certified platform, with end-to-end encryption and strict access controls."
         }
       ],
-      imagePlaceholder: "https://images.unsplash.com/photo-1581091221495-5080f3317f4b?w=1600&h=900&fit=crop"
     },
     results: {
       headline: "Delivered: 2 Million Perfect Annotations in 8 Weeks",
@@ -139,7 +134,6 @@ export const allCaseStudies: CaseStudy[] = [
         { value: "0", label: "Critical Errors", icon: BadgeCheck },
         { value: "8", label: "Week Delivery", icon: CalendarClock },
       ],
-      imagePlaceholder: "https://images.unsplash.com/photo-1629233192461-7533f0d01b13?w=1600&h=900&fit=crop"
     },
     impact: {
       headline: "FDA Submission Accelerated, Model Outperforms Benchmarks",
@@ -150,61 +144,10 @@ export const allCaseStudies: CaseStudy[] = [
   {
     slug: "autonomous-vehicle-ai",
     industry: "AI & Data",
-    tags: ["Autonomous Vehicles", "Computer Vision"],
-    title: "Powering the Next Generation of Self-Driving AI",
-    heroImage: "https://images.unsplash.com/photo-1503700022718-d7801a6d3605?w=1600&h=900&fit=crop",
-    cardImage: "https://images.unsplash.com/photo-1503700022718-d7801a6d3605?w=600&h=400&fit=crop",
-    metricValue: "5M+",
-    metricLabel: "Images Labeled",
-    companyLogo: "/placeholder.svg",
-    challenge: {
-      headline: "Precision at 70mph: No Room for Error",
-      body: "A leading autonomous vehicle manufacturer needed 5 million images annotated for their next-generation AI. Every pixel mattered—pedestrians, cyclists, road signs, lane markings. A single mislabeled object could mean the difference between a safe journey and a catastrophic failure. Traditional labeling services delivered inconsistent results and couldn't scale to their aggressive timeline."
-    },
-    solution: {
-      headline: "Expert Annotators + Advanced QA Infrastructure",
-      intro: "We assembled a specialized team of computer vision experts trained specifically on autonomous vehicle scenarios, backed by a multi-tier quality control system.",
-      steps: [
-        {
-          icon: Car,
-          title: "Domain-Specific Training",
-          description: "Annotators were trained on edge cases: occluded objects, varying weather conditions, and complex urban environments."
-        },
-        {
-          icon: ShieldCheck,
-          title: "Three-Layer QA Process",
-          description: "Every image underwent peer review, automated validation, and expert spot-checking before delivery."
-        },
-        {
-          icon: Zap,
-          title: "Rapid Scalability",
-          description: "Our managed workforce scaled from 50 to 500 annotators in two weeks without sacrificing quality."
-        }
-      ],
-    },
-    results: {
-      headline: "Industry-Leading Accuracy at Scale",
-      body: "The client achieved record-breaking model performance, with their AI demonstrating superior object detection capabilities compared to competitors.",
-      keyStats: [
-        { value: "99.7%", label: "Annotation Accuracy", icon: ShieldCheck },
-        { value: "5M+", label: "Images Labeled", icon: Zap },
-        { value: "6", label: "Months to Completion", icon: CalendarClock },
-        { value: "3x", label: "Faster Than In-House", icon: TrendingUp },
-      ],
-    },
-    impact: {
-      headline: "Market Leadership Through Superior Data",
-      body: "The enhanced training data enabled the client to launch 6 months ahead of schedule, establishing market leadership in the competitive autonomous vehicle space. Their AI now operates in 15 cities worldwide."
-    },
-  },
-  
-  {
-    slug: "autonomous-vehicle-ai",
-    industry: "AI & Data",
     tags: ["Autonomous Vehicles", "Computer Vision", "LiDAR"],
     title: "Teaching AI to See: Powering a Leader in Autonomous Vehicles",
-    heroImage: "https://images.unsplash.com/photo-1576448332087-9807b637c228?w=1600&h=900&fit=crop",
-    cardImage: "https://images.unsplash.com/photo-1549317661-bd3b3760413b?w=600&h=400&fit=crop",
+    heroImage: "https://storage.googleapis.com/website_imagess/Self-Driving%20AI%20annotation.png",
+    cardImage: "https://storage.googleapis.com/website_imagess/Self-Driving%20AI%20annotation.png",
     metricValue: "5M+",
     metricLabel: "Images & 3D Frames Labeled",
     companyLogo: "/placeholder.svg",
@@ -232,7 +175,6 @@ export const allCaseStudies: CaseStudy[] = [
           description: "A separate, senior QA team actively hunted for errors in the most difficult scenarios: night, fog, rain, and occlusion. This feedback loop ensured continuous improvement, not just output."
         }
       ],
-      imagePlaceholder: "https://images.unsplash.com/photo-1502877338535-766e1452684a?w=1600&h=900&fit=crop"
     },
     results: {
       headline: "A 40% Jump in Perception Model Accuracy",
@@ -243,7 +185,6 @@ export const allCaseStudies: CaseStudy[] = [
         { value: "40%", label: "Model Accuracy Gain", icon: Brain },
         { value: "100%", label: "On-Time Delivery", icon: BadgeCheck },
       ],
-      imagePlaceholder: "https://images.unsplash.com/photo-1568210344836-0b1513569818?w=1600&h=900&fit=crop"
     },
     impact: {
       headline: "Accelerating the Path to Level 4 Autonomy",
