@@ -131,7 +131,15 @@ export const ServicesSection = () => {
 
   const scrollRight = () => {
     if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: 420, behavior: "smooth" });
+      const container = scrollContainerRef.current;
+      const maxScroll = container.scrollWidth - container.clientWidth;
+      
+      // If we're at or near the end, go back to the start
+      if (container.scrollLeft >= maxScroll - 50) {
+        container.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        container.scrollBy({ left: 420, behavior: "smooth" });
+      }
     }
   };
 
@@ -282,7 +290,7 @@ export const ServicesSection = () => {
                 </div>
 
                 {/* Bottom Content Section - 60% */}
-                <div className="p-6 sm:p-8 space-y-4">
+                <div className="p-6 sm:p-8 space-y-4 flex flex-col h-[calc(100%-12rem)]">
                   {/* Badge */}
                   <div className="inline-block px-3 py-1 rounded-full bg-accent/10 text-accent text-sm font-bold tracking-wider uppercase">
                     {service.badge}
@@ -300,7 +308,7 @@ export const ServicesSection = () => {
                   <Link 
                     to={service.url}
                     aria-label={`Explore ${service.badge} services`} 
-                    className="flex items-center gap-2 text-base font-semibold text-secondary group-hover:gap-3 transition-all duration-300 pt-2"
+                    className="flex items-center gap-2 text-base font-semibold text-secondary group-hover:gap-3 transition-all duration-300 pt-2 mt-auto"
                   >
                     Explore Services <ArrowRight className="w-4 h-4" aria-hidden="true" />
                   </Link>
@@ -322,8 +330,9 @@ export const ServicesSection = () => {
                   const cards = container.querySelectorAll("[data-index]");
                   const targetCard = cards[i] as HTMLElement;
                   if (targetCard) {
+                    const offsetLeft = targetCard.offsetLeft - (container.clientWidth / 2 - targetCard.clientWidth / 2);
                     container.scrollTo({
-                      left: targetCard.offsetLeft - 20,
+                      left: offsetLeft,
                       behavior: "smooth"
                     });
                   }
