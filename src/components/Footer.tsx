@@ -1,4 +1,4 @@
-import { Linkedin, Mail } from "lucide-react";
+import { Linkedin, Mail, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export const Footer = () => {
@@ -14,23 +14,25 @@ export const Footer = () => {
             </p>
             <div className="flex gap-3 pt-2">
               <a
-                href="#"
+                href="https://www.linkedin.com/company/usergy-ai"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hover:text-secondary transition-colors"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="w-5 h-5" strokeWidth={1.5} />
               </a>
               <a
-                href="#"
+                href="https://wa.me/+917330703310"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hover:text-secondary transition-colors"
-                aria-label="Twitter"
+                aria-label="WhatsApp"
               >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
+                <MessageCircle className="w-5 h-5" strokeWidth={1.5} />
               </a>
               <a
-                href="#"
+                href="mailto:connect@usergy.ai"
                 className="hover:text-secondary transition-colors"
                 aria-label="Email"
               >
@@ -44,24 +46,34 @@ export const Footer = () => {
             <h3 className="text-base font-bold">Solutions</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#services" className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline">
-                  AI & Data Solutions
-                </a>
+                <Link to="/solutions/data-services" className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline">
+                  Data Services
+                </Link>
               </li>
               <li>
-                <a href="#services" className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline">
+                <Link to="/solutions/quality-assurance" className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline">
                   Quality Assurance
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline">
+                <Link to="/solutions/content-moderation" className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline">
+                  Content Moderation
+                </Link>
+              </li>
+              <li>
+                <Link to="/solutions/multilingual" className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline">
                   Multilingual Services
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline">
-                  Enterprise & BPO
-                </a>
+                <Link to="/solutions/enterprise-bpo" className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline">
+                  Enterprise BPO
+                </Link>
+              </li>
+              <li>
+                <Link to="/solutions/research-insights" className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline">
+                  Research & Insights
+                </Link>
               </li>
             </ul>
           </div>
@@ -76,9 +88,9 @@ export const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#case-studies" className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline">
+                <Link to="/case-studies" className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline">
                   Case Studies
-                </a>
+                </Link>
               </li>
               <li>
                 <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline">
