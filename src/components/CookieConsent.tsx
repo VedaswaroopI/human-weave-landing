@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Cookie, X, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { sanitizeText } from "@/lib/sanitize";
 import {
   Dialog,
   DialogContent,
@@ -38,21 +39,62 @@ export const CookieConsent = () => {
       // Show banner after a short delay for better UX
       setTimeout(() => setShowBanner(true), 1000);
     } else {
-      // Load saved preferences
+      // Load saved preferences with validation
       try {
         const saved = JSON.parse(consent);
-        setPreferences(saved);
+        // Validate the structure to prevent tampering
+        if (
+          typeof saved === 'object' &&
+          typeof saved.necessary === 'boolean' &&
+          typeof saved.analytics === 'boolean' &&
+          typeof saved.marketing === 'boolean' &&
+          typeof saved.preferences === 'boolean'
+        ) {
+          // Ensure necessary cookies are always true
+          setPreferences({
+            ...saved,
+            necessary: true,
+          });
+        } else {
+          // Invalid data, reset to defaults
+          localStorage.removeItem("cookie-consent");
+          setTimeout(() => setShowBanner(true), 1000);
+        }
       } catch (e) {
-        console.error("Failed to parse cookie preferences");
+        // Parsing failed, remove corrupted data
+        localStorage.removeItem("cookie-consent");
+        setTimeout(() => setShowBanner(true), 1000);
       }
     }
   }, []);
 
   const savePreferences = (prefs: CookiePreferences) => {
-    localStorage.setItem("cookie-consent", JSON.stringify(prefs));
-    setPreferences(prefs);
-    setShowBanner(false);
-    setShowSettings(false);
+    // Ensure necessary cookies are always enabled
+    const validatedPrefs: CookiePreferences = {
+      necessary: true,
+      analytics: Boolean(prefs.analytics),
+      marketing: Boolean(prefs.marketing),
+      preferences: Boolean(prefs.preferences),
+    };
+    
+    // Add timestamp and version for future migrations
+    const consentData = {
+      ...validatedPrefs,
+      timestamp: new Date().toISOString(),
+      version: '1.0',
+    };
+    
+    try {
+      localStorage.setItem("cookie-consent", JSON.stringify(consentData));
+      setPreferences(validatedPrefs);
+      setShowBanner(false);
+      setShowSettings(false);
+    } catch (e) {
+      console.error("Failed to save cookie preferences");
+      // Fallback: still close the banner even if save fails
+      setShowBanner(false);
+      setShowSettings(false);
+    }
   };
 
   const acceptAll = () => {

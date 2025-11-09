@@ -22,18 +22,31 @@ import { toast } from "sonner";
 import { Mail, CalendarClock, ShieldCheck, ArrowRight } from "lucide-react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 
-// 1. Define the validation schema with zod
+import { sanitizeText, sanitizeEmail, RateLimiter, generateClientToken } from "@/lib/sanitize";
+
+// Rate limiter instance - 3 submissions per 60 seconds per email
+const rateLimiter = new RateLimiter(3, 60000);
+
+// 1. Define the validation schema with zod - Enhanced security
 const formSchema = z.object({
-  name: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
-  }),
-  email: z.string().email({
-    message: "Please enter a valid email address.",
-  }),
-  company: z.string().optional(),
-  message: z.string().min(10, {
-    message: "Message must be at least 10 characters.",
-  }),
+  name: z.string()
+    .trim()
+    .min(2, { message: "Name must be at least 2 characters." })
+    .max(100, { message: "Name must be less than 100 characters." })
+    .regex(/^[a-zA-Z\s'-]+$/, { message: "Name can only contain letters, spaces, hyphens, and apostrophes." }),
+  email: z.string()
+    .trim()
+    .email({ message: "Please enter a valid email address." })
+    .max(255, { message: "Email must be less than 255 characters." })
+    .toLowerCase(),
+  company: z.string()
+    .trim()
+    .max(100, { message: "Company name must be less than 100 characters." })
+    .optional(),
+  message: z.string()
+    .trim()
+    .min(10, { message: "Message must be at least 10 characters." })
+    .max(2000, { message: "Message must be less than 2000 characters." }),
 });
 
 // 2. Define the Contact Page component
@@ -51,31 +64,57 @@ const Contact = () => {
     },
   });
 
-  // 4. Define the onSubmit handler
+  // 4. Define the onSubmit handler with enhanced security
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
     
-    const FORM_ENDPOINT = "https://formspree.io/f/xblqrklj";
-
     try {
+      // Check rate limiting
+      if (rateLimiter.isLimited(values.email)) {
+        const resetTime = rateLimiter.getResetTime(values.email);
+        toast.error(`Too many submissions. Please try again in ${resetTime} seconds.`);
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Sanitize all inputs before sending
+      const sanitizedData = {
+        name: sanitizeText(values.name, 100),
+        email: sanitizeEmail(values.email),
+        company: values.company ? sanitizeText(values.company, 100) : '',
+        message: sanitizeText(values.message, 2000),
+        _clientToken: generateClientToken(), // Client-side anti-spam token
+        _timestamp: new Date().toISOString(),
+      };
+
+      // Get form endpoint from environment variable with fallback
+      const FORM_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT || "https://formspree.io/f/xblqrklj";
+
       const response = await fetch(FORM_ENDPOINT, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           "Accept": "application/json",
         },
-        body: JSON.stringify(values),
+        body: JSON.stringify(sanitizedData),
       });
 
       if (response.ok) {
-        toast.success("Message sent successfully!");
+        toast.success("Message sent successfully! We'll get back to you soon.", {
+          duration: 5000,
+        });
         form.reset();
+        // Clear rate limit on successful submission
+        setTimeout(() => rateLimiter.clear(values.email), 5000);
       } else {
-        throw new Error("Failed to send message.");
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || "Failed to send message.");
       }
     } catch (error) {
-      console.error(error);
-      toast.error("Something went wrong. Please try again.");
+      // Don't log sensitive form data
+      const errorMessage = error instanceof Error ? error.message : "Unknown error";
+      console.error("Form submission error:", errorMessage);
+      toast.error("Something went wrong. Please try again or contact us directly at connect@usergy.ai");
     } finally {
       setIsSubmitting(false);
     }
@@ -168,8 +207,7 @@ const Contact = () => {
                     <form 
                       onSubmit={form.handleSubmit(onSubmit)} 
                       className="space-y-6"
-                      action="https://formspree.io/f/xblqrklj"
-                      method="POST"
+                      noValidate
                     >
                       <FormField
                         control={form.control}
