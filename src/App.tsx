@@ -24,7 +24,6 @@ const Multilingual = lazy(() => import("./pages/solutions/Multilingual"));
 const EnterpriseBPO = lazy(() => import("./pages/solutions/EnterpriseBPO"));
 const ResearchInsights = lazy(() => import("./pages/solutions/ResearchInsights"));
 const DynamicCaseStudy = lazy(() => import("./pages/case-studies/DynamicCaseStudy"));
-const GlobalAIDevelopment = lazy(() => import("./pages/case-studies/GlobalAIDevelopment"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsOfService = lazy(() => import("./pages/TermsOfService"));
 const CookiePolicy = lazy(() => import("./pages/CookiePolicy"));
@@ -71,7 +70,6 @@ const App = () => (
                 <Route path="/solutions/research-insights" element={<ResearchInsights />} />
                 
                 {/* CASE STUDY PAGES */}
-                <Route path="/case-studies/global-ai-development" element={<GlobalAIDevelopment />} />
                 <Route path="/case-studies/:slug" element={<DynamicCaseStudy />} />
                 
                 {/* LEGAL PAGES */}

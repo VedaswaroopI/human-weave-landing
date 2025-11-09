@@ -40,53 +40,53 @@ export interface CaseStudy {
 
 export const allCaseStudies: CaseStudy[] = [
   {
-    slug: "global-ai-transcription",
+    slug: "global-ai-development",
     industry: "AI & Data",
-    tags: ["Voice AI", "Multilingual", "Data Services"],
-    title: "Accelerating Global AI Through Precision Multilingual Transcription",
+    tags: ["Voice AI", "Multilingual"],
+    title: "Accelerating Global AI Development Through Precision Multilingual Transcription",
     heroImage: "https://storage.googleapis.com/website_imagess/transcription",
     cardImage: "https://storage.googleapis.com/website_imagess/transcription",
     metricValue: "5,000",
     metricLabel: "Hours Transcribed",
     companyLogo: "/placeholder.svg",
     challenge: {
-      headline: "The Stakes: 5,000 Hours, 3 Languages, 0 Compromises",
-      body: "A leading tech giant's new voice AI was struggling. They needed 5,000 hours of audio transcribed across Japanese, Chinese, and Korean. The catch? The complex linguistic nuances (dialects, tonal accuracy, and honorifics) could make or break the model's performance. Inaccurate data would corrupt the entire training process. Delays would mean missing their market launch. They needed a partner who could deliver perfection, at scale, yesterday."
+      headline: "The Stakes Were High",
+      body: "A leading tech company needed 5,000 hours of high-quality transcription across Japanese, Chinese, and Korean. Inaccurate data would compromise their entire AI training process, and delays would push back their critical market launch. They needed exceptional quality at scale, fast."
     },
     solution: {
-      headline: "A Managed Team of Native Linguists, Not a Crowd",
-      intro: "We didn't just 'transcribe.' We deployed a proven framework combining native-speaking experts with enterprise-grade workflow management. This wasn't a job for gig workers; it was a mission for professionals.",
+      headline: "The UsergyAI Approach",
+      intro: "We didn't just use crowd workers. We deployed a specialized team of native speakers, fluent in regional dialects, tonal variations, and honorifics.",
       steps: [
         {
-          icon: Globe,
-          title: "Expert Linguistic Assembly",
-          description: "We handpicked native speakers from our 300,000+ community, specifically vetting them for regional dialect fluency and experience with transcription for AI training."
+          icon: CheckSquare,
+          title: "Expert Assembly",
+          description: "Vetted linguists specialized in target dialects."
         },
         {
           icon: Brain,
-          title: "Comprehensive Training & Guidelines",
-          description: "Strict, language-specific guidelines were co-developed to handle background noise, overlapping speech, and technical terminology. All transcribers were trained before touching production audio."
+          title: "Rigorous Training",
+          description: "Language-specific guidelines for handling noise, overlaps, and particles."
         },
         {
-          icon: ShieldCheck,
-          title: "Human-in-the-Loop QA",
-          description: "Every single transcription was reviewed by a second expert linguist. We embedded a dual-layer review process and real-time feedback loops to catch errors early and ensure consistency."
+          icon: Zap,
+          title: "Parallel Execution",
+          description: "Simultaneous production and QA to meet aggressive 100+ hour/week targets."
         }
       ],
     },
     results: {
-      headline: "Results That Speak for Themselves",
-      body: "We ran execution and QA in parallel, enabling a continuous improvement cycle that accelerated delivery while guaranteeing quality. The client received a flawless dataset, on time, every time.",
+      headline: "Delivered On Promise",
+      body: "By matching specialized expertise with a rigorous workflow, we delivered the complete, validated dataset on schedule with zero delays.",
       keyStats: [
-        { value: "99%", label: "Transcription Accuracy", icon: ShieldCheck },
+        { value: "100%", label: "Guideline Compliance", icon: BadgeCheck },
         { value: "100+", label: "Hours Delivered Weekly", icon: CalendarClock },
-        { value: "12", label: "Consecutive Weeks", icon: CalendarClock },
+        { value: "99%", label: "Validated Accuracy", icon: ShieldCheck },
         { value: "0", label: "Delivery Delays", icon: BadgeCheck },
       ],
     },
     impact: {
-      headline: "On-Track Launch & A Foundation for Excellence",
-      body: "The project remained on schedule, with the client's team reporting high confidence in their launch timeline. Early model training results showed superior performance, eliminating the costly rework that plagues typical transcription projects and protecting the client's go-to-market strategy. The partnership has since expanded to new languages."
+      headline: "Business Impact",
+      body: "The client remained on track for their competitive product launch. Early model training showed superior performance metrics due to the high-quality data foundation, leading to immediate discussions for expansion into new markets."
     },
   },
   
