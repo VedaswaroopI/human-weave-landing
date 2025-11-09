@@ -19,6 +19,7 @@ import EnterpriseBPO from "./pages/solutions/EnterpriseBPO";
 import ContentModeration from "./pages/solutions/ContentModeration";
 import ResearchInsights from "./pages/solutions/ResearchInsights";
 import GlobalAIDevelopment from "./pages/case-studies/GlobalAIDevelopment";
+import GlobalAITranscription from "./pages/case-studies/GlobalAITranscription";
 
 const queryClient = new QueryClient();
 
@@ -55,6 +56,7 @@ const App = () => (
               
               {/* CASE STUDY PAGES */}
               <Route path="/case-studies/global-ai-development" element={<GlobalAIDevelopment />} />
+              <Route path="/case-studies/global-ai-transcription" element={<GlobalAITranscription />} />
               {/* END CASE STUDY PAGES */}
               
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
