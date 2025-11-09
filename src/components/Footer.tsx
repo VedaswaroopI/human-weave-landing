@@ -152,9 +152,9 @@ export const Footer = () => {
         <div className="pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
           <p>© 2025 UsergyAI. All rights reserved.</p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-foreground transition-colors hover:underline">
+            <Link to="/privacy-policy" className="hover:text-foreground transition-colors hover:underline">
               Privacy Policy
-            </a>
+            </Link>
             <a href="#" className="hover:text-foreground transition-colors hover:underline">
               Terms of Service
             </a>

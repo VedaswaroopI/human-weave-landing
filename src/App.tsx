@@ -20,6 +20,7 @@ import ContentModeration from "./pages/solutions/ContentModeration";
 import ResearchInsights from "./pages/solutions/ResearchInsights";
 import GlobalAIDevelopment from "./pages/case-studies/GlobalAIDevelopment";
 import DynamicCaseStudy from "./pages/case-studies/DynamicCaseStudy";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 const queryClient = new QueryClient();
 
@@ -58,6 +59,9 @@ const App = () => (
               <Route path="/case-studies/global-ai-development" element={<GlobalAIDevelopment />} />
               <Route path="/case-studies/:slug" element={<DynamicCaseStudy />} />
               {/* END CASE STUDY PAGES */}
+              
+              {/* LEGAL PAGES */}
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
