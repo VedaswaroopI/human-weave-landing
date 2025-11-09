@@ -9,24 +9,79 @@ import {
   X,
   CheckCircle,
   Lock,
-  FileCheck,
   Award,
+  Target,
+  Eye,
+  BrainCircuit,
+  Scale,
+  Handshake,
+  Heart,
+  Globe,
 } from "lucide-react";
 
+// --- Section 1: Hero ---
 const HeroSection = () => (
   <SolutionHero
-    badge="WHY USERGYAI"
+    badge="ABOUT US"
     title={
       <>
-        Not Just Humans.
+        We Are The Human
         <br />
-        <span className="gradient-text animate-gradient">Genuine Experts.</span>
+        <span className="gradient-text animate-gradient">Behind The AI</span>
       </>
     }
-    subtitle="Crowdsourcing platforms give you anonymous clicks. We give you a managed network of 300,000+ verified professionals (doctors, linguists, engineers, and researchers) who understand the context automation will never see."
+    subtitle="Our mission is to bridge the gap between human expertise and artificial intelligence, providing the 99.5% or higher accuracy and deep context that machines can't, all while ensuring enterprise-grade security."
   />
 );
 
+// --- Section 2: Mission & Vision ---
+const MissionVisionSection = () => (
+  <section className="py-16 sm:py-20 md:py-24 bg-background">
+    <div className="container mx-auto px-4 sm:px-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        {/* Our Mission */}
+        <div className="relative glassmorphic bg-card/50 p-8 rounded-2xl border border-border overflow-hidden">
+          <GlowingEffect spread={40} glow={true} proximity={100} borderWidth={2.5} disabled={false} />
+          <div className="relative z-10">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                <Target className="w-5 h-5 text-primary" />
+              </span>
+              <h2 className="text-2xl font-bold">Our Mission</h2>
+            </div>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              To empower AI innovation with a scalable, on-demand workforce of
+              verified experts, ensuring every dataset is accurate, secure, and
+              context-aware.
+            </p>
+          </div>
+        </div>
+
+        {/* Our Vision */}
+        <div className="relative glassmorphic bg-card/50 p-8 rounded-2xl border border-border overflow-hidden">
+          <GlowingEffect spread={40} glow={true} proximity={100} borderWidth={2.5} disabled={false} />
+          <div className="relative z-10">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="flex-shrink-0 w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
+                <Eye className="w-5 h-5 text-accent" />
+              </span>
+              <h2 className="text-2xl font-bold">Our Vision</h2>
+            </div>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              To be the world's most trusted partner for human-in-the-loop
+              services, building a future where technology and human expertise
+              collaborate seamlessly.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+
+// --- Section 3: The "Why Us" Differentiator ---
+// This is the core "Us vs. Them" comparison, which is essential.
 const DifferentiatorSection = () => (
   <section className="py-16 sm:py-20 md:py-24 bg-muted/30">
     <div className="container mx-auto px-4 sm:px-6">
@@ -82,27 +137,12 @@ const DifferentiatorSection = () => (
                 </p>
               </div>
             </li>
-            <li className="flex items-start gap-3">
-              <X className="w-5 h-5 text-destructive flex-shrink-0 mt-0.5" />
-              <div>
-                <p className="font-semibold text-foreground">No Real Context</p>
-                <p className="text-sm text-muted-foreground">
-                  Workers follow scripts without understanding your domain
-                </p>
-              </div>
-            </li>
           </ul>
         </div>
 
         {/* The UsergyAI Way - Superior Design with Meteors */}
         <div className="relative glassmorphic bg-gradient-to-br from-secondary/10 via-primary/10 to-accent/10 border-secondary/40 p-8 rounded-2xl border-2 hover:border-secondary/60 transition-all duration-300 shadow-lg hover:shadow-secondary/20 hover:shadow-2xl overflow-hidden">
-          {/* Meteors Effect */}
           <Meteors number={15} />
-          
-          {/* Gradient Glow Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 via-transparent to-primary/5 rounded-2xl pointer-events-none" />
-          
-          {/* Content */}
           <div className="relative z-10">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-full bg-gradient-to-br from-secondary to-primary flex items-center justify-center">
@@ -150,15 +190,6 @@ const DifferentiatorSection = () => (
                   </p>
                 </div>
               </li>
-              <li className="flex items-start gap-3 bg-background/40 p-3 rounded-lg backdrop-blur-sm">
-                <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
-                <div>
-                  <p className="font-semibold text-foreground">Deep Domain Context</p>
-                  <p className="text-sm text-muted-foreground">
-                    Experts who understand the "why" behind your requirements
-                  </p>
-                </div>
-              </li>
             </ul>
           </div>
         </div>
@@ -167,8 +198,71 @@ const DifferentiatorSection = () => (
   </section>
 );
 
+// --- Section 4: Core Values ---
+const ValueCard: React.FC<{
+  icon: React.ElementType;
+  title: string;
+  children: React.ReactNode;
+}> = ({ icon: Icon, title, children }) => (
+  <div className="glassmorphic bg-card/50 p-6 rounded-2xl border border-border text-center">
+    <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-accent/10 flex items-center justify-center">
+      <Icon className="w-6 h-6 text-accent" />
+    </div>
+    <h3 className="text-xl font-bold mb-2">{title}</h3>
+    <p className="text-muted-foreground leading-relaxed">{children}</p>
+  </div>
+);
+
+const ValuesSection = () => (
+  <section className="py-16 sm:py-20 md:py-24 bg-background">
+    <div className="container mx-auto px-4 sm:px-6">
+      <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
+          Our Core Values
+        </h2>
+        <p className="text-lg text-muted-foreground mt-4">
+          These principles guide every decision we make and every project we
+          deliver.
+        </p>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <ValueCard icon={BrainCircuit} title="Expertise First">
+          We are not a crowd. We are a managed network of professionals. We
+          believe domain expertise is the most critical factor in high-quality AI
+          data.
+        </ValueCard>
+        <ValueCard icon={ShieldCheck} title="Uncompromising Security">
+          Your data is your most valuable asset. We protect it with
+          enterprise-grade, auditable security (SOC 2, HIPAA, ISO 27001) at every
+          step.
+        </ValueCard>
+        <ValueCard icon={Heart} title="Accuracy & Integrity">
+          We stand by our 99.5% or higher accuracy guarantee. We believe in honest
+          work, transparent communication, and delivering results you can
+          trust.
+        </ValueCard>
+        <ValueCard icon={Scale} title="Scale Without Sacrifice">
+          Our model is built to provide 10 or 10,000 experts without
+          compromising on quality, security, or the expert-led approach.
+        </ValueCard>
+        <ValueCard icon={Handshake} title="Collaborative Partnership">
+          We act as an extension of your team. We adapt to your tools,
+          workflows, and goals, becoming a true partner in your success.
+        </ValueCard>
+        <ValueCard icon={Globe} title="Global & Local">
+          We provide a global workforce that understands local context. Our
+          linguists and testers are in-country, ensuring cultural and
+          regional nuance.
+        </ValueCard>
+      </div>
+    </div>
+  </section>
+);
+
+
+// --- Section 5: Meet the Experts ---
 const NetworkSection = () => (
-  <section className="py-16 sm:py-20 md:py-24">
+  <section className="py-16 sm:py-20 md:py-24 bg-muted/30">
     <div className="container mx-auto px-4 sm:px-6">
       <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
@@ -190,7 +284,7 @@ const NetworkSection = () => (
             />
             <h3 className="text-xl font-bold mb-3">Medical Precision</h3>
             <p className="text-muted-foreground leading-relaxed">
-              Your medical AI isn't just "labeled." It's reviewed by a board-certified radiologist who understands the difference between a tumor and a shadow. Dr. Dan has read 10,000+ chest X-rays in his career. He brings that expertise to every annotation.
+              Your medical AI isn't just "labeled." It's reviewed by a board-certified radiologist who understands the difference between a tumor and a shadow. Dr. Dan brings that expertise to every annotation.
             </p>
           </div>
         </div>
@@ -205,7 +299,7 @@ const NetworkSection = () => (
             />
             <h3 className="text-xl font-bold mb-3">Real-World Testing</h3>
             <p className="text-muted-foreground leading-relaxed">
-              Your app isn't just "tested." It's used by a real person in Mumbai on a 3G network with a 3-year-old Android phone, finding bugs emulators miss. Tom represents your actual users, not your engineering team's ideal environment.
+              Your app isn't just "tested." It's used by a real person in Mumbai on a 3G network with a 3-year-old Android phone, finding bugs emulators miss. Tom represents your actual users.
             </p>
           </div>
         </div>
@@ -220,7 +314,7 @@ const NetworkSection = () => (
             />
             <h3 className="text-xl font-bold mb-3">Cultural Expertise</h3>
             <p className="text-muted-foreground leading-relaxed">
-              Your product isn't just "translated." It's localized by a native speaker in Tokyo who knows your "clever" marketing slogan is actually a cultural misstep. Leila saves you from the embarrassment machine translation creates.
+              Your product isn't just "translated." It's localized by a native speaker in Tokyo who knows your marketing slogan is a cultural misstep. Leila saves you from the embarrassment.
             </p>
           </div>
         </div>
@@ -229,8 +323,9 @@ const NetworkSection = () => (
   </section>
 );
 
+// --- Section 6: Security ---
 const SecuritySection = () => (
-  <section className="py-16 sm:py-20 md:py-24 bg-muted/30">
+  <section className="py-16 sm:py-20 md:py-24 bg-background">
     <div className="container mx-auto px-4 sm:px-6">
       <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
@@ -276,11 +371,15 @@ const SecuritySection = () => (
   </section>
 );
 
+
+// --- Main Page Component ---
 const WhyUs = () => {
   return (
     <PageLayout>
       <HeroSection />
+      <MissionVisionSection />
       <DifferentiatorSection />
+      <ValuesSection />
       <NetworkSection />
       <SecuritySection />
       <TrustSection />
