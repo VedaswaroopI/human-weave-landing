@@ -95,6 +95,59 @@ export const allCaseStudies: CaseStudy[] = [
   },
   
   {
+    slug: "healthcare-ai-diagnostics",
+    industry: "Healthcare",
+    tags: ["AI & Data", "Healthcare", "Computer Vision"],
+    title: "Training an FDA-Approved AI Diagnostic Tool with 99.8% Accuracy",
+    heroImage: "https://images.unsplash.com/photo-1576091160550-2173ada999af?w=1600&h=900&fit=crop",
+    cardImage: "https://images.unsplash.com/photo-1581091221495-5080f3317f4b?w=600&h=400&fit=crop",
+    metricValue: "99.8%",
+    metricLabel: "Annotation Accuracy",
+    companyLogo: "/placeholder.svg",
+    challenge: {
+      headline: "The Stakes: Misdiagnosis is Not an Option",
+      body: "A Fortune 500 healthcare company was developing a revolutionary AI diagnostic tool. To get FDA approval, their model had to be trained on data with near-perfect accuracy. A 1% error wasn't just a bug; it was a potential misdiagnosis. They needed 2 million medical images (MRIs, CT scans) annotated, but standard crowd-workers couldn't tell the difference between a benign shadow and a malignant tumor. They needed genuine medical professionals, and a 100% HIPAA-compliant workflow, all delivered in just 8 weeks."
+    },
+    solution: {
+      headline: "A Managed Team of Doctors & A Fortress-Level Secure Platform",
+      intro: "We didn't provide 'annotators.' We assembled a dedicated, managed team of board-certified radiologists and pathologists from our 300,000+ expert network. This team worked within our SOC 2 & HIPAA-compliant platform, ensuring total data security.",
+      steps: [
+        {
+          icon: Heart,
+          title: "Expert-Only Annotation",
+          description: "Every single one of the 2 million images was annotated by a qualified medical doctor with specific domain expertise in diagnostic imaging."
+        },
+        {
+          icon: ShieldCheck,
+          title: "Multi-Layer Peer Review QA",
+          description: "Our process mandated a dual-layer review. Every annotation was validated by a second, senior radiologist to eliminate any possibility of individual error or bias, guaranteeing the 'zero errors' requirement."
+        },
+        {
+          icon: Brain,
+          title: "HIPAA-Compliant Infrastructure",
+          description: "All data processing occurred within our SOC 2 and HIPAA-certified platform, with end-to-end encryption and strict access controls."
+        }
+      ],
+      imagePlaceholder: "https://images.unsplash.com/photo-1581091221495-5080f3317f4b?w=1600&h=900&fit=crop"
+    },
+    results: {
+      headline: "Delivered: 2 Million Perfect Annotations in 8 Weeks",
+      body: "By matching medical-grade expertise with a rigorous, parallel QA workflow, we delivered the complete, validated dataset on schedule, empowering the client to move to the next phase of their FDA submission with full confidence in their data foundation.",
+      keyStats: [
+        { value: "99.8%", label: "Annotation Accuracy", icon: ShieldCheck },
+        { value: "2M", label: "Medical Images", icon: Brain },
+        { value: "0", label: "Critical Errors", icon: BadgeCheck },
+        { value: "8", label: "Week Delivery", icon: CalendarClock },
+      ],
+      imagePlaceholder: "https://images.unsplash.com/photo-1629233192461-7533f0d01b13?w=1600&h=900&fit=crop"
+    },
+    impact: {
+      headline: "FDA Submission Accelerated, Model Outperforms Benchmarks",
+      body: "The client's AI model, trained on this pristine, expert-validated dataset, surpassed all internal and external benchmarks for diagnostic accuracy. This not only accelerated their 'De Novo' submission to the FDA but also positioned them to be the first-to-market with a tool that could genuinely save lives."
+    },
+  },
+  
+  {
     slug: "autonomous-vehicle-ai",
     industry: "AI & Data",
     tags: ["Autonomous Vehicles", "Computer Vision"],
