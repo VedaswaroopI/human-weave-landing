@@ -1,4 +1,4 @@
-import { LucideIcon, Heart, Car, Globe, DollarSign, ShoppingCart, Gamepad, Brain, ShieldCheck, CalendarClock, BadgeCheck, Zap, TrendingUp, Users } from "lucide-react";
+import { LucideIcon, Heart, Car, Globe, DollarSign, ShoppingCart, Gamepad, Brain, ShieldCheck, CalendarClock, BadgeCheck, Zap, TrendingUp, Users, CheckSquare } from "lucide-react";
 
 export interface CaseStudy {
   slug: string;
@@ -195,6 +195,59 @@ export const allCaseStudies: CaseStudy[] = [
     impact: {
       headline: "Market Leadership Through Superior Data",
       body: "The enhanced training data enabled the client to launch 6 months ahead of schedule, establishing market leadership in the competitive autonomous vehicle space. Their AI now operates in 15 cities worldwide."
+    },
+  },
+  
+  {
+    slug: "autonomous-vehicle-ai",
+    industry: "AI & Data",
+    tags: ["Autonomous Vehicles", "Computer Vision", "LiDAR"],
+    title: "Teaching AI to See: Powering a Leader in Autonomous Vehicles",
+    heroImage: "https://images.unsplash.com/photo-1576448332087-9807b637c228?w=1600&h=900&fit=crop",
+    cardImage: "https://images.unsplash.com/photo-1549317661-bd3b3760413b?w=600&h=400&fit=crop",
+    metricValue: "5M+",
+    metricLabel: "Images & 3D Frames Labeled",
+    companyLogo: "/placeholder.svg",
+    challenge: {
+      headline: "A Single Pixel Can Be Catastrophic",
+      body: "A top-tier autonomous vehicle company was stuck. Their perception models performed well in perfect weather, but failed on the 'edge cases' that define real-world driving: a blurry pedestrian in the rain, a deer at dusk, a partially occluded stop sign. Their model couldn't just be 'good'; it had to be safer than a human. They needed a partner who could provide millions of pixel-perfect 2D segmentations and, most critically, highly complex 3D LiDAR (point cloud) annotations that their existing vendors kept failing."
+    },
+    solution: {
+      headline: "Specialist Teams Trained to Hunt for Edge Cases",
+      intro: "This wasn't a task for a crowd. We assembled a dedicated, managed team of 200+ annotation specialists, trained specifically for AV perception systems. We treated this not as a 'labeling' job, but as a 'safety-critical' operation.",
+      steps: [
+        {
+          icon: Car,
+          title: "3D Point Cloud & Sensor Fusion",
+          description: "Our team was trained on the client's proprietary tooling to perform complex 3D cuboid annotation on LiDAR data, fusing it with camera imagery to create a single, unified source of truth for the AI."
+        },
+        {
+          icon: CheckSquare,
+          title: "Pixel-Perfect Semantic Segmentation",
+          description: "For 2D imagery, our specialists meticulously segmented every frame, differentiating between 'road,' 'sky,' 'pedestrian,' 'vehicle,' and 'lane marking' with near-perfect accuracy."
+        },
+        {
+          icon: ShieldCheck,
+          title: "Dedicated Edge Case QA",
+          description: "A separate, senior QA team actively hunted for errors in the most difficult scenarios: night, fog, rain, and occlusion. This feedback loop ensured continuous improvement, not just output."
+        }
+      ],
+      imagePlaceholder: "https://images.unsplash.com/photo-1502877338535-766e1452684a?w=1600&h=900&fit=crop"
+    },
+    results: {
+      headline: "A 40% Jump in Perception Model Accuracy",
+      body: "The client's AI, now trained on this hyper-accurate, edge-case-rich dataset, saw a dramatic improvement in its ability to perceive and react to complex driving scenarios. Our human-in-the-loop process provided the judgment that the AI needed to learn.",
+      keyStats: [
+        { value: "99.6%", label: "Annotation Accuracy", icon: ShieldCheck },
+        { value: "5M+", label: "Images & LiDAR Frames", icon: Car },
+        { value: "40%", label: "Model Accuracy Gain", icon: Brain },
+        { value: "100%", label: "On-Time Delivery", icon: BadgeCheck },
+      ],
+      imagePlaceholder: "https://images.unsplash.com/photo-1568210344836-0b1513569818?w=1600&h=900&fit=crop"
+    },
+    impact: {
+      headline: "Accelerating the Path to Level 4 Autonomy",
+      body: "Our work directly translated to a measurable reduction in 'disengagements' during real-world test drives. By providing a reliable data foundation, we helped the client accelerate their R&D timeline, moving them significantly closer to their goal of deploying a fully autonomous, Level 4-capable vehicle fleet."
     },
   },
   

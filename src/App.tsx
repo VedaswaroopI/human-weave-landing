@@ -21,6 +21,7 @@ import ResearchInsights from "./pages/solutions/ResearchInsights";
 import GlobalAIDevelopment from "./pages/case-studies/GlobalAIDevelopment";
 import GlobalAITranscription from "./pages/case-studies/GlobalAITranscription";
 import HealthcareAIDiagnostics from "./pages/case-studies/HealthcareAIDiagnostics";
+import AutonomousVehicleAI from "./pages/case-studies/AutonomousVehicleAI";
 
 const queryClient = new QueryClient();
 
@@ -59,6 +60,7 @@ const App = () => (
               <Route path="/case-studies/global-ai-development" element={<GlobalAIDevelopment />} />
               <Route path="/case-studies/global-ai-transcription" element={<GlobalAITranscription />} />
               <Route path="/case-studies/healthcare-ai-diagnostics" element={<HealthcareAIDiagnostics />} />
+              <Route path="/case-studies/autonomous-vehicle-ai" element={<AutonomousVehicleAI />} />
               {/* END CASE STUDY PAGES */}
               
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
