@@ -1,63 +1,24 @@
-import { ArrowRight, Heart, Car, Globe, DollarSign, ShoppingCart, Gamepad, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
+import { allCaseStudies } from "@/lib/case-studies-db";
+import { Link } from "react-router-dom";
 
-const allCases = [
-  {
-    industry: "HEALTHCARE",
-    headline: "Training FDA-Approved AI Diagnostics",
-    metric: "99.8%",
-    metricLabel: "Annotation Accuracy",
-    story: "A Fortune 500 healthcare company needed 2M medical images annotated by actual doctors. We delivered in 8 weeks with zero errors.",
-    color: "from-secondary to-accent",
-    icon: Heart,
-  },
-  {
-    industry: "AUTONOMOUS VEHICLES",
-    headline: "Powering Self-Driving Car AI",
-    metric: "5M+",
-    metricLabel: "Images Labeled",
-    story: "Trained computer vision models with pixel-perfect annotation of roads, pedestrians, and obstacles across diverse conditions.",
-    color: "from-primary to-secondary",
-    icon: Car,
-  },
-  {
-    industry: "GLOBAL SAAS",
-    headline: "Launching in 20 Markets Simultaneously",
-    metric: "150+",
-    metricLabel: "Languages",
-    story: "Native speakers localized product, marketing, and support content with cultural authenticity. Zero customer complaints about translation.",
-    color: "from-accent to-primary",
-    icon: Globe,
-  },
-  {
-    industry: "FINTECH",
-    headline: "Zero Errors in Financial Data Processing",
-    metric: "100%",
-    metricLabel: "Compliance Rate",
-    story: "Processed 5M+ financial transactions with certified analysts ensuring regulatory compliance across 12 countries.",
-    color: "from-primary to-accent",
-    icon: DollarSign,
-  },
-  {
-    industry: "E-COMMERCE",
-    headline: "Product Testing Across 12 Countries",
-    metric: "12K+",
-    metricLabel: "Real Users",
-    story: "Real shoppers tested checkout flows in their native languages across diverse payment systems. Increased conversion by 34%.",
-    color: "from-secondary to-primary",
-    icon: ShoppingCart,
-  },
-  {
-    industry: "GAMING",
-    headline: "Bug-Free Launch in 30 Languages",
-    metric: "30",
-    metricLabel: "Languages",
-    story: "Native gamers tested gameplay, found 2,000+ bugs before launch. Zero critical issues post-release. 4.8★ global rating.",
-    color: "from-accent to-secondary",
-    icon: Gamepad,
-  },
-];
+const displayedCases = allCaseStudies.slice(0, 6).map((study) => ({
+  slug: study.slug,
+  industry: study.industry.toUpperCase(),
+  headline: study.title,
+  metric: study.metricValue,
+  metricLabel: study.metricLabel,
+  story: study.challenge.body.slice(0, 150) + "...",
+  color: study.tags.includes("Healthcare") ? "from-secondary to-accent" :
+         study.tags.includes("Autonomous Vehicles") ? "from-primary to-secondary" :
+         study.tags.includes("Global SaaS") ? "from-accent to-primary" :
+         study.tags.includes("Voice AI") ? "from-primary to-accent" :
+         study.tags.includes("E-commerce") ? "from-secondary to-primary" :
+         "from-accent to-secondary",
+  icon: study.results.keyStats[0].icon,
+}));
 
 export const CaseStudiesRevised = () => {
   const [visibleCards, setVisibleCards] = useState<number[]>([]);
@@ -142,7 +103,7 @@ export const CaseStudiesRevised = () => {
           <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-background to-transparent pointer-events-none z-10" />
 
           <div ref={scrollContainerRef} className="flex overflow-x-auto overflow-y-hidden gap-6 py-8 snap-x snap-mandatory scrollbar-hide">
-            {allCases.map((caseStudy, index) => {
+            {displayedCases.map((caseStudy, index) => {
               const Icon = caseStudy.icon;
               const isVisible = visibleCards.includes(index);
 
@@ -186,16 +147,16 @@ export const CaseStudiesRevised = () => {
                     {caseStudy.story}
                   </p>
 
-                  <button className="text-base font-semibold text-secondary flex items-center gap-2 hover:gap-3 transition-all">
+                  <Link to={`/case-studies/${caseStudy.slug}`} className="text-base font-semibold text-secondary flex items-center gap-2 hover:gap-3 transition-all">
                     Read Story <ArrowRight className="w-4 h-4" />
-                  </button>
+                  </Link>
                 </div>
               );
             })}
           </div>
 
           <div className="flex justify-center gap-2 mt-4">
-            {allCases.map((_, i) => (
+            {displayedCases.map((_, i) => (
               <button
                 key={i}
                 onClick={() => {
