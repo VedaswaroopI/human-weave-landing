@@ -1,25 +1,7 @@
 import { PageLayout } from "@/components/layouts/PageLayout";
 import { SolutionHero } from "@/components/SolutionHero";
+import { PolicySection } from "@/components/legal/PolicySection";
 import { Shield, Server, Users, Info, NotebookPen, Cookie, Mail } from "lucide-react";
-
-// Helper component for styled sections
-const PolicySection: React.FC<{
-  title: string;
-  icon: React.ElementType;
-  children: React.ReactNode;
-}> = ({ title, icon: Icon, children }) => (
-  <div className="pt-8">
-    <div className="flex items-center gap-3 mb-4">
-      <span className="flex-shrink-0 w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
-        <Icon className="w-5 h-5 text-accent" />
-      </span>
-      <h2 className="text-2xl font-bold">{title}</h2>
-    </div>
-    <div className="prose prose-invert max-w-none prose-p:text-muted-foreground prose-li:text-muted-foreground prose-a:text-secondary prose-a:no-underline hover:prose-a:underline prose-strong:text-foreground">
-      {children}
-    </div>
-  </div>
-);
 
 const PrivacyPolicy = () => {
   return (

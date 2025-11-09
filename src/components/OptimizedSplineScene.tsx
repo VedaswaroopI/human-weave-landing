@@ -6,8 +6,7 @@ import { useSplineAnalytics } from '@/hooks/use-analytics';
 import { useWebGLSupport } from '@/hooks/use-webgl-support';
 import { ParticleButton } from './ui/particle-button';
 import { Sparkles } from 'lucide-react';
-
-const TIMEOUT_MS = 8000;
+import { SPLINE_CONFIG, PERFORMANCE } from '@/constants';
 
 export function OptimizedSplineScene({ scene, className }: { scene: string; className?: string }) {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -25,7 +24,7 @@ export function OptimizedSplineScene({ scene, className }: { scene: string; clas
   // Detect mobile viewport and network conditions
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth < PERFORMANCE.MOBILE_BREAKPOINT);
     };
     
     checkMobile();
@@ -97,13 +96,13 @@ export function OptimizedSplineScene({ scene, className }: { scene: string; clas
 
     loadStartTime.current = Date.now();
     
-    // Backup check: poll for canvas readiness (reduced interval for better performance)
+    // Backup check: poll for canvas readiness
     checkIntervalRef.current = setInterval(() => {
       const canvas = containerRef.current?.querySelector('canvas');
       if (canvas && canvas.width > 0) {
         handleSplineLoad();
       }
-    }, 250);
+    }, SPLINE_CONFIG.LOAD_CHECK_INTERVAL_MS);
 
     // Timeout: don't hide poster/loader, just flag timeout
     const timeoutTimer = setTimeout(() => {
@@ -111,7 +110,7 @@ export function OptimizedSplineScene({ scene, className }: { scene: string; clas
         setIsTimedOut(true);
         trackSplineError('load_timeout');
       }
-    }, TIMEOUT_MS);
+    }, SPLINE_CONFIG.TIMEOUT_MS);
 
     return () => {
       if (checkIntervalRef.current) {

@@ -21,32 +21,47 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { Mail, CalendarClock, ShieldCheck, ArrowRight } from "lucide-react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
-
 import { sanitizeText, sanitizeEmail, RateLimiter, generateClientToken } from "@/lib/sanitize";
+import { NetworkError, RateLimitError, getErrorMessage, logError } from "@/utils/errors";
+import { FORM_CONFIG, RATE_LIMIT, EXTERNAL_URLS, COMPANY } from "@/constants";
 
-// Rate limiter instance - 3 submissions per 60 seconds per email
-const rateLimiter = new RateLimiter(3, 60000);
+// Rate limiter instance using constants
+const rateLimiter = new RateLimiter(RATE_LIMIT.MAX_ATTEMPTS, RATE_LIMIT.WINDOW_MS);
 
-// 1. Define the validation schema with zod - Enhanced security
+// 1. Define the validation schema with zod using constants
 const formSchema = z.object({
   name: z.string()
     .trim()
-    .min(2, { message: "Name must be at least 2 characters." })
-    .max(100, { message: "Name must be less than 100 characters." })
-    .regex(/^[a-zA-Z\s'-]+$/, { message: "Name can only contain letters, spaces, hyphens, and apostrophes." }),
+    .min(FORM_CONFIG.MIN_NAME_LENGTH, { 
+      message: `Name must be at least ${FORM_CONFIG.MIN_NAME_LENGTH} characters.` 
+    })
+    .max(FORM_CONFIG.MAX_NAME_LENGTH, { 
+      message: `Name must be less than ${FORM_CONFIG.MAX_NAME_LENGTH} characters.` 
+    })
+    .regex(/^[a-zA-Z\s'-]+$/, { 
+      message: "Name can only contain letters, spaces, hyphens, and apostrophes." 
+    }),
   email: z.string()
     .trim()
     .email({ message: "Please enter a valid email address." })
-    .max(255, { message: "Email must be less than 255 characters." })
+    .max(FORM_CONFIG.MAX_EMAIL_LENGTH, { 
+      message: `Email must be less than ${FORM_CONFIG.MAX_EMAIL_LENGTH} characters.` 
+    })
     .toLowerCase(),
   company: z.string()
     .trim()
-    .max(100, { message: "Company name must be less than 100 characters." })
+    .max(FORM_CONFIG.MAX_COMPANY_LENGTH, { 
+      message: `Company name must be less than ${FORM_CONFIG.MAX_COMPANY_LENGTH} characters.` 
+    })
     .optional(),
   message: z.string()
     .trim()
-    .min(10, { message: "Message must be at least 10 characters." })
-    .max(2000, { message: "Message must be less than 2000 characters." }),
+    .min(FORM_CONFIG.MIN_MESSAGE_LENGTH, { 
+      message: `Message must be at least ${FORM_CONFIG.MIN_MESSAGE_LENGTH} characters.` 
+    })
+    .max(FORM_CONFIG.MAX_MESSAGE_LENGTH, { 
+      message: `Message must be less than ${FORM_CONFIG.MAX_MESSAGE_LENGTH} characters.` 
+    }),
 });
 
 // 2. Define the Contact Page component
@@ -72,18 +87,19 @@ const Contact = () => {
       // Check rate limiting
       if (rateLimiter.isLimited(values.email)) {
         const resetTime = rateLimiter.getResetTime(values.email);
-        toast.error(`Too many submissions. Please try again in ${resetTime} seconds.`);
-        setIsSubmitting(false);
-        return;
+        throw new RateLimitError(
+          `Too many submissions. Please try again in ${resetTime} seconds.`,
+          resetTime
+        );
       }
 
       // Sanitize all inputs before sending
       const sanitizedData = {
-        name: sanitizeText(values.name, 100),
+        name: sanitizeText(values.name, FORM_CONFIG.MAX_NAME_LENGTH),
         email: sanitizeEmail(values.email),
-        company: values.company ? sanitizeText(values.company, 100) : '',
-        message: sanitizeText(values.message, 2000),
-        _clientToken: generateClientToken(), // Client-side anti-spam token
+        company: values.company ? sanitizeText(values.company, FORM_CONFIG.MAX_COMPANY_LENGTH) : '',
+        message: sanitizeText(values.message, FORM_CONFIG.MAX_MESSAGE_LENGTH),
+        _clientToken: generateClientToken(),
         _timestamp: new Date().toISOString(),
       };
 
@@ -99,22 +115,31 @@ const Contact = () => {
         body: JSON.stringify(sanitizedData),
       });
 
-      if (response.ok) {
-        toast.success("Message sent successfully! We'll get back to you soon.", {
-          duration: 5000,
-        });
-        form.reset();
-        // Clear rate limit on successful submission
-        setTimeout(() => rateLimiter.clear(values.email), 5000);
-      } else {
+      if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.error || "Failed to send message.");
+        throw new NetworkError(
+          errorData.error || "Failed to send message.",
+          response.status
+        );
       }
+
+      toast.success("Message sent successfully! We'll get back to you soon.", {
+        duration: 5000,
+      });
+      form.reset();
+      
+      // Clear rate limit on successful submission
+      setTimeout(() => rateLimiter.clear(values.email), RATE_LIMIT.RESET_DELAY_MS);
+      
     } catch (error) {
-      // Don't log sensitive form data
-      const errorMessage = error instanceof Error ? error.message : "Unknown error";
-      console.error("Form submission error:", errorMessage);
-      toast.error("Something went wrong. Please try again or contact us directly at connect@usergy.ai");
+      logError(error, 'Contact Form Submission');
+      
+      const errorMessage = getErrorMessage(error);
+      const fallbackMessage = ` Or contact us directly at ${COMPANY.EMAIL}`;
+      
+      toast.error(errorMessage + fallbackMessage, {
+        duration: 7000,
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -134,7 +159,7 @@ const Contact = () => {
               <span className="gradient-text animate-gradient">Together.</span>
             </>
           }
-          subtitle="Have a project in mind, a question about our 300,000+ expert network, or a general inquiry? We're ready to listen and help you get started."
+          subtitle={`Have a project in mind, a question about our ${COMPANY.EXPERT_NETWORK_SIZE} expert network, or a general inquiry? We're ready to listen and help you get started.`}
         />
 
         {/* 2. Main Content Section (Form + Info) */}
@@ -152,7 +177,7 @@ const Contact = () => {
                 </div>
 
                 <div className="space-y-6">
-                  <a href="https://calendly.com/swaroop-usergy/30min" target="_blank" rel="noopener noreferrer" className="group flex items-start gap-4 p-4 rounded-lg hover:bg-muted/50 transition-colors">
+                  <a href={EXTERNAL_URLS.CALENDLY} target="_blank" rel="noopener noreferrer" className="group flex items-start gap-4 p-4 rounded-lg hover:bg-muted/50 transition-colors">
                     <CalendarClock className="w-8 h-8 text-secondary flex-shrink-0 mt-1" />
                     <div>
                       <h3 className="text-lg font-semibold">Book a Free Consultation</h3>
@@ -165,7 +190,7 @@ const Contact = () => {
                     </div>
                   </a>
                   
-                  <a href="mailto:connect@usergy.ai" className="group flex items-start gap-4 p-4 rounded-lg hover:bg-muted/50 transition-colors">
+                  <a href={EXTERNAL_URLS.EMAIL} className="group flex items-start gap-4 p-4 rounded-lg hover:bg-muted/50 transition-colors">
                     <Mail className="w-8 h-8 text-primary flex-shrink-0 mt-1" />
                     <div>
                       <h3 className="text-lg font-semibold">Email Us Directly</h3>
@@ -173,7 +198,7 @@ const Contact = () => {
                         Prefer to send details via email? Our inbox is always open.
                       </p>
                       <span className="text-sm font-semibold text-primary group-hover:underline">
-                        connect@usergy.ai
+                        {COMPANY.EMAIL}
                       </span>
                     </div>
                   </a>
