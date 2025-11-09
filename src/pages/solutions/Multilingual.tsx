@@ -32,7 +32,7 @@ const HeroSection = () => (
         </span>
       </>
     }
-    subtitle="Go beyond robotic machine translation. Our 300,000+ native speakers and cultural experts provide translation, localization, and transcreation that connects with your audience on a human level."
+    subtitle="Go beyond robotic machine translation. Our 300,000 or more native speakers and cultural experts provide translation, localization, and transcreation that connects with your audience on a human level."
   />
 );
 
@@ -310,7 +310,7 @@ const ProcessSection = () => (
           <div>
             <h3 className="text-xl font-bold mb-1">1. AI-Powered Foundation</h3>
             <p className="text-muted-foreground leading-relaxed">
-              We leverage AI and translation memory (TM) to handle the initial
+              We use AI and translation memory (TM) to handle the initial
               pass, ensuring baseline consistency, speed, and cost-efficiency
               across all your content.
             </p>

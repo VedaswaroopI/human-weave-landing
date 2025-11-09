@@ -7,7 +7,7 @@ export const ComparisonSection = () => {
       desc: "PhDs annotate medical data. Native speakers translate. Real testers use real devices.",
     },
     {
-      title: "99.5%+ Guaranteed Accuracy",
+      title: "99.5% or Higher Guaranteed Accuracy",
       desc: "Dedicated project managers and multi-layer QA ensure perfection on every project.",
     },
     {

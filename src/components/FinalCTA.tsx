@@ -15,7 +15,7 @@ export const FinalCTA = () => {
 
           {/* Subheadline */}
           <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-            Join 300+ companies who trust UsergyAI to power their AI breakthroughs.
+            Join 300 or more companies who trust UsergyAI to power their AI breakthroughs.
           </p>
 
           {/* Single CTA */}

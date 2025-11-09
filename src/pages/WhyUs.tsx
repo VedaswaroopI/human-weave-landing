@@ -23,7 +23,7 @@ const HeroSection = () => (
         <span className="gradient-text animate-gradient">Genuine Experts.</span>
       </>
     }
-    subtitle="Crowdsourcing platforms give you anonymous clicks. We give you a managed network of 300,000+ verified professionals—doctors, linguists, engineers, and researchers—who understand the context automation will never see."
+    subtitle="Crowdsourcing platforms give you anonymous clicks. We give you a managed network of 300,000+ verified professionals (doctors, linguists, engineers, and researchers) who understand the context automation will never see."
   />
 );
 
@@ -135,7 +135,7 @@ const DifferentiatorSection = () => (
               <li className="flex items-start gap-3 bg-background/40 p-3 rounded-lg backdrop-blur-sm">
                 <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
                 <div>
-                  <p className="font-semibold text-foreground">99.5%+ Guaranteed Accuracy</p>
+                  <p className="font-semibold text-foreground">99.5% or Higher Guaranteed Accuracy</p>
                   <p className="text-sm text-muted-foreground">
                     SLA-backed quality metrics with financial guarantees
                   </p>

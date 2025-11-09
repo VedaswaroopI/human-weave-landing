@@ -23,7 +23,7 @@ const journeySteps = [
     number: "02",
     icon: UsersRound,
     title: "Expert Team Assembly",
-    description: "We handpick specialists from our 300K+ network:",
+    description: "We handpick specialists from our network of 300,000 or more:",
     details: [
       "Verify certifications (MDs, JDs, PhDs as needed)",
       "Test on sample batch to ensure quality",
@@ -55,7 +55,7 @@ const journeySteps = [
     title: "Final Validation & Delivery",
     description: "Before delivery, we guarantee quality:",
     details: [
-      "Final accuracy check (99.5%+ minimum)",
+      "Final accuracy check (99.5% minimum or higher)",
       "Format validation (JSON, CSV, XML as specified)",
       "Documentation package (methodology, edge cases)",
       "Post-delivery support window (30 days)"

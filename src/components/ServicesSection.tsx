@@ -23,7 +23,7 @@ const services = [
   {
     badge: "MULTILINGUAL",
     title: "Speak Every Language, Respect Every Culture",
-    description: "Native speakers who understand context, not just words. Translation and localization in 150+ languages with zero cultural mishaps.",
+    description: "Native speakers who understand context, not just words. Translation and localization in 150 or more languages with zero cultural mishaps.",
     color: "from-accent to-accent/70",
     visualType: "speech",
     url: "/solutions/multilingual",

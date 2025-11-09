@@ -252,7 +252,7 @@ const TermsOfService = () => {
             </p>
             <p>
               You agree to submit to the exclusive jurisdiction of the competent
-              courts located in **Bengaluru, Karnataka, India** for the
+              courts located in <strong>Bengaluru, Karnataka, India</strong> for the
               resolution of any legal matter arising from these Terms.
             </p>
           </PolicySection>

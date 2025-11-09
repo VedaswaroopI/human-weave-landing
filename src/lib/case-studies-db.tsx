@@ -51,7 +51,7 @@ export const allCaseStudies: CaseStudy[] = [
     companyLogo: "/placeholder.svg",
     challenge: {
       headline: "The Stakes: 5,000 Hours, 3 Languages, 0 Compromises",
-      body: "A leading tech giant's new voice AI was struggling. They needed 5,000 hours of audio transcribed across Japanese, Chinese, and Korean. The catch? The complex linguistic nuances—dialects, tonal accuracy, and honorifics—could make or break the model's performance. Inaccurate data would corrupt the entire training process. Delays would mean missing their market launch. They needed a partner who could deliver perfection, at scale, yesterday."
+      body: "A leading tech giant's new voice AI was struggling. They needed 5,000 hours of audio transcribed across Japanese, Chinese, and Korean. The catch? The complex linguistic nuances (dialects, tonal accuracy, and honorifics) could make or break the model's performance. Inaccurate data would corrupt the entire training process. Delays would mean missing their market launch. They needed a partner who could deliver perfection, at scale, yesterday."
     },
     solution: {
       headline: "A Managed Team of Native Linguists, Not a Crowd",
@@ -102,7 +102,7 @@ export const allCaseStudies: CaseStudy[] = [
     companyLogo: "/placeholder.svg",
     challenge: {
       headline: "The Stakes: Misdiagnosis is Not an Option",
-      body: "A Fortune 500 healthcare company was developing a revolutionary AI diagnostic tool. To get FDA approval, their model had to be trained on data with near-perfect accuracy. A 1% error wasn't just a bug; it was a potential misdiagnosis. They needed 2 million medical images (MRIs, CT scans) annotated, but standard crowd-workers couldn't tell the difference between a benign shadow and a malignant tumor. They needed genuine medical professionals, and a 100% HIPAA-compliant workflow, all delivered in just 8 weeks."
+      body: "A Fortune 500 healthcare company was developing an advanced AI diagnostic tool. To get FDA approval, their model had to be trained on data with near-perfect accuracy. A 1% error wasn't just a bug; it was a potential misdiagnosis. They needed 2 million medical images (MRIs, CT scans) annotated, but standard crowd-workers couldn't tell the difference between a benign shadow and a malignant tumor. They needed genuine medical professionals, and a 100% HIPAA-compliant workflow, all delivered in just 8 weeks."
     },
     solution: {
       headline: "A Managed Team of Doctors & A Fortress-Level Secure Platform",

@@ -27,7 +27,7 @@ const GlobalAIDevelopment = () => {
       <h2 className="text-3xl font-bold text-foreground">The UsergyAI Approach</h2>
       <p className="text-lg text-muted-foreground leading-relaxed">
         We didn't just use crowd workers. We deployed a specialized team of native
-        speakers—fluent in regional dialects, tonal variations, and honorifics.
+        speakers, fluent in regional dialects, tonal variations, and honorifics.
       </p>
       <div className="space-y-4 pt-4">
         <div className="flex items-start gap-3">

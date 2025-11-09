@@ -52,22 +52,22 @@ const PrivacyPolicy = () => {
               UsergyAI Private Limited ("UsergyAI," "we," "us," or "our") is
               committed to protecting your privacy. This Privacy Policy outlines
               our practices for collecting, using, maintaining, protecting, and
-              disclosing personal data. We act as a **Data Fiduciary** under
-              India's **Digital Personal Data Protection Act, 2023 (DPDP Act)**.
+              disclosing personal data. We act as a <strong>Data Fiduciary</strong> under
+              India's <strong>Digital Personal Data Protection Act, 2023 (DPDP Act)</strong>.
             </p>
             <p>
               This policy applies to data we collect from:
             </p>
             <ul>
               <li>
-                **Website Visitors:** Individuals who browse our website.
+                <strong>Website Visitors:</strong> Individuals who browse our website.
               </li>
               <li>
-                **Clients:** Businesses that purchase our data annotation, QA,
+                <strong>Clients:</strong> Businesses that purchase our data annotation, QA,
                 and multilingual services.
               </li>
               <li>
-                **Contributors:** Our global network of 300,000+ independent
+                <strong>Contributors:</strong> Our global network of 300,000+ independent
                 contractors who perform services.
               </li>
             </ul>
@@ -104,7 +104,7 @@ const PrivacyPolicy = () => {
                 <strong>Client Data:</strong> To perform our services, you may
                 provide us with datasets for annotation, testing, or
                 localization. This data may contain personal information. We
-                process this data as a **Data Processor** on your behalf and
+                process this data as a <strong>Data Processor</strong> on your behalf and
                 strictly in accordance with your instructions and our Data
                 Processing Agreement.
               </li>
@@ -170,7 +170,7 @@ const PrivacyPolicy = () => {
           {/* 3. Data Security */}
           <PolicySection title="Data Security" icon={Shield}>
             <p>
-              We have implemented robust technical, administrative, and
+              We have implemented comprehensive technical, administrative, and
               physical security measures to protect your personal data.
             </p>
             <ul>

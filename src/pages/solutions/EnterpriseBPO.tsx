@@ -32,7 +32,7 @@ const HeroSection = () => (
         </span>
       </>
     }
-    subtitle="Stop letting operational bottlenecks slow your growth. Our 300,000+ managed experts act as an extension of your team, handling complex processes so your core engineers can focus on building."
+    subtitle="Stop letting operational bottlenecks slow your growth. Our 300,000 or more managed experts act as an extension of your team, handling complex processes so your core engineers can focus on building."
   />
 );
 

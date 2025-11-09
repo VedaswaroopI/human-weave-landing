@@ -13,7 +13,7 @@ const DataServices = () => {
           <span className="gradient-text animate-gradient">It Understands.</span>
         </>
       }
-      subtitle="Your AI model is only as smart as the data it learns from. We provide high-quality, 99.5%+ accurate, and context-rich data annotated by genuine domain experts, not crowd workers."
+      subtitle="Your AI model is only as smart as the data it learns from. We provide high-quality data (99.5% accuracy or better) that's context-rich and annotated by genuine domain experts, not crowd workers."
       problemTitle='The High Cost of "Good Enough" Data'
       problemSubtitle="Garbage in, garbage out. In AI, this is an ironclad rule."
       problems={[

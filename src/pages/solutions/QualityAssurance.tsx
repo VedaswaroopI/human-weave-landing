@@ -15,7 +15,7 @@ const QualityAssurance = () => {
           </span>
         </>
       }
-      subtitle="Your product works in the lab. But what about in Mumbai on a 3G network? Our global team of 300,000+ real-world testers ensures your software, hardware, and AI models are flawless everywhere."
+      subtitle="Your product works in the lab. But what about in Mumbai on a 3G network? Our global team of 300,000 or more real-world testers ensures your software, hardware, and AI models are flawless everywhere."
       problemTitle="Why Automated Tests Aren't Enough"
       problemSubtitle="Automated scripts are fast, but they have no patience, no cultural context, and can't tell you how a feature feels."
       problems={[
