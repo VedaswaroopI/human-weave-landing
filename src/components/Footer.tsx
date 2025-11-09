@@ -151,16 +151,25 @@ export const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
           <p>© 2025 UsergyAI. All rights reserved.</p>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
             <Link to="/privacy-policy" className="hover:text-foreground transition-colors hover:underline">
               Privacy Policy
             </Link>
             <Link to="/terms-of-service" className="hover:text-foreground transition-colors hover:underline">
               Terms of Service
             </Link>
-            <a href="#" className="hover:text-foreground transition-colors hover:underline">
+            <Link to="/cookie-policy" className="hover:text-foreground transition-colors hover:underline">
+              Cookie Policy
+            </Link>
+            <button
+              onClick={() => {
+                localStorage.removeItem("cookie-consent");
+                window.location.reload();
+              }}
+              className="hover:text-foreground transition-colors hover:underline"
+            >
               Cookie Settings
-            </a>
+            </button>
           </div>
         </div>
       </div>
