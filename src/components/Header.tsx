@@ -57,8 +57,8 @@ export const Header = () => {
           {/* Right Side Actions */}
           <div className="flex items-center space-x-3 sm:space-x-4">
             {/* Projects Board Link */}
-            <a
-              href="#"
+            <Link
+              to="/projects-board"
               className="hidden md:flex items-center gap-2 text-sm font-medium hover:text-secondary transition-colors"
               aria-label="Join our projects board with over 300,000 contributors"
             >
@@ -66,7 +66,7 @@ export const Header = () => {
               <span className="px-2 py-0.5 rounded-full bg-accent/10 text-accent text-base font-semibold" aria-label="300,000 plus members">
                 Join 300K+
               </span>
-            </a>
+            </Link>
 
 
             {/* CTA Button */}
@@ -121,8 +121,8 @@ export const Header = () => {
             >
               Case Studies
             </Link>
-            <a
-              href="#"
+            <Link
+              to="/projects-board"
               className="flex items-center gap-2 py-2 text-base font-medium hover:text-secondary transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
@@ -130,7 +130,7 @@ export const Header = () => {
               <span className="px-2 py-0.5 rounded-full bg-accent/10 text-accent text-sm font-semibold">
                 Join 300K+
               </span>
-            </a>
+            </Link>
             <ParticleButton asChild className="w-full mt-2 bg-gradient-to-r from-secondary to-secondary/90">
               <Link to="/contact">
                 Contact Us

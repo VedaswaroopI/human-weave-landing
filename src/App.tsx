@@ -28,6 +28,7 @@ const GlobalAIDevelopment = lazy(() => import("./pages/case-studies/GlobalAIDeve
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsOfService = lazy(() => import("./pages/TermsOfService"));
 const CookiePolicy = lazy(() => import("./pages/CookiePolicy"));
+const ProjectsBoard = lazy(() => import("./pages/ProjectsBoard"));
 
 // Loading fallback component
 const PageLoader = () => (
@@ -58,6 +59,7 @@ const App = () => (
                 <Route path="/why-us" element={<WhyUs />} />
                 <Route path="/case-studies" element={<CaseStudies />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/projects-board" element={<ProjectsBoard />} />
                 
                 {/* SOLUTIONS PAGES */}
                 <Route path="/solutions" element={<SolutionsLanding />} />
