@@ -15,7 +15,7 @@ const DataServices = () => {
       }
       subtitle="Your AI model is only as smart as the data it learns from. We provide high-quality data (99.5% accuracy or better) that's context-rich and annotated by genuine domain experts, not crowd workers."
       problemTitle='The High Cost of "Good Enough" Data'
-      problemSubtitle="Garbage in, garbage out. In AI, this is an ironclad rule."
+      problemSubtitle="Garbage in, Garbage out. In AI, this is an ironclad rule."
       problems={[
         {
           title: "Bias In, Bias Out",
