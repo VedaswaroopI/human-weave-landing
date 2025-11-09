@@ -12,6 +12,7 @@ import {
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { Link } from "react-router-dom";
+import { safeStorage } from "@/utils/safeStorage";
 
 interface CookiePreferences {
   necessary: boolean;
@@ -33,36 +34,30 @@ export const CookieConsent = () => {
   const [preferences, setPreferences] = useState<CookiePreferences>(defaultPreferences);
 
   useEffect(() => {
-    // Check if user has already made a choice
-    const consent = localStorage.getItem("cookie-consent");
+    // Check if user has already made a choice using safe storage
+    const consent = safeStorage.getItem<any>("cookie-consent");
+    
     if (!consent) {
       // Show banner after a short delay for better UX
       setTimeout(() => setShowBanner(true), 1000);
     } else {
-      // Load saved preferences with validation
-      try {
-        const saved = JSON.parse(consent);
-        // Validate the structure to prevent tampering
-        if (
-          typeof saved === 'object' &&
-          typeof saved.necessary === 'boolean' &&
-          typeof saved.analytics === 'boolean' &&
-          typeof saved.marketing === 'boolean' &&
-          typeof saved.preferences === 'boolean'
-        ) {
-          // Ensure necessary cookies are always true
-          setPreferences({
-            ...saved,
-            necessary: true,
-          });
-        } else {
-          // Invalid data, reset to defaults
-          localStorage.removeItem("cookie-consent");
-          setTimeout(() => setShowBanner(true), 1000);
-        }
-      } catch (e) {
-        // Parsing failed, remove corrupted data
-        localStorage.removeItem("cookie-consent");
+      // Validate the structure to prevent tampering
+      if (
+        typeof consent === 'object' &&
+        typeof consent.necessary === 'boolean' &&
+        typeof consent.analytics === 'boolean' &&
+        typeof consent.marketing === 'boolean' &&
+        typeof consent.preferences === 'boolean'
+      ) {
+        // Ensure necessary cookies are always true
+        setPreferences({
+          necessary: true,
+          analytics: consent.analytics,
+          marketing: consent.marketing,
+          preferences: consent.preferences,
+        });
+      } else {
+        // Invalid data, reset to defaults (safeStorage already cleaned it up)
         setTimeout(() => setShowBanner(true), 1000);
       }
     }
@@ -84,17 +79,16 @@ export const CookieConsent = () => {
       version: '1.0',
     };
     
-    try {
-      localStorage.setItem("cookie-consent", JSON.stringify(consentData));
+    // Use safe storage
+    const saved = safeStorage.setItem("cookie-consent", consentData);
+    
+    if (saved) {
       setPreferences(validatedPrefs);
-      setShowBanner(false);
-      setShowSettings(false);
-    } catch (e) {
-      console.error("Failed to save cookie preferences");
-      // Fallback: still close the banner even if save fails
-      setShowBanner(false);
-      setShowSettings(false);
     }
+    
+    // Always close the banner/settings, even if save fails
+    setShowBanner(false);
+    setShowSettings(false);
   };
 
   const acceptAll = () => {

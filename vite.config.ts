@@ -11,7 +11,8 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     react(), 
-    mode === "development" && componentTagger()
+    // Allow disabling tagger via env var for debugging preview issues
+    mode === "development" && process.env.VITE_DISABLE_TAGGER !== 'true' && componentTagger()
   ].filter(Boolean),
   resolve: {
     alias: {
@@ -56,6 +57,7 @@ export default defineConfig(({ mode }) => ({
       'react',
       'react-dom',
       'react-router-dom',
+      'lodash.debounce', // Explicit include to avoid CJS/ESM interop issues
     ],
     exclude: [
       '@splinetool/react-spline',

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { motion } from "framer-motion";
+import { safeStorage } from "@/utils/safeStorage";
 
 export const Footer = () => {
   const [isLoginDialogOpen, setIsLoginDialogOpen] = useState(false);
@@ -151,7 +152,7 @@ export const Footer = () => {
             </Link>
             <button
               onClick={() => {
-                localStorage.removeItem("cookie-consent");
+                safeStorage.removeItem("cookie-consent");
                 window.location.reload();
               }}
               className="hover:text-foreground transition-colors hover:underline"

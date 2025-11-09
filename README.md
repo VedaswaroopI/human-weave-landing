@@ -71,3 +71,25 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+
+## Troubleshooting Preview Issues
+
+If you encounter persistent errors in the Lovable preview (but the site works in incognito/production):
+
+**Quick Fix:**
+1. In development mode, the error screen shows a "Reset App Storage" button
+2. Click it to clear all localStorage, sessionStorage, and IndexedDB
+3. The page will reload with a clean state
+
+**Toggle Component Tagger:**
+If the issue persists, you can disable the dev-only component tagger:
+1. Edit `.env.development`
+2. Set `VITE_DISABLE_TAGGER=true`
+3. Restart the dev server
+
+**Root Causes:**
+- Corrupted localStorage/sessionStorage data
+- Stale Vite module cache
+- Dev-only plugin conflicts
+
+The preview environment uses additional dev tools that aren't present in production, so preview-only errors are typically not a risk to end users.
