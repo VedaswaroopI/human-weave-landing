@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
+import { useParams, Link, Navigate } from "react-router-dom";
 import { PageLayout } from "@/components/layouts/PageLayout";
 import { allCaseStudies, CaseStudy } from "@/lib/case-studies-db";
 import { Badge } from "@/components/ui/badge";
@@ -7,28 +7,7 @@ import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { AlertCircle, CheckCircle, Target, Award, ArrowRight } from "lucide-react";
 import { ParticleButton } from "@/components/ui/particle-button";
-import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
-
-const ImagePlaceholder: React.FC<{ alt: string; className?: string; src?: string }> = ({ alt, className, src }) => {
-  if (src) {
-    return (
-      <AspectRatio ratio={16 / 9} className={cn("rounded-2xl overflow-hidden border border-border", className)}>
-        <img
-          src={src}
-          alt={alt}
-          className="w-full h-full object-cover"
-        />
-      </AspectRatio>
-    )
-  }
-  
-  return (
-    <div className={cn("w-full bg-muted/10 border-2 border-border/50 border-dashed rounded-2xl flex items-center justify-center aspect-video", className)}>
-      <p className="text-muted-foreground text-sm font-medium">{alt}</p>
-    </div>
-  );
-};
 
 const StatCard: React.FC<{ stat: CaseStudy['results']['keyStats'][0] }> = ({ stat }) => (
   <div className="relative glassmorphic bg-card/50 p-6 rounded-2xl border border-border overflow-hidden">
@@ -82,13 +61,17 @@ const CaseStudyLinkCard: React.FC<{ study: CaseStudy }> = ({ study }) => (
   </motion.div>
 );
 
-const AutonomousVehicleAI = () => {
-  const study = allCaseStudies.find(s => s.slug === "autonomous-vehicle-ai");
+const DynamicCaseStudy = () => {
+  const { slug } = useParams<{ slug: string }>();
+  const study = allCaseStudies.find(s => s.slug === slug);
 
-  if (!study) return <PageLayout><div>Case study not found.</div></PageLayout>;
+  if (!study) {
+    return <Navigate to="/not-found" replace />;
+  }
 
   return (
     <PageLayout>
+      {/* Hero Section */}
       <section className="relative pt-16 sm:pt-24 pb-12 sm:pb-16 md:pb-20 bg-muted/30 overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
@@ -108,23 +91,18 @@ const AutonomousVehicleAI = () => {
                 <p className="text-3xl font-bold gradient-text animate-gradient">{study.metricValue}</p>
                 <p className="text-sm text-muted-foreground">{study.metricLabel}</p>
               </div>
-              <div className="glassmorphic bg-card/50 p-4 rounded-xl border border-border">
-                <p className="text-3xl font-bold gradient-text animate-gradient">99.6%</p>
-                <p className="text-sm text-muted-foreground">Accuracy</p>
-              </div>
-              <div className="glassmorphic bg-card/50 p-4 rounded-xl border border-border">
-                <p className="text-3xl font-bold gradient-text animate-gradient">40%</p>
-                <p className="text-sm text-muted-foreground">Model Gain</p>
-              </div>
-              <div className="glassmorphic bg-card/50 p-4 rounded-xl border border-border">
-                <p className="text-3xl font-bold gradient-text animate-gradient">Top 5</p>
-                <p className="text-sm text-muted-foreground">AV Leader</p>
-              </div>
+              {study.results.keyStats.slice(0, 3).map((stat, idx) => (
+                <div key={idx} className="glassmorphic bg-card/50 p-4 rounded-xl border border-border">
+                  <p className="text-3xl font-bold gradient-text animate-gradient">{stat.value}</p>
+                  <p className="text-sm text-muted-foreground">{stat.label}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
       
+      {/* Hero Image */}
       <div className="container mx-auto px-4 sm:px-6 -mt-10 md:-mt-16 relative z-20">
         <AspectRatio ratio={16 / 7}>
           <img
@@ -135,10 +113,12 @@ const AutonomousVehicleAI = () => {
         </AspectRatio>
       </div>
 
+      {/* Main Content */}
       <section className="py-16 sm:py-24">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-3xl mx-auto grid grid-cols-1 gap-16 md:gap-24">
             
+            {/* Challenge */}
             <article className="space-y-6">
               <div className="flex items-center gap-3">
                 <span className="flex-shrink-0 w-10 h-10 rounded-full bg-destructive/10 flex items-center justify-center">
@@ -152,6 +132,7 @@ const AutonomousVehicleAI = () => {
               </p>
             </article>
             
+            {/* Solution */}
             <article className="space-y-6">
               <div className="flex items-center gap-3">
                 <span className="flex-shrink-0 w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
@@ -178,6 +159,7 @@ const AutonomousVehicleAI = () => {
               </ul>
             </article>
             
+            {/* Results */}
             <article className="space-y-6">
               <div className="flex items-center gap-3">
                 <span className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
@@ -197,6 +179,7 @@ const AutonomousVehicleAI = () => {
               </div>
             </article>
             
+            {/* Impact */}
             <article className="space-y-6">
               <div className="flex items-center gap-3">
                 <span className="flex-shrink-0 w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center">
@@ -214,6 +197,7 @@ const AutonomousVehicleAI = () => {
         </div>
       </section>
 
+      {/* More Case Studies */}
       <section className="py-16 sm:py-24 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6">
           <h2 className="text-3xl font-bold text-center mb-12">More Client Stories</h2>
@@ -238,4 +222,4 @@ const AutonomousVehicleAI = () => {
   );
 };
 
-export default AutonomousVehicleAI;
+export default DynamicCaseStudy;

@@ -19,11 +19,7 @@ import EnterpriseBPO from "./pages/solutions/EnterpriseBPO";
 import ContentModeration from "./pages/solutions/ContentModeration";
 import ResearchInsights from "./pages/solutions/ResearchInsights";
 import GlobalAIDevelopment from "./pages/case-studies/GlobalAIDevelopment";
-import GlobalAITranscription from "./pages/case-studies/GlobalAITranscription";
-import HealthcareAIDiagnostics from "./pages/case-studies/HealthcareAIDiagnostics";
-import AutonomousVehicleAI from "./pages/case-studies/AutonomousVehicleAI";
-import GlobalSaaSLocalization from "./pages/case-studies/GlobalSaaSLocalization";
-import EcommerceQATesting from "./pages/case-studies/EcommerceQATesting";
+import DynamicCaseStudy from "./pages/case-studies/DynamicCaseStudy";
 
 const queryClient = new QueryClient();
 
@@ -60,11 +56,7 @@ const App = () => (
               
               {/* CASE STUDY PAGES */}
               <Route path="/case-studies/global-ai-development" element={<GlobalAIDevelopment />} />
-              <Route path="/case-studies/global-ai-transcription" element={<GlobalAITranscription />} />
-              <Route path="/case-studies/healthcare-ai-diagnostics" element={<HealthcareAIDiagnostics />} />
-              <Route path="/case-studies/autonomous-vehicle-ai" element={<AutonomousVehicleAI />} />
-              <Route path="/case-studies/global-saas-localization" element={<GlobalSaaSLocalization />} />
-              <Route path="/case-studies/ecommerce-qa-testing" element={<EcommerceQATesting />} />
+              <Route path="/case-studies/:slug" element={<DynamicCaseStudy />} />
               {/* END CASE STUDY PAGES */}
               
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
