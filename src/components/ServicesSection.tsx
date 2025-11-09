@@ -189,7 +189,7 @@ export const ServicesSection = () => {
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <div className="relative h-full glassmorphic bg-card border border-border rounded-3xl overflow-hidden group hover-lift isolate">
+                <div className="relative h-[520px] glassmorphic bg-card border border-border rounded-3xl overflow-hidden group hover-lift isolate">
                   <GlowingEffect
                     spread={45}
                     glow={true}
@@ -290,25 +290,27 @@ export const ServicesSection = () => {
                 </div>
 
                 {/* Bottom Content Section - 60% */}
-                <div className="p-6 sm:p-8 space-y-4 flex flex-col h-[calc(100%-12rem)]">
-                  {/* Badge */}
-                  <div className="inline-block px-3 py-1 rounded-full bg-accent/10 text-accent text-sm font-bold tracking-wider uppercase">
-                    {service.badge}
+                <div className="p-6 sm:p-8 flex flex-col justify-between h-[calc(100%-12rem)]">
+                  <div className="space-y-4">
+                    {/* Badge */}
+                    <div className="inline-block px-3 py-1 rounded-full bg-accent/10 text-accent text-sm font-bold tracking-wider uppercase">
+                      {service.badge}
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-xl sm:text-2xl font-bold leading-tight">{service.title}</h3>
+
+                    {/* Description */}
+                    <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+                      {service.description}
+                    </p>
                   </div>
-
-                  {/* Title */}
-                  <h3 className="text-xl sm:text-2xl font-bold leading-tight">{service.title}</h3>
-
-                  {/* Description */}
-                  <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-                    {service.description}
-                  </p>
 
                   {/* Link */}
                   <Link 
                     to={service.url}
                     aria-label={`Explore ${service.badge} services`} 
-                    className="flex items-center gap-2 text-base font-semibold text-secondary group-hover:gap-3 transition-all duration-300 pt-2 mt-auto"
+                    className="flex items-center gap-2 text-base font-semibold text-secondary group-hover:gap-3 transition-all duration-300 pt-2"
                   >
                     Explore Services <ArrowRight className="w-4 h-4" aria-hidden="true" />
                   </Link>
