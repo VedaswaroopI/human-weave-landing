@@ -49,28 +49,44 @@ app.use(csrf({ cookie: true }));
 
 ### 4. Environment Variables
 
-**Location:** `.env.example`
+**Location:** `.env.example`, `.env.development`
 
 - **Sensitive Data Protection:**
   - Formspree endpoint moved to `VITE_FORMSPREE_ENDPOINT`
+  - Component tagger controlled via `VITE_DISABLE_TAGGER`
   - Never commit actual `.env` file to version control
   - Use hosting platform's environment variable management
 
 **Setup:**
 ```bash
 cp .env.example .env
-# Edit .env and add your actual endpoint
+# Edit .env and add your actual endpoint and settings
 ```
 
-### 5. Cookie Security
+**Development Settings:**
+- `.env.development` controls development-specific features
+- Component tagger can be disabled to improve preview performance
 
-**Location:** `src/components/CookieConsent.tsx`
+### 5. Storage Security
 
+**Location:** `src/utils/safeStorage.ts`, `src/components/CookieConsent.tsx`
+
+- **Safe Storage Utilities:**
+  - `safeStorage` wrapper prevents SSR errors and handles quota exceeded gracefully
+  - Try-catch protection for all localStorage/sessionStorage operations
+  - Prevents app crashes from storage-related errors
+  
 - **Enhanced Cookie Consent:**
+  - Uses `safeStorage` for robust preference persistence
   - Validates cookie preference structure before loading
   - Prevents tampering by validating data types
   - Includes timestamp and version for future migrations
   - Graceful error handling for corrupted data
+
+- **Error Boundary:**
+  - "Reset App Storage" button clears localStorage, sessionStorage, and IndexedDB
+  - Helps users recover from storage-related errors
+  - Detailed error messages in development mode
 
 **Note:** Cookie consent preferences are non-sensitive and appropriate for localStorage. For sensitive data, use httpOnly cookies set by backend.
 
@@ -128,7 +144,7 @@ Same as Netlify
 - [ ] Configure security headers on hosting platform
 - [ ] Set up environment variables for sensitive data
 - [ ] Enable HTTPS (required for HSTS and security headers)
-- [ ] Remove or restrict console logs in production build
+- [x] Console logs removed in production build (configured in vite.config.ts)
 - [ ] Implement server-side rate limiting (if using own backend)
 - [ ] Add CAPTCHA for contact form (recommended: hCaptcha or reCAPTCHA)
 

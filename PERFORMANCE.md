@@ -406,9 +406,11 @@ Before deploying to production:
 - [ ] Configure proper cache headers
 - [ ] Monitor Core Web Vitals in production
 
-## Vite Configuration Recommendations
+## Current Vite Configuration
 
-Add to `vite.config.ts`:
+**Location:** `vite.config.ts`
+
+The following optimizations are already implemented:
 
 ```typescript
 export default defineConfig({
@@ -416,22 +418,31 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          // Vendor splitting for better caching
           'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'ui-vendor': ['@radix-ui/react-dialog', '@radix-ui/react-tabs'],
-          'motion': ['framer-motion'], // Separate chunk for easier removal later
+          'ui-vendor': ['@radix-ui/react-accordion', '@radix-ui/react-dialog', /* ... */],
+          'form-vendor': ['react-hook-form', '@hookform/resolvers', 'zod'],
+          'animation': ['framer-motion'],
+          'spline': ['@splinetool/react-spline', '@splinetool/runtime'],
         }
       }
     },
-    // Increase chunk size warning limit (default: 500)
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true, // Remove console logs in production
+        drop_debugger: true,
+      }
+    },
     chunkSizeWarningLimit: 600,
+    cssCodeSplit: true,
   },
-  // Enable CSS code splitting
-  css: {
-    devSourcemap: true
+  optimizeDeps: {
+    include: ['lodash.debounce'],
   }
 });
 ```
+
+**Optional:** Component tagger can be disabled via `VITE_DISABLE_TAGGER=true` in `.env.development`
 
 ## Monitoring in Production
 
