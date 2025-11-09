@@ -11,7 +11,7 @@ export const CharacterIllustration: FC<CharacterProps> = ({ type, className = ""
 
   if (type === "data-anna") {
     return (
-      <svg viewBox="0 0 200 200" className={`${className} ${animations}`} style={{ animationDelay: "0s" }}>
+      <svg viewBox="0 0 200 200" className={`${className} ${animations}`} style={{ animationDelay: "0s" }} aria-hidden="true">
         {/* Head */}
         <circle cx="100" cy="60" r="28" fill="hsl(4 100% 75%)" />
         {/* Glasses */}
@@ -36,7 +36,7 @@ export const CharacterIllustration: FC<CharacterProps> = ({ type, className = ""
 
   if (type === "tester-tom") {
     return (
-      <svg viewBox="0 0 200 200" className={`${className} ${animations}`} style={{ animationDelay: "0.3s" }}>
+      <svg viewBox="0 0 200 200" className={`${className} ${animations}`} style={{ animationDelay: "0.3s" }} aria-hidden="true">
         {/* Head */}
         <circle cx="100" cy="60" r="28" fill="hsl(4 100% 75%)" />
         {/* Headphones */}
@@ -57,7 +57,7 @@ export const CharacterIllustration: FC<CharacterProps> = ({ type, className = ""
 
   if (type === "linguist-leila") {
     return (
-      <svg viewBox="0 0 200 200" className={`${className} ${animations}`} style={{ animationDelay: "0.6s" }}>
+      <svg viewBox="0 0 200 200" className={`${className} ${animations}`} style={{ animationDelay: "0.6s" }} aria-hidden="true">
         {/* Head */}
         <circle cx="100" cy="60" r="28" fill="hsl(4 100% 75%)" />
         {/* Body */}
@@ -84,7 +84,7 @@ export const CharacterIllustration: FC<CharacterProps> = ({ type, className = ""
 
   if (type === "doctor-dan") {
     return (
-      <svg viewBox="0 0 200 200" className={`${className} ${animations}`} style={{ animationDelay: "0.9s" }}>
+      <svg viewBox="0 0 200 200" className={`${className} ${animations}`} style={{ animationDelay: "0.9s" }} aria-hidden="true">
         {/* Head */}
         <circle cx="100" cy="60" r="28" fill="hsl(4 100% 75%)" />
         {/* Surgical cap */}
@@ -108,7 +108,7 @@ export const CharacterIllustration: FC<CharacterProps> = ({ type, className = ""
 
   if (type === "researcher-rachel") {
     return (
-      <svg viewBox="0 0 200 200" className={`${className} ${animations}`} style={{ animationDelay: "1.2s" }}>
+      <svg viewBox="0 0 200 200" className={`${className} ${animations}`} style={{ animationDelay: "1.2s" }} aria-hidden="true">
         {/* Head */}
         <circle cx="100" cy="60" r="28" fill="hsl(4 100% 75%)" />
         {/* Body */}
@@ -131,7 +131,7 @@ export const CharacterIllustration: FC<CharacterProps> = ({ type, className = ""
 
   // engineer-erik
   return (
-    <svg viewBox="0 0 200 200" className={`${className} ${animations}`} style={{ animationDelay: "1.5s" }}>
+    <svg viewBox="0 0 200 200" className={`${className} ${animations}`} style={{ animationDelay: "1.5s" }} aria-hidden="true">
       {/* Head */}
       <circle cx="100" cy="60" r="28" fill="hsl(4 100% 75%)" />
       {/* Body */}
