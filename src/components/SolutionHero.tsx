@@ -187,7 +187,7 @@ export const SolutionHero = ({
             {badge}
           </div>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight gradient-text animate-gradient">
             {title}
           </h1>
 

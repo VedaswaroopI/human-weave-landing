@@ -26,11 +26,7 @@ import {
 const HeroSection = () => (
   <SolutionHero
     badge="ABOUT US"
-    title={
-      <>
-        We Are The Human Behind The <span className="gradient-text animate-gradient">AI</span>
-      </>
-    }
+    title="We Are The Human Behind The AI"
     subtitle="Our mission is to bridge the gap between human expertise and artificial intelligence, providing the 99.5% or higher accuracy and deep context that machines can't, all while ensuring enterprise-grade security."
   />
 );
