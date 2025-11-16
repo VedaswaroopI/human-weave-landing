@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { ProjectBoardHero } from "@/components/ProjectBoardHero";
 import { ProjectCard } from "@/components/ProjectCard";
 import { allProjects } from "@/lib/projects-db";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 const ProjectsBoard = () => {
   return (
@@ -13,6 +14,14 @@ const ProjectsBoard = () => {
       <div className="min-h-screen flex flex-col">
       <Header />
       <main id="main-content" className="flex-grow pt-16 sm:pt-20" role="main">
+        <div className="container mx-auto px-4 sm:px-6 pt-8">
+          <Breadcrumbs
+            items={[
+              { name: "Home", url: "/" },
+              { name: "Projects Board" },
+            ]}
+          />
+        </div>
         {/* Child 1: The Hero */}
         <ProjectBoardHero />
 

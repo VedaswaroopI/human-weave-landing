@@ -5,6 +5,7 @@ import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CharacterIllustration } from "@/components/CharacterIllustration";
 import { CheckCircle, LucideIcon } from "lucide-react";
+import { Breadcrumbs, BreadcrumbItem } from "@/components/Breadcrumbs";
 
 // Type definitions
 interface ProblemCard {
@@ -40,6 +41,9 @@ interface SecurityFeature {
 }
 
 interface SolutionPageLayoutProps {
+  // Breadcrumbs
+  breadcrumbs?: BreadcrumbItem[];
+  
   // Hero Section
   badge: string;
   title: React.ReactNode;
@@ -69,6 +73,7 @@ interface SolutionPageLayoutProps {
 }
 
 export const SolutionPageLayout: React.FC<SolutionPageLayoutProps> = ({
+  breadcrumbs,
   badge,
   title,
   subtitle,
@@ -89,6 +94,7 @@ export const SolutionPageLayout: React.FC<SolutionPageLayoutProps> = ({
 }) => {
   return (
     <PageLayout>
+      {breadcrumbs && <div className="container mx-auto px-4 sm:px-6 pt-24"><Breadcrumbs items={breadcrumbs} /></div>}
       {/* Hero Section */}
       <SolutionHero badge={badge} title={title} subtitle={subtitle} />
 
