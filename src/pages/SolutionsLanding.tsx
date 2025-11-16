@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { PageLayout } from "@/components/layouts/PageLayout";
 import SolutionsGrid from "@/components/ui/services";
 import { SolutionHero } from "@/components/SolutionHero";
@@ -85,6 +86,11 @@ const SolutionsLanding = () => {
 
       {/* Services Grid */}
       <section className="container mx-auto px-4 sm:px-6 pb-16 sm:pb-20 md:pb-24 pt-8">
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <p className="text-lg text-muted-foreground">
+            Each solution is powered by our vetted network of experts. <Link to="/case-studies" className="text-secondary hover:text-secondary/80 underline">See how we've helped companies like yours</Link> or <Link to="/contact" className="text-secondary hover:text-secondary/80 underline">discuss your specific needs</Link>.
+          </p>
+        </div>
         <SolutionsGrid services={services} />
       </section>
     </PageLayout>

@@ -85,6 +85,11 @@ const CaseStudies = () => {
       />
       
       <section className="container mx-auto px-4 sm:px-6 py-16 sm:py-24">
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <p className="text-lg text-muted-foreground">
+            Explore real-world solutions from our network of 300,000+ experts. Want to discuss your specific challenge? <Link to="/contact" className="text-secondary hover:text-secondary/80 underline">Get in touch with our team</Link> or <Link to="/solutions" className="text-secondary hover:text-secondary/80 underline">explore our solutions</Link>.
+          </p>
+        </div>
         <Tabs defaultValue="All" onValueChange={handleTabChange} className="w-full">
           <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-5 max-w-3xl mx-auto h-auto">
             {industries.map(industry => (

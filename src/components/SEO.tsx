@@ -26,6 +26,9 @@ export const SEO = ({
 
   return (
     <Helmet>
+      {/* Language Declaration */}
+      <html lang="en" />
+      
       {/* Primary Meta Tags */}
       <title>{title}</title>
       <meta name="title" content={title} />

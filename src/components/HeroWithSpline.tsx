@@ -9,6 +9,7 @@ import { OptimizedSplineScene } from "./OptimizedSplineScene";
 import { useSplinePreload } from "@/hooks/use-spline-preload";
 import { useEffect, useState } from "react";
 import { motion, Variants } from "framer-motion";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const container: Variants = {
   hidden: {
@@ -48,7 +49,7 @@ const scrollToNextSection = () => {
 };
 
 export const HeroWithSpline = () => {
-  // Don't preload Spline - let OptimizedSplineScene handle it on-demand
+  const isMobile = useIsMobile();
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -123,35 +124,37 @@ export const HeroWithSpline = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Content - Spline 3D Scene (Desktop Only, Hidden on Mobile) */}
-          <motion.div className="relative w-full h-full order-1 lg:order-2 hidden lg:block" initial={prefersReducedMotion ? {} : {
-          opacity: 0,
-          scale: 0.98
-        }} animate={prefersReducedMotion ? {} : {
-          opacity: 1,
-          scale: 1
-        }} transition={{
-          duration: 0.5,
-          delay: 0.1
-        }}>
-            {/* Decorative gradient background */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-primary/5 dark:from-primary/20 dark:to-primary/10 rounded-2xl blur-3xl" aria-hidden="true" />
-            
-            {/* Spline Scene Container */}
-            <div className="relative h-full rounded-2xl overflow-hidden border border-border/50 bg-muted/30 dark:bg-muted/10 backdrop-blur-sm shadow-inner" role="img" aria-label="Interactive 3D visualization">
-              <SplineErrorBoundary>
-                <OptimizedSplineScene scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode" className="w-full h-full" />
-              </SplineErrorBoundary>
-            </div>
+          {/* Right Content - Spline 3D Scene (Desktop Only, Disabled on Mobile for Performance) */}
+          {!isMobile && (
+            <motion.div className="relative w-full h-full order-1 lg:order-2 hidden lg:block" initial={prefersReducedMotion ? {} : {
+              opacity: 0,
+              scale: 0.98
+            }} animate={prefersReducedMotion ? {} : {
+              opacity: 1,
+              scale: 1
+            }} transition={{
+              duration: 0.5,
+              delay: 0.1
+            }}>
+              {/* Decorative gradient background */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-primary/5 dark:from-primary/20 dark:to-primary/10 rounded-2xl blur-3xl" aria-hidden="true" />
+              
+              {/* Spline Scene Container */}
+              <div className="relative h-full rounded-2xl overflow-hidden border border-border/50 bg-muted/30 dark:bg-muted/10 backdrop-blur-sm shadow-inner" role="img" aria-label="Interactive 3D visualization">
+                <SplineErrorBoundary>
+                  <OptimizedSplineScene scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode" className="w-full h-full" />
+                </SplineErrorBoundary>
+              </div>
 
-            {/* Floating UI Elements */}
-            {!prefersReducedMotion && <>
-                <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/20 dark:bg-primary/30 rounded-full blur-3xl animate-pulse" aria-hidden="true" />
-                <div className="absolute -top-6 -left-6 w-24 h-24 bg-secondary/20 dark:bg-secondary/30 rounded-full blur-2xl animate-pulse" style={{
-              animationDelay: "700ms"
-            }} aria-hidden="true" />
-              </>}
-          </motion.div>
+              {/* Floating UI Elements */}
+              {!prefersReducedMotion && <>
+                  <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/20 dark:bg-primary/30 rounded-full blur-3xl animate-pulse" aria-hidden="true" />
+                  <div className="absolute -top-6 -left-6 w-24 h-24 bg-secondary/20 dark:bg-secondary/30 rounded-full blur-2xl animate-pulse" style={{
+                animationDelay: "700ms"
+              }} aria-hidden="true" />
+                </>}
+            </motion.div>
+          )}
         </div>
       </Card>
 

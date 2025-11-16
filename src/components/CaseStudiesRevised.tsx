@@ -185,6 +185,17 @@ export const CaseStudiesRevised = () => {
             <span>Swipe for more stories</span>
             <ChevronRight className="w-5 h-5" />
           </div>
+
+          {/* CTA to Case Studies Page */}
+          <div className="text-center mt-12">
+            <Link 
+              to="/case-studies" 
+              className="inline-flex items-center gap-2 text-lg font-semibold text-secondary hover:text-secondary/80 transition-colors group"
+            >
+              View all case studies
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
         </div>
       </div>
     </section>

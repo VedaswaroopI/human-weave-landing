@@ -99,6 +99,11 @@ export const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/projects-board" className="text-sm text-muted-foreground hover:text-foreground transition-colors hover:underline">
+                  Projects Board
+                </Link>
+              </li>
+              <li>
                 <a 
                   href="https://www.linkedin.com/company/usergy-ai/jobs" 
                   target="_blank" 

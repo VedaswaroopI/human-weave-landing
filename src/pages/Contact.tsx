@@ -1,5 +1,6 @@
 // src/pages/Contact.tsx
 import * as React from "react";
+import { Link } from "react-router-dom";
 import { SEO } from "@/components/SEO";
 import { pageSEO } from "@/utils/seo-config";
 import { generateLocalBusinessSchema } from "@/hooks/useSEO";
@@ -178,7 +179,7 @@ const Contact = () => {
                 <div>
                   <h2 className="text-3xl font-bold mb-4">Start the Conversation</h2>
                   <p className="text-lg text-muted-foreground leading-relaxed">
-                    We're here to provide the human expertise you need to make your AI project a success. Fill out the form, or for a more direct consultation, book a time with our team.
+                    We're here to provide the human expertise you need to make your AI project a success. Fill out the form, or for a more direct consultation, <a href={EXTERNAL_URLS.CALENDLY} target="_blank" rel="noopener noreferrer" className="text-secondary hover:text-secondary/80 underline">book a time with our team</a>. Learn more <Link to="/why-us" className="text-secondary hover:text-secondary/80 underline">about our unique approach</Link>.
                   </p>
                 </div>
 
