@@ -2,6 +2,9 @@
 
 import { PageLayout } from "@/components/layouts/PageLayout";
 import { SolutionHero } from "@/components/SolutionHero";
+import { SEO } from "@/components/SEO";
+import { pageSEO } from "@/utils/seo-config";
+import { generateServiceSchema } from "@/hooks/useSEO";
 import {
   Tabs,
   TabsContent,
@@ -345,14 +348,34 @@ const ProcessSection = () => (
 
 // --- Page Component ---
 const Multilingual = () => {
+  const serviceSchema = generateServiceSchema(
+    "Multilingual Localization Services",
+    "Professional translation and localization in 150+ languages by native speakers. Go beyond machine translation with cultural adaptation, linguistic QA, and transcreation.",
+    "https://usergy.ai/solutions/multilingual",
+    [
+      "Software & Web Localization",
+      "AI & LLM Localization",
+      "Marketing Transcreation",
+      "Cultural Adaptation",
+      "Linguistic Quality Assurance",
+      "150+ Languages Supported"
+    ]
+  );
+
   return (
-    <PageLayout>
-      <HeroSection />
-      <ProblemSection />
-      <ServicesTabs />
-      <ExpertSection />
-      <ProcessSection />
-    </PageLayout>
+    <>
+      <SEO 
+        {...pageSEO.multilingual}
+        structuredData={serviceSchema}
+      />
+      <PageLayout>
+        <HeroSection />
+        <ProblemSection />
+        <ServicesTabs />
+        <ExpertSection />
+        <ProcessSection />
+      </PageLayout>
+    </>
   );
 };
 

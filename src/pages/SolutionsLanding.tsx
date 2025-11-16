@@ -1,6 +1,8 @@
 import { PageLayout } from "@/components/layouts/PageLayout";
 import SolutionsGrid from "@/components/ui/services";
 import { SolutionHero } from "@/components/SolutionHero";
+import { SEO } from "@/components/SEO";
+import { pageSEO } from "@/utils/seo-config";
 import {
   Brain,
   ShieldCheck,
@@ -63,7 +65,9 @@ const services = [
 
 const SolutionsLanding = () => {
   return (
-    <PageLayout>
+    <>
+      <SEO {...pageSEO.solutionsLanding} />
+      <PageLayout>
       {/* Hero Section */}
       <SolutionHero
         badge="Our Solutions"
@@ -84,6 +88,7 @@ const SolutionsLanding = () => {
         <SolutionsGrid services={services} />
       </section>
     </PageLayout>
+    </>
   );
 };
 

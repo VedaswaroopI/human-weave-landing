@@ -2,6 +2,9 @@
 
 import { PageLayout } from "@/components/layouts/PageLayout";
 import { SolutionHero } from "@/components/SolutionHero";
+import { SEO } from "@/components/SEO";
+import { pageSEO } from "@/utils/seo-config";
+import { generateServiceSchema } from "@/hooks/useSEO";
 import {
   Tabs,
   TabsContent,
@@ -350,14 +353,34 @@ const ProcessSection = () => (
 
 // --- Page Component ---
 const ResearchInsights = () => {
+  const serviceSchema = generateServiceSchema(
+    "Market Research & User Insights Services",
+    "Deep market research and user insights for AI products. User testing, surveys, focus groups, and behavioral analysis with your exact target audience.",
+    "https://usergy.ai/solutions/research-insights",
+    [
+      "Qualitative User Research",
+      "Quantitative Market Studies",
+      "Usability Testing",
+      "Focus Groups",
+      "Concept Validation",
+      "Competitive Analysis"
+    ]
+  );
+
   return (
-    <PageLayout>
-      <HeroSection />
-      <ProblemSection />
-      <ServicesTabs />
-      <ExpertSection />
-      <ProcessSection />
-    </PageLayout>
+    <>
+      <SEO 
+        {...pageSEO.researchInsights}
+        structuredData={serviceSchema}
+      />
+      <PageLayout>
+        <HeroSection />
+        <ProblemSection />
+        <ServicesTabs />
+        <ExpertSection />
+        <ProcessSection />
+      </PageLayout>
+    </>
   );
 };
 

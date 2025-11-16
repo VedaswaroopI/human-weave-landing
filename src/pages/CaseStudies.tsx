@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { PageLayout } from "@/components/layouts/PageLayout";
 import { SolutionHero } from "@/components/SolutionHero";
 import { allCaseStudies, getIndustries, CaseStudy } from "@/lib/case-studies-db";
+import { SEO } from "@/components/SEO";
+import { pageSEO } from "@/utils/seo-config";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight } from "lucide-react";
@@ -67,8 +69,10 @@ const CaseStudies = () => {
   };
 
   return (
-    <PageLayout>
-      <SolutionHero
+    <>
+      <SEO {...pageSEO.caseStudies} />
+      <PageLayout>
+        <SolutionHero
         badge="CASE STUDIES"
         title={
           <>
@@ -103,6 +107,7 @@ const CaseStudies = () => {
         </Tabs>
       </section>
     </PageLayout>
+    </>
   );
 };
 

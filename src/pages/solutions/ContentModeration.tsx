@@ -1,8 +1,24 @@
 import React from "react";
 import { SolutionPageLayout } from "@/components/layouts/SolutionPageLayout";
 import { Eye, MessagesSquare, BrainCircuit, Bot, ShieldCheck, ClipboardCheck } from "lucide-react";
+import { SEO } from "@/components/SEO";
+import { pageSEO } from "@/utils/seo-config";
+import { generateServiceSchema } from "@/hooks/useSEO";
 
 const ContentModeration = () => {
+  const serviceSchema = generateServiceSchema(
+    "AI Content Moderation Services",
+    "24/7 human content moderation combined with AI. Protect your platform with expert moderators trained in cultural nuance, handling proactive and reactive moderation.",
+    "https://usergy.ai/solutions/content-moderation",
+    [
+      "Proactive Content Review",
+      "24/7 Live Moderation",
+      "AI Training & Optimization",
+      "Cultural Context Understanding",
+      "User Appeals Management",
+      "Policy Consultation"
+    ]
+  );
   return (
     <SolutionPageLayout
       badge="Content Moderation"

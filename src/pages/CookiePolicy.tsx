@@ -1,6 +1,8 @@
 import { PageLayout } from "@/components/layouts/PageLayout";
 import { SolutionHero } from "@/components/SolutionHero";
 import { PolicySection } from "@/components/legal/PolicySection";
+import { SEO } from "@/components/SEO";
+import { pageSEO } from "@/utils/seo-config";
 import {
   Cookie,
   Shield,
@@ -14,7 +16,9 @@ import {
 
 const CookiePolicy = () => {
   return (
-    <PageLayout>
+    <>
+      <SEO {...pageSEO.cookiePolicy} />
+      <PageLayout>
       <SolutionHero
         badge="LEGAL"
         title={
@@ -326,6 +330,7 @@ const CookiePolicy = () => {
         </div>
       </section>
     </PageLayout>
+    </>
   );
 };
 

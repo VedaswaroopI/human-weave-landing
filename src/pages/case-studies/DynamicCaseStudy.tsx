@@ -2,6 +2,8 @@ import * as React from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { PageLayout } from "@/components/layouts/PageLayout";
 import { allCaseStudies, CaseStudy } from "@/lib/case-studies-db";
+import { SEO } from "@/components/SEO";
+import { generateArticleSchema } from "@/hooks/useSEO";
 import { Badge } from "@/components/ui/badge";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -71,8 +73,25 @@ const DynamicCaseStudy = () => {
     return <Navigate to="/not-found" replace />;
   }
 
+  const articleSchema = generateArticleSchema(
+    study.title,
+    study.challenge.body,
+    `https://usergy.ai/case-studies/${study.slug}`,
+    `https://usergy.ai${study.heroImage}`
+  );
+
   return (
-    <PageLayout>
+    <>
+      <SEO 
+        title={`${study.title} - Case Study | UsergyAI`}
+        description={study.challenge.body}
+        keywords={`${study.tags.join(", ")}, AI case study, ${study.industry}`}
+        image={`https://usergy.ai${study.heroImage}`}
+        url={`https://usergy.ai/case-studies/${study.slug}`}
+        type="article"
+        structuredData={articleSchema}
+      />
+      <PageLayout>
       {/* Hero Section */}
       <section className="relative pt-16 sm:pt-24 pb-12 sm:pb-16 md:pb-20 bg-muted/30 overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
@@ -224,6 +243,7 @@ const DynamicCaseStudy = () => {
         </div>
       </section>
     </PageLayout>
+    </>
   );
 };
 
