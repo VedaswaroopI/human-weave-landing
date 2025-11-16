@@ -1,3 +1,5 @@
+import { SEO } from "@/components/SEO";
+import { pageSEO } from "@/utils/seo-config";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ProjectBoardHero } from "@/components/ProjectBoardHero";
@@ -6,7 +8,9 @@ import { allProjects } from "@/lib/projects-db";
 
 const ProjectsBoard = () => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <>
+      <SEO {...pageSEO.projectsBoard} />
+      <div className="min-h-screen flex flex-col">
       <Header />
       <main id="main-content" className="flex-grow pt-16 sm:pt-20" role="main">
         {/* Child 1: The Hero */}
@@ -33,6 +37,7 @@ const ProjectsBoard = () => {
       </main>
       <Footer />
     </div>
+    </>
   );
 };
 

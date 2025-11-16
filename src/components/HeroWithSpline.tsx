@@ -87,8 +87,7 @@ export const HeroWithSpline = () => {
             {/* Main Headline */}
             <motion.div className="space-y-3 sm:space-y-4" variants={prefersReducedMotion ? {} : item}>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
-                The Humans Behind<br />
-                <span className="gradient-text animate-gradient">Your AI Breakthrough</span>
+                The Humans Behind Your AI <span className="gradient-text animate-gradient">Breakthrough</span>
               </h1>
             </motion.div>
 
