@@ -1,5 +1,8 @@
 // src/pages/Contact.tsx
 import * as React from "react";
+import { SEO } from "@/components/SEO";
+import { pageSEO } from "@/utils/seo-config";
+import { generateLocalBusinessSchema } from "@/hooks/useSEO";
 import { PageLayout } from "@/components/layouts/PageLayout";
 import { SolutionHero } from "@/components/SolutionHero";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -66,6 +69,7 @@ const formSchema = z.object({
 
 // 2. Define the Contact Page component
 const Contact = () => {
+  const localBusinessSchema = generateLocalBusinessSchema();
   const [isSubmitting, setIsSubmitting] = React.useState(false);
 
   // 3. Define the form
@@ -146,9 +150,11 @@ const Contact = () => {
   }
 
   return (
-    // We use PageLayout but will omit the FinalCTA from this page.
-    <div className="min-h-screen flex flex-col">
-      <PageLayout>
+    <>
+      <SEO {...pageSEO.contact} structuredData={localBusinessSchema} />
+      {/* We use PageLayout but will omit the FinalCTA from this page. */}
+      <div className="min-h-screen flex flex-col">
+        <PageLayout>
         {/* 1. Hero Section */}
         <SolutionHero
           badge="CONTACT US"
@@ -308,6 +314,7 @@ const Contact = () => {
         </section>
       </PageLayout>
     </div>
+    </>
   );
 };
 

@@ -1,3 +1,5 @@
+import { SEO } from "@/components/SEO";
+import { pageSEO } from "@/utils/seo-config";
 import { Header } from "@/components/Header";
 import { HeroWithSpline } from "@/components/HeroWithSpline";
 import { RealitySection } from "@/components/RealitySection";
@@ -10,7 +12,9 @@ import { Footer } from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <>
+      <SEO {...pageSEO.home} />
+      <div className="min-h-screen">
       <Header />
       <main>
         <HeroWithSpline />
@@ -23,6 +27,7 @@ const Index = () => {
       </main>
       <Footer />
     </div>
+    </>
   );
 };
 

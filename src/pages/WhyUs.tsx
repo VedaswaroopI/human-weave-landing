@@ -1,3 +1,6 @@
+import { SEO } from "@/components/SEO";
+import { pageSEO } from "@/utils/seo-config";
+import { generateBreadcrumbSchema } from "@/hooks/useSEO";
 import { PageLayout } from "@/components/layouts/PageLayout";
 import { SolutionHero } from "@/components/SolutionHero";
 import { CharacterIllustration } from "@/components/CharacterIllustration";
@@ -25,9 +28,7 @@ const HeroSection = () => (
     badge="ABOUT US"
     title={
       <>
-        We Are The Human
-        <br />
-        <span className="gradient-text animate-gradient">Behind The AI</span>
+        We Are The Human Behind The <span className="gradient-text animate-gradient">AI</span>
       </>
     }
     subtitle="Our mission is to bridge the gap between human expertise and artificial intelligence, providing the 99.5% or higher accuracy and deep context that machines can't, all while ensuring enterprise-grade security."
@@ -374,8 +375,15 @@ const SecuritySection = () => (
 
 // --- Main Page Component ---
 const WhyUs = () => {
+  const breadcrumbs = generateBreadcrumbSchema([
+    { name: "Home", url: "https://usergy.ai" },
+    { name: "Why Us", url: "https://usergy.ai/why-us" },
+  ]);
+
   return (
-    <PageLayout>
+    <>
+      <SEO {...pageSEO.whyUs} structuredData={breadcrumbs} />
+      <PageLayout>
       <HeroSection />
       <MissionVisionSection />
       <DifferentiatorSection />
@@ -384,6 +392,7 @@ const WhyUs = () => {
       <SecuritySection />
       <TrustSection />
     </PageLayout>
+    </>
   );
 };
 

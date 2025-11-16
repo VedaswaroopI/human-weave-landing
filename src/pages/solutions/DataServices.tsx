@@ -1,19 +1,31 @@
 import React from "react";
+import { SEO } from "@/components/SEO";
+import { pageSEO } from "@/utils/seo-config";
+import { generateBreadcrumbSchema, generateServiceSchema } from "@/hooks/useSEO";
 import { SolutionPageLayout } from "@/components/layouts/SolutionPageLayout";
 import { Video, Type, Mic, ShieldCheck } from "lucide-react";
 
 const DataServices = () => {
+  const breadcrumbs = generateBreadcrumbSchema([
+    { name: "Home", url: "https://usergy.ai" },
+    { name: "Solutions", url: "https://usergy.ai/solutions" },
+    { name: "Data Services", url: "https://usergy.ai/solutions/data-services" },
+  ]);
+
+  const serviceSchema = generateServiceSchema(
+    "AI Data Annotation Services",
+    "Expert data annotation for images, video, text, and audio with 99.5%+ accuracy",
+    "https://usergy.ai/solutions/data-services",
+    ["Image & Video Annotation", "Text & NLP Annotation", "Audio & Speech Annotation"]
+  );
+
   return (
-    <SolutionPageLayout
-      badge="AI & Data Services"
-      title={
-        <>
-          Data That Doesn't Just Inform.
-          <br />
-          <span className="gradient-text animate-gradient">It Understands.</span>
-        </>
-      }
-      subtitle="Your AI model is only as smart as the data it learns from. We provide high-quality data (99.5% accuracy or better) that's context-rich and annotated by genuine domain experts, not crowd workers."
+    <>
+      <SEO {...pageSEO.dataServices} structuredData={[breadcrumbs, serviceSchema]} />
+      <SolutionPageLayout
+        badge="AI & Data Services"
+        title="Data That Doesn't Just Inform. It Understands."
+        subtitle="Your AI model is only as smart as the data it learns from. We provide high-quality data (99.5% accuracy or better) that's context-rich and annotated by genuine domain experts, not crowd workers."
       problemTitle='The High Cost of "Good Enough" Data'
       problemSubtitle="Garbage in, Garbage out. In AI, this is an ironclad rule."
       problems={[
@@ -141,6 +153,7 @@ const DataServices = () => {
         },
       ]}
     />
+    </>
   );
 };
 
