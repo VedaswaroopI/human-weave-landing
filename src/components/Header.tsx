@@ -43,9 +43,9 @@ export const Header = () => {
       <div className="container mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center" aria-label="UsergyAI Home">
+          <Link to="/" className="flex items-center" aria-label="UsergyAI - AI-Powered BPO Solutions and Workforce Management">
             <div className="text-xl sm:text-2xl font-bold">
-              <span className="gradient-text animate-gradient">UsergyAI</span>
+              <span className="gradient-text animate-gradient" role="img" aria-label="UsergyAI Logo">UsergyAI</span>
             </div>
           </Link>
 

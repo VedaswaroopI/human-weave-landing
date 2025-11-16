@@ -1,17 +1,12 @@
 import React from "react";
 import { SEO } from "@/components/SEO";
 import { pageSEO } from "@/utils/seo-config";
-import { generateBreadcrumbSchema, generateServiceSchema } from "@/hooks/useSEO";
+import { generateServiceSchema } from "@/hooks/useSEO";
 import { SolutionPageLayout } from "@/components/layouts/SolutionPageLayout";
 import { Video, Type, Mic, ShieldCheck } from "lucide-react";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 const DataServices = () => {
-  const breadcrumbs = generateBreadcrumbSchema([
-    { name: "Home", url: "https://usergy.ai" },
-    { name: "Solutions", url: "https://usergy.ai/solutions" },
-    { name: "Data Services", url: "https://usergy.ai/solutions/data-services" },
-  ]);
-
   const serviceSchema = generateServiceSchema(
     "AI Data Annotation Services",
     "Expert data annotation for images, video, text, and audio with 99.5%+ accuracy",
@@ -21,8 +16,13 @@ const DataServices = () => {
 
   return (
     <>
-      <SEO {...pageSEO.dataServices} structuredData={[breadcrumbs, serviceSchema]} />
+      <SEO {...pageSEO.dataServices} structuredData={serviceSchema} />
       <SolutionPageLayout
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Solutions", url: "/solutions" },
+          { name: "Data Services" },
+        ]}
         badge="AI & Data Services"
         title="Data That Doesn't Just Inform. It Understands."
         subtitle="Your AI model is only as smart as the data it learns from. We provide high-quality data (99.5% accuracy or better) that's context-rich and annotated by genuine domain experts, not crowd workers."

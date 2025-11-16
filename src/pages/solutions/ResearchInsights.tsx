@@ -5,6 +5,7 @@ import { SolutionHero } from "@/components/SolutionHero";
 import { SEO } from "@/components/SEO";
 import { pageSEO } from "@/utils/seo-config";
 import { generateServiceSchema } from "@/hooks/useSEO";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import {
   Tabs,
   TabsContent,
@@ -374,6 +375,15 @@ const ResearchInsights = () => {
         structuredData={serviceSchema}
       />
       <PageLayout>
+        <div className="container mx-auto px-4 sm:px-6 pt-24">
+          <Breadcrumbs
+            items={[
+              { name: "Home", url: "/" },
+              { name: "Solutions", url: "/solutions" },
+              { name: "Research & Insights" },
+            ]}
+          />
+        </div>
         <HeroSection />
         <ProblemSection />
         <ServicesTabs />

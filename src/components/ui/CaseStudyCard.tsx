@@ -47,7 +47,9 @@ export const CaseStudyCard = ({
       <AspectRatio ratio={16 / 9}>
         <img
           src={imageUrl}
-          alt={headline}
+          alt={`${industry} case study: ${headline} - ${metric} ${metricLabel} with UsergyAI BPO solutions`}
+          width={800}
+          height={450}
           loading="lazy"
           decoding="async"
           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"

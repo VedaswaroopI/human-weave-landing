@@ -10,6 +10,7 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { AlertCircle, CheckCircle, Target, Award, ArrowRight } from "lucide-react";
 import { ParticleButton } from "@/components/ui/particle-button";
 import { motion } from "framer-motion";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 const StatCard: React.FC<{ stat: CaseStudy['results']['keyStats'][0] }> = ({ stat }) => (
   <div className="relative glassmorphic bg-card/50 p-6 rounded-2xl border border-border overflow-hidden">
@@ -36,7 +37,9 @@ const CaseStudyLinkCard: React.FC<{ study: CaseStudy }> = ({ study }) => (
         <AspectRatio ratio={16 / 10}>
           <img
             src={study.cardImage}
-            alt={study.title}
+            alt={`${study.industry} case study: ${study.title} - Client success story with UsergyAI BPO solutions`}
+            width={800}
+            height={500}
             loading="lazy"
             decoding="async"
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
@@ -95,6 +98,13 @@ const DynamicCaseStudy = () => {
       {/* Hero Section */}
       <section className="relative pt-16 sm:pt-24 pb-12 sm:pb-16 md:pb-20 bg-muted/30 overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
+          <Breadcrumbs
+            items={[
+              { name: "Home", url: "/" },
+              { name: "Case Studies", url: "/case-studies" },
+              { name: study.title },
+            ]}
+          />
           <div className="max-w-4xl mx-auto text-center">
             <div className="flex flex-wrap gap-2 justify-center mb-6">
               {study.tags.map(tag => (
@@ -128,7 +138,9 @@ const DynamicCaseStudy = () => {
         <AspectRatio ratio={16 / 7}>
           <img
             src={study.heroImage}
-            alt={study.title}
+            alt={`${study.industry} case study: ${study.title} - ${study.metricValue} ${study.metricLabel} achieved through UsergyAI BPO solutions`}
+            width={1200}
+            height={525}
             loading="eager"
             fetchPriority="high"
             decoding="async"

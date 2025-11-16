@@ -20,7 +20,14 @@ const ContentModeration = () => {
     ]
   );
   return (
-    <SolutionPageLayout
+    <>
+      <SEO {...pageSEO.contentModeration} structuredData={serviceSchema} />
+      <SolutionPageLayout
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Solutions", url: "/solutions" },
+          { name: "Content Moderation" },
+        ]}
       badge="Content Moderation"
       title={
         <>
@@ -157,6 +164,7 @@ const ContentModeration = () => {
         },
       ]}
     />
+    </>
   );
 };
 

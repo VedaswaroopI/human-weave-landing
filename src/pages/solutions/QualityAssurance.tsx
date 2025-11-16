@@ -20,7 +20,14 @@ const QualityAssurance = () => {
     ]
   );
   return (
-    <SolutionPageLayout
+    <>
+      <SEO {...pageSEO.qualityAssurance} structuredData={serviceSchema} />
+      <SolutionPageLayout
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Solutions", url: "/solutions" },
+          { name: "Quality Assurance" },
+        ]}
       badge="Quality Assurance"
       title={
         <>
@@ -154,6 +161,7 @@ const QualityAssurance = () => {
         },
       ]}
     />
+    </>
   );
 };
 
