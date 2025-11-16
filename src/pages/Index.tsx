@@ -9,6 +9,8 @@ import { TrustSection } from "@/components/TrustSection";
 import { CaseStudiesRevised } from "@/components/CaseStudiesRevised";
 import { FinalCTA } from "@/components/FinalCTA";
 import { Footer } from "@/components/Footer";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
 const Index = () => {
   return (

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 
 const statCards = [
@@ -105,15 +106,21 @@ export const RealitySection = () => {
           </div>
         </div>
 
-        {/* Bridge Statement */}
+        {/* Bridge Statement with Link */}
         <div
           className={`text-center max-w-3xl mx-auto mt-12 sm:mt-16 transition-all duration-700 delay-300 ${
             isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
           }`}
         >
-          <p className="text-2xl sm:text-3xl md:text-4xl font-bold gradient-text animate-gradient">
+          <p className="text-2xl sm:text-3xl md:text-4xl font-bold gradient-text animate-gradient mb-6">
             That's where 300,000 expert humans come in.
           </p>
+          <Link 
+            to="/why-us" 
+            className="inline-block text-base sm:text-lg text-secondary hover:text-secondary/80 underline transition-colors"
+          >
+            Discover why our network stands apart →
+          </Link>
         </div>
       </div>
     </section>
