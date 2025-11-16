@@ -1,6 +1,8 @@
 import { PageLayout } from "@/components/layouts/PageLayout";
 import { SolutionHero } from "@/components/SolutionHero";
 import { PolicySection } from "@/components/legal/PolicySection";
+import { SEO } from "@/components/SEO";
+import { pageSEO } from "@/utils/seo-config";
 import {
   Shield,
   Server,
@@ -17,7 +19,9 @@ import {
 
 const TermsOfService = () => {
   return (
-    <PageLayout>
+    <>
+      <SEO {...pageSEO.termsOfService} />
+      <PageLayout>
       <SolutionHero
         badge="LEGAL"
         title={
@@ -254,6 +258,7 @@ const TermsOfService = () => {
         </div>
       </section>
     </PageLayout>
+    </>
   );
 };
 

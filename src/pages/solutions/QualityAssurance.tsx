@@ -1,8 +1,24 @@
 import React from "react";
 import { SolutionPageLayout } from "@/components/layouts/SolutionPageLayout";
 import { Smartphone, Globe, Bot, ClipboardCheck, Workflow, BadgeCheck } from "lucide-react";
+import { SEO } from "@/components/SEO";
+import { pageSEO } from "@/utils/seo-config";
+import { generateServiceSchema } from "@/hooks/useSEO";
 
 const QualityAssurance = () => {
+  const serviceSchema = generateServiceSchema(
+    "AI Quality Assurance Testing Services",
+    "Comprehensive AI and software QA testing by real users across 150+ languages. Functional testing, localization QA, AI model validation, and usability testing.",
+    "https://usergy.ai/solutions/quality-assurance",
+    [
+      "Functional & Usability Testing",
+      "Localization QA in 150+ Languages",
+      "AI Model Validation",
+      "Cross-Device Testing",
+      "Accessibility Audits",
+      "Performance Testing"
+    ]
+  );
   return (
     <SolutionPageLayout
       badge="Quality Assurance"

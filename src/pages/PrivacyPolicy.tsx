@@ -2,10 +2,14 @@ import { PageLayout } from "@/components/layouts/PageLayout";
 import { SolutionHero } from "@/components/SolutionHero";
 import { PolicySection } from "@/components/legal/PolicySection";
 import { Shield, Server, Users, Info, NotebookPen, Cookie, Mail } from "lucide-react";
+import { SEO } from "@/components/SEO";
+import { pageSEO } from "@/utils/seo-config";
 
 const PrivacyPolicy = () => {
   return (
-    <PageLayout>
+    <>
+      <SEO {...pageSEO.privacyPolicy} />
+      <PageLayout>
       <SolutionHero
         badge="LEGAL"
         title={
@@ -277,6 +281,7 @@ const PrivacyPolicy = () => {
         </div>
       </section>
     </PageLayout>
+    </>
   );
 };
 

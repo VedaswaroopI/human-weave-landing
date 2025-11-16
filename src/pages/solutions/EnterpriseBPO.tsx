@@ -2,6 +2,9 @@
 
 import { PageLayout } from "@/components/layouts/PageLayout";
 import { SolutionHero } from "@/components/SolutionHero";
+import { SEO } from "@/components/SEO";
+import { pageSEO } from "@/utils/seo-config";
+import { generateServiceSchema } from "@/hooks/useSEO";
 import {
   Tabs,
   TabsContent,
@@ -347,14 +350,34 @@ const ProcessSection = () => (
 
 // --- Page Component ---
 const EnterpriseBPO = () => {
+  const serviceSchema = generateServiceSchema(
+    "Enterprise BPO Services India",
+    "Scalable business process outsourcing combining human expertise with AI efficiency. AI-powered data processing, customer support, and back-office operations from Bengaluru.",
+    "https://usergy.ai/solutions/enterprise-bpo",
+    [
+      "AI & Data Operations",
+      "Customer Support Outsourcing",
+      "Back-Office Processing",
+      "Secure Data Management",
+      "Scalable Workforce Solutions",
+      "Enterprise-Grade Compliance"
+    ]
+  );
+
   return (
-    <PageLayout>
-      <HeroSection />
-      <ProblemSection />
-      <ServicesTabs />
-      <ExpertSection />
-      <ProcessSection />
-    </PageLayout>
+    <>
+      <SEO 
+        {...pageSEO.enterpriseBPO}
+        structuredData={serviceSchema}
+      />
+      <PageLayout>
+        <HeroSection />
+        <ProblemSection />
+        <ServicesTabs />
+        <ExpertSection />
+        <ProcessSection />
+      </PageLayout>
+    </>
   );
 };
 
