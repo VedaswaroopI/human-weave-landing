@@ -161,6 +161,15 @@ const TermsOfService = () => {
               schedules specified in your Contributor Agreement or applicable
               project assignment.
             </p>
+            <h4>3.4. Intellectual Property Assignment</h4>
+            <p>
+              Contributor hereby assigns to UsergyAI all right, title, and interest 
+              in and to any data, content, or deliverables created during the course 
+              of the Services, including all intellectual property rights. Contributor 
+              explicitly consents to the use of such data for commercial purposes, 
+              including Artificial Intelligence (AI) training and machine learning 
+              model development.
+            </p>
           </PolicySection>
 
           {/* 4. General Website Use */}
