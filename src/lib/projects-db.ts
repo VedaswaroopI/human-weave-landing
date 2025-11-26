@@ -42,4 +42,14 @@ export const allProjects: Project[] = [
     applyUrl: "https://tally.so/r/wkMLbj",
     icon: Briefcase,
   },
+  {
+    id: "p4",
+    title: "Real-World Menu & Poster Collection",
+    description: "Help train Computer Vision AI by capturing high-quality photos of menus and promotional posters from local establishments. Earn $2 per set (5 photos per item, ~5 minutes). Fast approval and payout.",
+    startDate: "Starting Soon",
+    location: "Remote (France, Korea, Spain, Portugal, English regions)",
+    requirements: ["Located in France, Korea, Spain, Portugal, or English-speaking regions", "5 distinct photos per item (different angles)", "Real-world, on-site photos only"],
+    applyUrl: "https://forms.usergy.ai/poster-collection",
+    icon: Briefcase,
+  },
 ];
