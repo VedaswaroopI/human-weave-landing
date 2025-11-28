@@ -333,7 +333,7 @@ const SecuritySection = () => (
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
         <div className="glassmorphic bg-card/50 p-8 rounded-2xl border border-border text-center">
           <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-accent/10 flex items-center justify-center">
             <ShieldCheck className="w-8 h-8 text-accent" />
@@ -362,6 +362,19 @@ const SecuritySection = () => (
           <p className="text-muted-foreground leading-relaxed">
             International standard for information security management, ensuring systematic data protection.
           </p>
+        </div>
+
+        <div className="glassmorphic bg-gradient-to-br from-secondary/10 to-primary/10 p-8 rounded-2xl border-2 border-secondary/30 text-center">
+          <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-secondary/20 flex items-center justify-center">
+            <Award className="w-8 h-8 text-secondary" />
+          </div>
+          <h3 className="text-xl font-bold mb-3">Government Recognized</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Officially recognized by the Department for Promotion of Industry and Internal Trade (DPIIT), Govt. of India.
+          </p>
+          <span className="inline-block text-xs font-semibold bg-secondary/20 text-secondary px-3 py-1 rounded-full">
+            Cert No: DIPP231691
+          </span>
         </div>
       </div>
     </div>

@@ -143,8 +143,18 @@ export const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-          <p>© 2025 UsergyAI. All rights reserved.</p>
+        <div className="pt-8 border-t border-border flex flex-col items-center gap-4 text-sm text-muted-foreground">
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+            <p>© 2025 UsergyAI Private Limited. All rights reserved.</p>
+            <div className="flex items-center gap-2 text-xs text-muted-foreground/80">
+              <span>CIN: U63110AP2025PTC122237</span>
+              <span className="hidden sm:inline">|</span>
+              <span className="flex items-center gap-1">
+                <Sparkles className="w-3 h-3 text-secondary" />
+                Recognized Startup (DPIIT): DIPP231691
+              </span>
+            </div>
+          </div>
           <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
             <Link to="/privacy-policy" className="hover:text-foreground transition-colors hover:underline">
               Privacy Policy
