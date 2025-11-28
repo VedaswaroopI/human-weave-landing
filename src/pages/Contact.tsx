@@ -23,7 +23,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import { Mail, CalendarClock, ShieldCheck, ArrowRight } from "lucide-react";
+import { Mail, CalendarClock, ShieldCheck, ArrowRight, Building2, MapPin } from "lucide-react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { sanitizeText, sanitizeEmail, RateLimiter, generateClientToken } from "@/lib/sanitize";
 import { NetworkError, RateLimitError, getErrorMessage, logError } from "@/utils/errors";
@@ -308,6 +308,36 @@ const Contact = () => {
                       </ParticleButton>
                     </form>
                   </Form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Corporate Information Section */}
+        <section className="py-12 sm:py-16 bg-muted/30 border-t border-border">
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="max-w-4xl mx-auto">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                  <Building2 className="w-5 h-5 text-primary" />
+                </div>
+                <h2 className="text-2xl font-bold">Registered Office</h2>
+              </div>
+              <div className="glassmorphic bg-card/50 p-6 sm:p-8 rounded-2xl border border-border">
+                <div className="flex items-start gap-4">
+                  <MapPin className="w-5 h-5 text-muted-foreground flex-shrink-0 mt-1" />
+                  <div className="space-y-1">
+                    <p className="text-foreground font-medium">UsergyAI Private Limited</p>
+                    <p className="text-muted-foreground">10-246, SVRM Residency,</p>
+                    <p className="text-muted-foreground">Indira Nagar Colony, Srikakulam Town,</p>
+                    <p className="text-muted-foreground">Andhra Pradesh - 532001.</p>
+                  </div>
+                </div>
+                <div className="mt-4 pt-4 border-t border-border text-xs text-muted-foreground/80">
+                  <span>CIN: U63110AP2025PTC122237</span>
+                  <span className="mx-2">|</span>
+                  <span>DPIIT Recognized Startup: DIPP231691</span>
                 </div>
               </div>
             </div>
