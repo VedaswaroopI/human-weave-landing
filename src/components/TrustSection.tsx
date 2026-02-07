@@ -31,7 +31,7 @@ const testimonials = [
       handle: "Research Lead, BioAI Labs",
       avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop&crop=face"
     },
-    text: "Their SOC 2 and HIPAA compliance gave us confidence to handle sensitive patient data. The annotation quality from medical professionals was exactly what we needed."
+    text: "Their SOC 2 and HIPAA aligned practices gave us confidence to handle sensitive patient data. The annotation quality from medical professionals was exactly what we needed."
   },
   {
     author: {

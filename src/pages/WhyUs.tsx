@@ -181,7 +181,7 @@ const DifferentiatorSection = () => (
               <li className="flex items-start gap-3 bg-background/40 p-3 rounded-lg backdrop-blur-sm">
                 <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
                 <div>
-                  <p className="font-semibold text-foreground">SOC 2 & HIPAA Secure</p>
+                  <p className="font-semibold text-foreground">SOC 2 & HIPAA Ready</p>
                   <p className="text-sm text-muted-foreground">
                     Enterprise-grade security with full audit trails
                   </p>
@@ -230,7 +230,7 @@ const ValuesSection = () => (
         </ValueCard>
         <ValueCard icon={ShieldCheck} title="Uncompromising Security">
           Your data is your most valuable asset. We protect it with
-          enterprise-grade, auditable security (SOC 2, HIPAA, ISO 27001) at every
+          enterprise-grade, auditable security aligned with SOC 2, HIPAA, and ISO 27001 standards at every
           step.
         </ValueCard>
         <ValueCard icon={Heart} title="Accuracy & Integrity">
