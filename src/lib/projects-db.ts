@@ -14,12 +14,12 @@ export interface Project {
 export const allProjects: Project[] = [
   {
     id: "p1",
-    title: "SafeAtHome: Elderly Activity Recording",
-    description: "Help build an AI dataset that improves smart home safety devices for seniors. Capture short video clips of daily activities with a household member aged 65+. Simple smartphone recording, fixed angle setup.",
+    title: "Digital Identity Research Study",
+    description: "Help improve digital identity verification technology. Submit 9 photos via a secure mobile app (iOS/Android) to train next-gen identity verification AI. GDPR compliant, fully encrypted, ~10 minutes to complete.",
     startDate: "Starting Soon",
     location: "Remote (Global)",
-    requirements: ["Household member aged 65+", "1080p capable smartphone/camera", "Access to living room, kitchen & bedroom"],
-    applyUrl: "https://forms.usergy.ai/project-safeathome",
+    requirements: ["NFC-enabled ID (passport, biometric national ID, or enhanced driver's license)", "iOS or Android smartphone", "Payment: $8-15 USD per approved submission"],
+    applyUrl: "https://forms.usergy.ai/digital-identity-research",
     icon: Briefcase,
   },
   {
@@ -50,16 +50,6 @@ export const allProjects: Project[] = [
     location: "Remote (France, Korea, Spain, Portugal, English regions)",
     requirements: ["Located in France, Korea, Spain, Portugal, or English-speaking regions", "5 distinct photos per item (different angles)", "Real-world, on-site photos only"],
     applyUrl: "https://forms.usergy.ai/poster-collection",
-    icon: Briefcase,
-  },
-  {
-    id: "p5",
-    title: "Digital Identity Research Study",
-    description: "Help improve digital identity verification technology. Submit 9 photos via a secure mobile app (iOS/Android) to train next-gen identity verification AI. GDPR compliant, fully encrypted, ~10 minutes to complete.",
-    startDate: "Starting Soon",
-    location: "Remote (Global)",
-    requirements: ["NFC-enabled ID (passport, biometric national ID, or enhanced driver's license)", "iOS or Android smartphone", "Payment: $8-15 USD per approved submission"],
-    applyUrl: "https://forms.usergy.ai/digital-identity-research",
     icon: Briefcase,
   },
 ];
