@@ -52,4 +52,14 @@ export const allProjects: Project[] = [
     applyUrl: "https://forms.usergy.ai/poster-collection",
     icon: Briefcase,
   },
+  {
+    id: "p5",
+    title: "Digital Identity Research Study",
+    description: "Help improve digital identity verification technology. Submit 9 photos via a secure mobile app (iOS/Android) to train next-gen identity verification AI. GDPR compliant, fully encrypted, ~10 minutes to complete.",
+    startDate: "Starting Soon",
+    location: "Remote (Global)",
+    requirements: ["NFC-enabled ID (passport, biometric national ID, or enhanced driver's license)", "iOS or Android smartphone", "Payment: $8-15 USD per approved submission"],
+    applyUrl: "https://forms.usergy.ai/digital-identity-research",
+    icon: Briefcase,
+  },
 ];
