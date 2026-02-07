@@ -94,7 +94,7 @@ export const HeroWithSpline = () => {
 
             {/* Subheadline */}
             <motion.p className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground max-w-3xl leading-relaxed" variants={prefersReducedMotion ? {} : item}>
-              Expert-led data annotation, multilingual QA, localization, and global testing delivered with 99.5% accuracy or better. Enterprise-grade security with SOC 2, HIPAA, and ISO 27001 compliance.
+              Expert-led data annotation, multilingual QA, localization, and global testing delivered with 99.5% accuracy or better. Enterprise-grade security aligned with SOC 2, HIPAA, and ISO 27001 frameworks.
             </motion.p>
 
             {/* CTAs */}

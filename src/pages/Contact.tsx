@@ -216,15 +216,15 @@ const Contact = () => {
                   <div className="flex items-center gap-6">
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <ShieldCheck className="w-5 h-5 text-accent" />
-                      <span>SOC 2 Type II</span>
+                      <span>SOC 2 Aligned</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <ShieldCheck className="w-5 h-5 text-accent" />
-                      <span>HIPAA & GDPR</span>
+                      <span>HIPAA & GDPR Ready</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <ShieldCheck className="w-5 h-5 text-accent" />
-                      <span>ISO 27001</span>
+                      <span>ISO 27001 Framework</span>
                     </div>
                   </div>
                 </div>
