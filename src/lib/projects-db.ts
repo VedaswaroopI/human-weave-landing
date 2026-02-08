@@ -13,6 +13,16 @@ export interface Project {
 
 export const allProjects: Project[] = [
   {
+    id: "p0",
+    title: "🗺️ Field Data Collection Agent - POI Mapping Project",
+    description: "Join our field team to collect real-world Point of Interest (POI) data across 8 Indian cities. Visit local businesses, verify details, and capture photos using our mobile portal. 30-day project with daily GPS-assigned tasks. Team lead opportunities available.",
+    startDate: "Starting Soon",
+    location: "India (Jaipur, Lucknow, Chandigarh, Ludhiana, Kanpur, Vadodara, Nagpur, Coimbatore)",
+    requirements: ["Android/iOS smartphone with camera", "Own vehicle preferred (bike/scooter/car)", "6-8 hours daily outdoor availability", "English + local language proficiency"],
+    applyUrl: "https://forms.usergy.ai/field-agent-india",
+    icon: MapPin,
+  },
+  {
     id: "p1",
     title: "Digital Identity Research Study",
     description: "Help improve digital identity verification technology. Submit 9 photos via a secure mobile app (iOS/Android) to train next-gen identity verification AI. GDPR compliant, fully encrypted, ~10 minutes to complete.",
