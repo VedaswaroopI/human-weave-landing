@@ -82,6 +82,8 @@ const App = () => (
                 {/* REDIRECTS */}
                 <Route path="/about" element={<Navigate to="/why-us" replace />} />
                 <Route path="/services" element={<Navigate to="/solutions" replace />} />
+                <Route path="/privacy" element={<Navigate to="/privacy-policy" replace />} />
+                <Route path="/terms" element={<Navigate to="/terms-of-service" replace />} />
 
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
