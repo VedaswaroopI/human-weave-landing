@@ -145,7 +145,7 @@ export const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-border flex flex-col items-center gap-4 text-sm text-muted-foreground">
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
-            <p>© 2025 UsergyAI Private Limited. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} UsergyAI Private Limited. All rights reserved.</p>
             <div className="flex items-center gap-2 text-xs text-muted-foreground/80">
               <span>CIN: U63110AP2025PTC122237</span>
               <span className="hidden sm:inline">|</span>
